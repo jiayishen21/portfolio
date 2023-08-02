@@ -1,6 +1,7 @@
 :root {
-  --primary: #0D0D0D;
+  --primary: #131313;
   --highlight: #F4F4F4;
+  --inactive: #6B6B6B;
 }
 
 @font-face {
@@ -28,7 +29,84 @@ body {
   color: var(--highlight);
 }
 
+body::-webkit-scrollbar {
+  width: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+nav {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav a {
+  color: var(--inactive);
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  font-variation-settings: 'wght' 500;
+}
+
+nav a:hover,
+nav .active {
+  color: var(--highlight);
+}
+
+.project {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: gray;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project a {
+  color: var(--highlight);
+  text-decoration: none;
+  position: relative;
+}
+
+.project a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.2rem;
+  bottom: 0;
+  left: 0;
+  background-color: var(--highlight);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.project a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.project .text-animation-container {
+  overflow: hidden;
+}
+
+.about {
+  z-index: 1;
+  background-color: var(--primary);
+  min-height: 100vh;
 }
