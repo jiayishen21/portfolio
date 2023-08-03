@@ -1,19 +1,19 @@
 import React from "react"
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
-import Project from "./Project"
+import { Route, Routes, useLocation } from 'react-router-dom'
 import About from './About'
 
 import { AnimatePresence } from 'framer-motion'
+import Projects from "./Projects"
 
-const AnimatedRoutes: React.FC = () => {
+interface Props {
+  curProject: number | undefined
+  setCurProject: React.Dispatch<React.SetStateAction<number | undefined>>
+  scrollPosition: number
+  setScrollPosition: React.Dispatch<React.SetStateAction<number>>
+}
+
+const AnimatedRoutes: React.FC<Props> = (props: Props) => {
   const location = useLocation()
-
-  const projects = [
-    {
-      name: 'Visual Sorting Algorithms',
-      link: 'https://jiayishen21.github.io/sorting-algorithms/',
-    }
-  ]
 
   return (
     <>
@@ -22,13 +22,15 @@ const AnimatedRoutes: React.FC = () => {
           location={location}
           key={location.pathname}
         >
-          {projects.map((project) => (
-            <Route
-              path='/'
-              key={project.name}
-              element={<Project name={project.name} link={project.link} />}
-            />
-          ))}
+          <Route
+            path='/'
+            element={<Projects
+              curProject={props.curProject}
+              setCurProject={props.setCurProject}
+              scrollPosition={props.scrollPosition}
+              //setScrollPosition={props.setScrollPosition}
+            />}
+          />
           <Route path='/about' element={<About />}/>
         </Routes>
       </AnimatePresence>

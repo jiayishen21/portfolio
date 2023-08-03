@@ -19,7 +19,6 @@
   font-display: swap;
 }
 
-
 body {
   margin: 0;
   font-family: 'Raleway', 'Fira Sans', sans-serif;
@@ -65,9 +64,6 @@ nav .active {
 
 .project {
   position: fixed;
-  top: 0;
-  left: 0;
-  background: gray;
   width: 100%;
   min-height: 100vh;
   height: 100%;
@@ -75,6 +71,10 @@ nav .active {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: transform 1s ease;
 }
 
 .project a {
@@ -86,6 +86,7 @@ nav .active {
 .project a:after {
   content: '';
   position: absolute;
+  bottom: 0;
   width: 100%;
   transform: scaleX(0);
   height: 0.2rem;
