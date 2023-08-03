@@ -7,9 +7,12 @@ interface Props {
   link: string
   position: number
   imgPath: string
+  onMenu: boolean
+  slide: (direction: number) => void
 }
 
 const Project: React.FC<Props> = (props) => {
+
   return (
     <>
       <motion.div
@@ -46,7 +49,18 @@ const Project: React.FC<Props> = (props) => {
           },
         }}
       >
-        <Link to={props.link}>
+        <div
+          className="left-half"
+          onClick={(e) => props.slide(-1)}
+        />
+        <div
+          className="right-half" 
+          onClick={(e) => props.slide(1)}
+        />
+        <Link
+          to={props.link}
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="text-animation-container">
             <motion.h1
               initial={{ y: '400%' }}
@@ -61,11 +75,9 @@ const Project: React.FC<Props> = (props) => {
               }}
             >
               {props.name}
-              {props.position}
             </motion.h1>
           </div>
         </Link>
-
       </motion.div> 
     </>
   )

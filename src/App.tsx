@@ -4,8 +4,9 @@ import AnimatedRoutes from './components/AnimatedRoutes';
 import { useState } from 'react';
 
 const App: React.FC = () => {
-  const [curProject, setCurProject] = useState<number | undefined>(0)
+  const [curProject, setCurProject] = useState<number>(0)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
+  const [onMenu, setOnMenu] = useState<boolean>(false)
 
   return (
     <>
@@ -16,6 +17,8 @@ const App: React.FC = () => {
           setCurProject={setCurProject}
           scrollPosition={scrollPosition}
           setScrollPosition={setScrollPosition}
+          onMenu={onMenu}
+          setOnMenu={setOnMenu}
         />
       </Router>
     </>

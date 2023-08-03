@@ -6,10 +6,12 @@ import { AnimatePresence } from 'framer-motion'
 import Projects from "./Projects"
 
 interface Props {
-  curProject: number | undefined
-  setCurProject: React.Dispatch<React.SetStateAction<number | undefined>>
+  curProject: number
+  setCurProject: React.Dispatch<React.SetStateAction<number>>
   scrollPosition: number
   setScrollPosition: React.Dispatch<React.SetStateAction<number>>
+  onMenu: boolean
+  setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
@@ -28,7 +30,9 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               curProject={props.curProject}
               setCurProject={props.setCurProject}
               scrollPosition={props.scrollPosition}
-              //setScrollPosition={props.setScrollPosition}
+              setScrollPosition={props.setScrollPosition}
+              onMenu={props.onMenu}
+              setOnMenu={props.setOnMenu}
             />}
           />
           <Route path='/about' element={<About />}/>
