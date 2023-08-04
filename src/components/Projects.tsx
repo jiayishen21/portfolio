@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Project from "./Project";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface Props {
   curProject: number
@@ -99,6 +101,39 @@ const Projects: React.FC<Props> = (props) => {
           delayedProject={delayedProject === index}
         />
       ))}
+      <div className="full-screen">
+        <div
+          className="left-half"
+          onClick={() => slide(-1)}
+        />
+        <div
+          className="right-half" 
+          onClick={() => slide(1)}
+        />
+        <Link
+          to={projects[props.curProject].link}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="text-animation-container">
+            <motion.h1
+              className={delayedProject !== undefined ? 'up400' : 'slideUp'}
+              initial={{ y: '400%' }}
+              animate={{ y: 0, transition: {
+                duration: 1.5, delay: 0.3, ease: 'easeInOut'
+              } }}
+              exit={{
+                y: '-400%',
+                transition: {
+                  duration: 1.5, ease: 'easeInOut'
+                }
+              }}
+            >
+              {delayedProject !== undefined ? projects[delayedProject].name : projects[props.curProject].name}
+            </motion.h1>
+          </div>
+        </Link>
+
+      </div>
     </>
   )
 }

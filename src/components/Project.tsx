@@ -54,36 +54,6 @@ const Project: React.FC<Props> = (props) => {
           },
         }}
       >
-        <div
-          className="left-half"
-          onClick={(e) => props.slide(-1)}
-        />
-        <div
-          className="right-half" 
-          onClick={(e) => props.slide(1)}
-        />
-        <Link
-          to={props.link}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="text-animation-container">
-            <motion.h1
-              className={props.delayedProject ? 'down400' : ''}
-              initial={{ y: '400%' }}
-              animate={{ y: 0, transition: {
-                duration: 1.5, delay: 0.3, ease: 'easeInOut'
-              } }}
-              exit={{
-                y: '-400%',
-                transition: {
-                  duration: 1.5, ease: 'easeInOut'
-                }
-              }}
-            >
-              {props.name}
-            </motion.h1>
-          </div>
-        </Link>
       </motion.div> 
     </>
   )

@@ -68,10 +68,6 @@ nav .active {
   min-height: 100vh;
   height: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -90,13 +86,22 @@ nav .active {
   right: 0;
 }
 
-.project a {
+.full-screen {
+  width: 100%;
+  position: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-screen a {
   color: var(--highlight);
   text-decoration: none;
   position: relative;
 }
 
-.project a:after {
+.text-animation-container a:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -110,17 +115,33 @@ nav .active {
   transition: transform 0.25s ease-out;
 }
 
-.project a:hover:after {
+.text-animation-container a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-.down400 {
-  transform: translateY(-400%) !important;
+.text-animation-container h1 {
   transition: transform 0.5s ease-in-out
 }
 
-.project .text-animation-container {
+.up400 {
+  transform: translateY(-400%) !important;
+}
+
+.slideUp {
+  animation: slideUpAnimation 0.5s ease-in-out 0.1s;
+}
+
+@keyframes slideUpAnimation {
+  0% {
+    transform: translateY(400%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.text-animation-container {
   overflow: hidden;
 }
 
