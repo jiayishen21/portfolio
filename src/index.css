@@ -74,7 +74,6 @@ nav .active {
 
   background-repeat: no-repeat;
   background-position: center center;
-  transition: transform 1s ease;
 }
 
 .left-half, .right-half {

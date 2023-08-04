@@ -9,17 +9,20 @@ interface Props {
   imgPath: string
   onMenu: boolean
   slide: (direction: number) => void
+  delayedProject: boolean
 }
 
 const Project: React.FC<Props> = (props) => {
-
+  
   return (
     <>
       <motion.div
         className='project'
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}${props.imgPath}`,
-          x: `${props.position*100}%`,
+          x: props.delayedProject ? 0 : `${props.position*100}%`,
+          zIndex: props.delayedProject ? -1 : 0,
+          transition: props.position === 0 ? 'transform 1s ease' : 'transform 0s'
         }}
 
         initial={{
@@ -31,7 +34,9 @@ const Project: React.FC<Props> = (props) => {
           zIndex: -1,
           backgroundSize: '100%',
           transition: {
-            duration: 0.9,
+            backgroundSize: {
+              duration: 0.9,
+            }
           }
         }}
         animate={{
