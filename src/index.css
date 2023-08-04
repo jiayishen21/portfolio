@@ -101,7 +101,7 @@ nav .active {
   position: relative;
 }
 
-.text-animation-container a:after {
+.full-screen a:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -115,7 +115,7 @@ nav .active {
   transition: transform 0.25s ease-out;
 }
 
-.text-animation-container a:hover:after {
+.full-screen a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
