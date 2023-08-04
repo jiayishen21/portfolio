@@ -115,6 +115,11 @@ nav .active {
   transform-origin: bottom left;
 }
 
+.down400 {
+  transform: translateY(-400%) !important;
+  transition: transform 0.5s ease-in-out
+}
+
 .project .text-animation-container {
   overflow: hidden;
 }

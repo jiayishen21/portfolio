@@ -1,0 +1,1 @@
+- perhaps seperate the two onclick divs and the link from project and make project just a background

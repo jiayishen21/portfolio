@@ -68,6 +68,7 @@ const Project: React.FC<Props> = (props) => {
         >
           <div className="text-animation-container">
             <motion.h1
+              className={props.delayedProject ? 'down400' : ''}
               initial={{ y: '400%' }}
               animate={{ y: 0, transition: {
                 duration: 1.5, delay: 0.3, ease: 'easeInOut'
@@ -75,7 +76,7 @@ const Project: React.FC<Props> = (props) => {
               exit={{
                 y: '-400%',
                 transition: {
-                  duration: 1.5,
+                  duration: 1.5, ease: 'easeInOut'
                 }
               }}
             >
