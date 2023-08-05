@@ -11,7 +11,6 @@ interface Props {
 }
 
 const Project: React.FC<Props> = (props) => {
-  
   return (
     <>
       <motion.div
