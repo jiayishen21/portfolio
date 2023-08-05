@@ -58,18 +58,24 @@ const Projects: React.FC<Props> = (props) => {
     }
     if(direction === 1 && props.curProject < projects.length - 1) {
       setDelayedProject(props.curProject)
+      setDelayedTitle(props.curProject)
       setDelay(700)
+      setTitleDelay(300)
       props.setCurProject(props.curProject + 1)
     }
     else if(direction === -1 && props.curProject > 0) {
       setDelayedProject(props.curProject)
+      setDelayedTitle(props.curProject)
       setDelay(700)
+      setTitleDelay(300)
       props.setCurProject(props.curProject - 1)
     }
   }
 
   const [delay, setDelay] = useState<number>(0)
   const [delayedProject, setDelayedProject] = useState<number | undefined>(undefined)
+  const [titleDelay, setTitleDelay] = useState<number>(0)
+  const [delayedTitle, setDelayedTitle] = useState<number | undefined>(undefined)
 
   useEffect(() => {
     const resetDelay = () => {
@@ -78,11 +84,24 @@ const Projects: React.FC<Props> = (props) => {
     }
 
     if(delay > 0) {
-      const timeoutId = setTimeout(resetDelay, 700)
+      const timeoutId = setTimeout(resetDelay, delay)
 
       return () => clearTimeout(timeoutId)
     }
   }, [delay])
+
+  useEffect(() => {
+    const resetDelay = () => {
+      setDelayedTitle(undefined)
+      setTitleDelay(0)
+    }
+
+    if(titleDelay > 0) {
+      const timeoutId = setTimeout(resetDelay, titleDelay)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [titleDelay])
   
   return (
     <>
@@ -93,12 +112,11 @@ const Projects: React.FC<Props> = (props) => {
             index - props.curProject === 0 ? 0 :
             index - props.curProject < 0 ? -1 : 1
           }
-          name={project.name}
-          link={project.link}
           imgPath={project.imgPath}
-          onMenu={props.onMenu}
           slide={slide}
           delayedProject={delayedProject === index}
+
+          onMenu={props.onMenu}
         />
       ))}
       <div className="full-screen">
@@ -116,19 +134,15 @@ const Projects: React.FC<Props> = (props) => {
         >
           <div className="text-animation-container">
             <motion.h1
-              className={delayedProject !== undefined ? 'up400' : 'slideUp'}
-              initial={{ y: '400%' }}
-              animate={{ y: 0, transition: {
-                duration: 1.5, delay: 0.3, ease: 'easeInOut'
-              } }}
+              className={delayedTitle !== undefined ? 'up400' : 'slideUp'}
               exit={{
                 y: '-400%',
                 transition: {
-                  duration: 1.5, ease: 'easeInOut'
+                  duration: 0.25, ease: 'easeInOut'
                 }
               }}
             >
-              {delayedProject !== undefined ? projects[delayedProject].name : projects[props.curProject].name}
+              {delayedTitle !== undefined ? projects[delayedTitle].name : projects[props.curProject].name}
             </motion.h1>
           </div>
         </Link>

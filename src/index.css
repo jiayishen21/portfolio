@@ -67,9 +67,17 @@ nav .active {
   width: 100%;
   min-height: 100vh;
   height: 100%;
+}
 
+.project-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
 }
 
 .left-half, .right-half {
@@ -121,7 +129,7 @@ nav .active {
 }
 
 .text-animation-container h1 {
-  transition: transform 0.5s ease-in-out
+  transition: transform 0.4s ease-in-out
 }
 
 .up400 {
@@ -129,7 +137,7 @@ nav .active {
 }
 
 .slideUp {
-  animation: slideUpAnimation 0.5s ease-in-out 0.1s;
+  animation: slideUpAnimation 0.4s ease-in-out 0.05s;
 }
 
 @keyframes slideUpAnimation {

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { motion } from 'framer-motion'
-import { Link } from "react-router-dom";
 
 interface Props {
-  name: string
-  link: string
   position: number
   imgPath: string
-  onMenu: boolean
   slide: (direction: number) => void
   delayedProject: boolean
+
+  onMenu: boolean
 }
 
 const Project: React.FC<Props> = (props) => {
@@ -19,41 +17,54 @@ const Project: React.FC<Props> = (props) => {
       <motion.div
         className='project'
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}${props.imgPath}`,
-          x: props.delayedProject ? 0 : `${props.position*100}%`,
+          x: props.delayedProject ? 0 : `${props.position*100}vw`,
           zIndex: props.delayedProject ? -1 : 0,
-          transition: props.position === 0 ? 'transform 1s ease' : 'transform 0s'
+          transition: props.position === 0 ? 'transform 0.7s ease' : 'transform 0s'
         }}
 
         initial={{
           opacity: 0,
-          backgroundSize: '120%',
+          scale: 1.2,
         }}
         exit={{
           opacity: 1,
           zIndex: -1,
-          backgroundSize: '100%',
-          transition: {
-            backgroundSize: {
-              duration: 0.9,
-            }
-          }
         }}
         animate={{
           opacity: 1,
-          backgroundSize: '100%',
+          scale: 1,
           transition: {
             opacity: {
               duration: 0.3,
               delay: 0.25,
             },
-            backgroundSize: {
+            scale: {
               duration: 0.7,
               delay: 0.3,
             },
           },
         }}
       >
+        <motion.div
+          className="project-img"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}${props.imgPath}`,
+          }}
+
+          initial={{
+            scale: 1.2
+          }}
+          animate={{
+            scale: 1,
+            transition: {
+              scale: {
+                duration: 0.7,
+                delay: 0.3,
+              }
+            }
+          }}
+        >
+        </motion.div>
       </motion.div> 
     </>
   )

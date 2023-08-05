@@ -21,7 +21,7 @@ const About: React.FC = () => {
           y: '0%',
           transition: {
             duration: 0.7,
-            delay: 0.5,
+            delay: 0.6,
             ease: [0.1, 0.2, 0.65, 1]
           }
         }}
