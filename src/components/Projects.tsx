@@ -22,12 +22,7 @@ const Projects: React.FC<Props> = (props) => {
     {
       name: 'Visual Sorting Algorithms2',
       link: 'https://jiayishen21.github.io/sorting-algorithms/',
-      imgPath: '/imgs/Visual-Sorting-Algorithms.png'
-    },
-    {
-      name: 'Visual Sorting Algorithms3',
-      link: 'https://jiayishen21.github.io/sorting-algorithms/',
-      imgPath: '/imgs/Visual-Sorting-Algorithms.png'
+      imgPath: '/imgs/camera.jpeg'
     },
   ]
 

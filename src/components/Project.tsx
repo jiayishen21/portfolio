@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { motion } from 'framer-motion'
+import { easeIn, easeOut, motion } from 'framer-motion'
 
 interface Props {
   position: number
@@ -17,7 +17,7 @@ const Project: React.FC<Props> = (props) => {
       <motion.div
         className='project'
         style={{
-          x: props.delayedProject ? 0 : `${props.position*100}vw`,
+          x: props.delayedProject ? 0 : `${props.position*100}%`,
           zIndex: props.delayedProject ? -1 : 0,
           transition: props.position === 0 ? 'transform 0.7s ease' : 'transform 0s'
         }}
@@ -29,6 +29,12 @@ const Project: React.FC<Props> = (props) => {
         exit={{
           opacity: 1,
           zIndex: -1,
+          scale: 1,
+          transition: {
+            opacity: {
+              duration: 1.2
+            },
+          }
         }}
         animate={{
           opacity: 1,
@@ -37,10 +43,6 @@ const Project: React.FC<Props> = (props) => {
             opacity: {
               duration: 0.3,
               delay: 0.25,
-            },
-            scale: {
-              duration: 0.7,
-              delay: 0.3,
             },
           },
         }}
@@ -52,14 +54,22 @@ const Project: React.FC<Props> = (props) => {
           }}
 
           initial={{
-            scale: 1.2
+            scale: 1,
           }}
           animate={{
             scale: 1,
             transition: {
               scale: {
                 duration: 0.7,
-                delay: 0.3,
+                delay: 0.5,
+              }
+            }
+          }}
+          exit={{
+            scale: 1,
+            transition: {
+              scale: {
+                duration: 1.2
               }
             }
           }}
