@@ -8,10 +8,15 @@ import Projects from "./Projects"
 interface Props {
   curProject: number
   setCurProject: React.Dispatch<React.SetStateAction<number>>
-  scrollPosition: number
-  setScrollPosition: React.Dispatch<React.SetStateAction<number>>
   onMenu: boolean
   setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
+
+  mouseDown: number | null
+  setMouseDown: React.Dispatch<React.SetStateAction<number | null>>
+  prevPercentage: number
+  setPrevPercentage: React.Dispatch<React.SetStateAction<number>>
+  percentage: number
+  setPercentage: React.Dispatch<React.SetStateAction<number>>
 }
 
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
@@ -29,10 +34,16 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
             element={<Projects
               curProject={props.curProject}
               setCurProject={props.setCurProject}
-              scrollPosition={props.scrollPosition}
-              setScrollPosition={props.setScrollPosition}
               onMenu={props.onMenu}
               setOnMenu={props.setOnMenu}
+
+              percentage={props.percentage}
+              setPercentage={props.setPercentage}
+              
+              mouseDown={props.mouseDown}
+              setMouseDown={props.setMouseDown}
+              prevPercentage={props.prevPercentage}
+              setPrevPercentage={props.setPrevPercentage}
             />}
           />
           <Route path='/about' element={<About />}/>

@@ -5,8 +5,11 @@ import { useState } from 'react';
 
 const App: React.FC = () => {
   const [curProject, setCurProject] = useState<number>(0)
-  const [scrollPosition, setScrollPosition] = useState<number>(0)
   const [onMenu, setOnMenu] = useState<boolean>(false)
+
+  const [mouseDown, setMouseDown] = useState<number | null>(null)
+  const [prevPercentage, setPrevPercentage] = useState<number>(0)
+  const [percentage, setPercentage] = useState<number>(0)
 
   return (
     <>
@@ -15,10 +18,15 @@ const App: React.FC = () => {
         <AnimatedRoutes
           curProject={curProject}
           setCurProject={setCurProject}
-          scrollPosition={scrollPosition}
-          setScrollPosition={setScrollPosition}
           onMenu={onMenu}
           setOnMenu={setOnMenu}
+
+          mouseDown={mouseDown}
+          setMouseDown={setMouseDown}
+          prevPercentage={prevPercentage}
+          setPrevPercentage={setPrevPercentage}
+          percentage={percentage}
+          setPercentage={setPercentage}
         />
       </Router>
     </>

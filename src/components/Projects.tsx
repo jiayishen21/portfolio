@@ -6,10 +6,16 @@ import { motion } from "framer-motion";
 interface Props {
   curProject: number
   setCurProject: React.Dispatch<React.SetStateAction<number>>
-  scrollPosition: number
-  setScrollPosition: React.Dispatch<React.SetStateAction<number>>
   onMenu: boolean
   setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
+
+  percentage: number
+  setPercentage: React.Dispatch<React.SetStateAction<number>>
+
+  mouseDown: number | null
+  setMouseDown: React.Dispatch<React.SetStateAction<number | null>>
+  prevPercentage: number
+  setPrevPercentage: React.Dispatch<React.SetStateAction<number>>
 }
 
 const Projects: React.FC<Props> = (props) => {
@@ -77,107 +83,97 @@ const Projects: React.FC<Props> = (props) => {
     }
   }, [titleDelay])
 
+  const trackRef = useRef<HTMLDivElement | null>(null);
+
   const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    // TODO: Control scrollPosition to be between 0 and 100
+    // TODO: Control percentage to be between 0 and 100
     if(!props.onMenu) {
       props.setOnMenu(true)
     }
     if(event.deltaY > 0) {
-      props.setScrollPosition(props.scrollPosition + 1)
+      props.setPercentage(props.percentage + 1)
     }
     else if(event.deltaY < 0) {
-      props.setScrollPosition(props.scrollPosition - 1)
+      props.setPercentage(props.percentage - 1)
     }
   }
 
-  /*
-  =======================================
-  onMenu part
-  =======================================
-  */
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const handleOnDown = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    if(!props.onMenu) {
+      return
+    }
+
+    if ('touches' in event) {
+      // Event is a TouchEvent
+      props.setMouseDown(event.touches[0].clientX);
+    } else {
+      // Event is a MouseEvent
+      props.setMouseDown(event.clientX);
+    }
+  }
+
+  const handleOnUp = () => {
+    if(!props.onMenu) {
+      return
+    }
+
+    props.setMouseDown(null)
+    props.setPrevPercentage(props.percentage)
+  }
+
+  const handleOnMove = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    if(!props.onMenu) {
+      return
+    }
+
+    if (props.mouseDown === null) return;
+
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX
+    const mouseDelta = props.mouseDown - clientX;
+    const maxDelta = window.innerWidth / 1.5;
+    const percentage = (mouseDelta / maxDelta) * -100;
+    const nextPercentageUnconstrained = (props.prevPercentage || 0) + percentage;
+    const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+    props.setPercentage(nextPercentage)
+
+  };
 
   useEffect(() => {
     const track = trackRef.current;
 
     if (!track) return;
 
-    let mouseDownAt: number | null = null;
-    let prevPercentage: number | null = 0;
+    track.animate(
+      [{ transform: `translate(${props.percentage}%, -50%)` }],
+      { duration: 1500, fill: 'forwards' }
+    );
 
-    const handleOnDown = (e: MouseEvent | TouchEvent) => {
-      if (e instanceof MouseEvent) {
-        mouseDownAt = e.clientX;
-      } else if (e.touches.length > 0) {
-        mouseDownAt = e.touches[0].clientX;
-      }
-    };
-
-    const handleOnUp = () => {
-      mouseDownAt = null;
-      prevPercentage = parseInt(track.dataset.percentage || '0')
-    };
-
-    const handleOnMove = (e: MouseEvent | TouchEvent) => {
-      if (mouseDownAt === null) return;
-
-      const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
-      const mouseDelta = mouseDownAt - clientX;
-      const maxDelta = window.innerWidth / 2;
-      const percentage = (mouseDelta / maxDelta) * -100;
-      const nextPercentageUnconstrained = (prevPercentage || 0) + percentage;
-      const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-
-      track.dataset.percentage = nextPercentage.toString()
-
-      track.animate(
-        [{ transform: `translate(${nextPercentage}%, -50%)` }],
-        { duration: 1200, fill: 'forwards' }
+    const images = Array.from(track.getElementsByClassName('image'));
+    for (const image of images) {
+      (image as HTMLElement).animate(
+        [{ objectPosition: `${100 + props.percentage}% center` }],
+        { duration: 1500, fill: 'forwards' }
       );
+    }
 
-      const images = Array.from(track.getElementsByClassName('image'));
-      for (const image of images) {
-        (image as HTMLElement).animate(
-          [{ objectPosition: `${100 + nextPercentage}% center` }],
-          { duration: 1200, fill: 'forwards' }
-        );
-      }
-    };
+  }, [props.percentage])
 
-    window.addEventListener('mousedown', handleOnDown);
-    window.addEventListener('touchstart', handleOnDown);
-    window.addEventListener('mouseup', handleOnUp);
-    window.addEventListener('touchend', handleOnUp);
-    window.addEventListener('mousemove', handleOnMove);
-    window.addEventListener('touchmove', handleOnMove);
-
-    return () => {
-      window.removeEventListener('mousedown', handleOnDown);
-      window.removeEventListener('touchstart', handleOnDown);
-      window.removeEventListener('mouseup', handleOnUp);
-      window.removeEventListener('touchend', handleOnUp);
-      window.removeEventListener('mousemove', handleOnMove);
-      window.removeEventListener('touchmove', handleOnMove);
-    };
-  }, []);
-
-  /*
-  =======================================
-  End of onMenu
-  =======================================
-  */
- 
   return (
     <>
       <div
         onWheel={handleMouseWheel}
+        onMouseDown={handleOnDown}
+        onTouchStart={handleOnDown}
+        onMouseUp={handleOnUp}
+        onTouchEnd={handleOnUp}
+        onMouseMove={handleOnMove}
+        onTouchMove={handleOnMove}
       >
         <div
           id='image-track'
           ref={trackRef}
           className={props.onMenu ? '' : 'none'}
-
-
         >
           <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
           <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
