@@ -158,3 +158,28 @@ nav .active {
   background-color: var(--primary);
   min-height: 100vh;
 }
+
+/*
+onMenu additions
+*/
+#image-track {
+  z-index: 1000;
+  display: flex;
+  gap: 4vmin;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%); 
+  user-select: none; /* -- Prevent image highlighting -- */
+}
+
+#image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+.none {
+  display: none !important;
+}

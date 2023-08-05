@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Project from "./Project";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -25,27 +25,6 @@ const Projects: React.FC<Props> = (props) => {
       imgPath: '/imgs/camera.jpeg'
     },
   ]
-
-  const handleScroll = (e: any) => {
-    if(props.onMenu) {
-      if(e.deltaY > 0) {
-        props.setScrollPosition(props.scrollPosition + 1)
-      }
-      else {
-        props.setScrollPosition(props.scrollPosition - 1)
-      }
-    }
-    else {
-      props.setOnMenu(true)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('mousewheel', handleScroll)
-    return () => {
-      window.removeEventListener('mousewheel', handleScroll)
-    }
-  }, [])
 
   const slide = (direction: number) => {
     if(delay > 0) {
@@ -97,50 +76,159 @@ const Projects: React.FC<Props> = (props) => {
       return () => clearTimeout(timeoutId)
     }
   }, [titleDelay])
-  
+
+  const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    // TODO: Control scrollPosition to be between 0 and 100
+    if(!props.onMenu) {
+      props.setOnMenu(true)
+    }
+    if(event.deltaY > 0) {
+      props.setScrollPosition(props.scrollPosition + 1)
+    }
+    else if(event.deltaY < 0) {
+      props.setScrollPosition(props.scrollPosition - 1)
+    }
+  }
+
+  /*
+  =======================================
+  onMenu part
+  =======================================
+  */
+  const trackRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+
+    if (!track) return;
+
+    let mouseDownAt: number | null = null;
+    let prevPercentage: number | null = 0;
+
+    const handleOnDown = (e: MouseEvent | TouchEvent) => {
+      if (e instanceof MouseEvent) {
+        mouseDownAt = e.clientX;
+      } else if (e.touches.length > 0) {
+        mouseDownAt = e.touches[0].clientX;
+      }
+    };
+
+    const handleOnUp = () => {
+      mouseDownAt = null;
+      prevPercentage = parseInt(track.dataset.percentage || '0')
+    };
+
+    const handleOnMove = (e: MouseEvent | TouchEvent) => {
+      if (mouseDownAt === null) return;
+
+      const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+      const mouseDelta = mouseDownAt - clientX;
+      const maxDelta = window.innerWidth / 2;
+      const percentage = (mouseDelta / maxDelta) * -100;
+      const nextPercentageUnconstrained = (prevPercentage || 0) + percentage;
+      const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+      track.dataset.percentage = nextPercentage.toString()
+
+      track.animate(
+        [{ transform: `translate(${nextPercentage}%, -50%)` }],
+        { duration: 1200, fill: 'forwards' }
+      );
+
+      const images = Array.from(track.getElementsByClassName('image'));
+      for (const image of images) {
+        (image as HTMLElement).animate(
+          [{ objectPosition: `${100 + nextPercentage}% center` }],
+          { duration: 1200, fill: 'forwards' }
+        );
+      }
+    };
+
+    window.addEventListener('mousedown', handleOnDown);
+    window.addEventListener('touchstart', handleOnDown);
+    window.addEventListener('mouseup', handleOnUp);
+    window.addEventListener('touchend', handleOnUp);
+    window.addEventListener('mousemove', handleOnMove);
+    window.addEventListener('touchmove', handleOnMove);
+
+    return () => {
+      window.removeEventListener('mousedown', handleOnDown);
+      window.removeEventListener('touchstart', handleOnDown);
+      window.removeEventListener('mouseup', handleOnUp);
+      window.removeEventListener('touchend', handleOnUp);
+      window.removeEventListener('mousemove', handleOnMove);
+      window.removeEventListener('touchmove', handleOnMove);
+    };
+  }, []);
+
+  /*
+  =======================================
+  End of onMenu
+  =======================================
+  */
+ 
   return (
     <>
-      {projects.map((project, index) => (
-        <Project
-          key={project.name}
-          position={
-            index - props.curProject === 0 ? 0 :
-            index - props.curProject < 0 ? -1 : 1
-          }
-          imgPath={project.imgPath}
-          slide={slide}
-          delayedProject={delayedProject === index}
+      <div
+        onWheel={handleMouseWheel}
+      >
+        <div
+          id='image-track'
+          ref={trackRef}
+          className={props.onMenu ? '' : 'none'}
 
-          onMenu={props.onMenu}
-        />
-      ))}
-      <div className="full-screen">
-        <div
-          className="left-half"
-          onClick={() => slide(-1)}
-        />
-        <div
-          className="right-half" 
-          onClick={() => slide(1)}
-        />
-        <Link
-          to={projects[props.curProject].link}
-          onClick={(e) => e.stopPropagation()}
+
         >
-          <div className="text-animation-container">
-            <motion.h1
-              className={delayedTitle !== undefined ? 'up400' : 'slideUp'}
-              exit={{
-                y: '-400%',
-                transition: {
-                  duration: 0.25, ease: 'easeInOut'
-                }
-              }}
-            >
-              {delayedTitle !== undefined ? projects[delayedTitle].name : projects[props.curProject].name}
-            </motion.h1>
-          </div>
-        </Link>
+          <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+          <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
+          <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+          <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
+          <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+          <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
+        </div>
+
+        {projects.map((project, index) => (
+          <Project
+            key={project.name}
+            position={
+              index - props.curProject === 0 ? 0 :
+              index - props.curProject < 0 ? -1 : 1
+            }
+            imgPath={project.imgPath}
+            slide={slide}
+            delayedProject={delayedProject === index}
+
+            onMenu={props.onMenu}
+          />
+        ))}
+        <div className="full-screen">
+          <div
+            className="left-half"
+            onClick={() => slide(-1)}
+          />
+          <div
+            className="right-half" 
+            onClick={() => slide(1)}
+          />
+          <Link
+            to={projects[props.curProject].link}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-animation-container">
+              <motion.h1
+                className={delayedTitle !== undefined ? 'up400' : 'slideUp'}
+                exit={{
+                  y: '-400%',
+                  transition: {
+                    duration: 0.25, ease: 'easeInOut'
+                  }
+                }}
+              >
+                {delayedTitle !== undefined ? projects[delayedTitle].name : projects[props.curProject].name}
+              </motion.h1>
+            </div>
+          </Link>
+        </div>
 
       </div>
     </>
