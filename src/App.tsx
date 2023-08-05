@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import Nav from './components/Nav'
 import AnimatedRoutes from './components/AnimatedRoutes';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App: React.FC = () => {
   const [curProject, setCurProject] = useState<number>(0)

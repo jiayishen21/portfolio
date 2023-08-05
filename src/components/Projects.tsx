@@ -16,6 +16,9 @@ interface Props {
   setMouseDown: React.Dispatch<React.SetStateAction<number | null>>
   prevPercentage: number
   setPrevPercentage: React.Dispatch<React.SetStateAction<number>>
+
+  switchPage: number
+  setSwitchPage: React.Dispatch<React.SetStateAction<number>>
 }
 
 const Projects: React.FC<Props> = (props) => {
@@ -91,10 +94,10 @@ const Projects: React.FC<Props> = (props) => {
       props.setOnMenu(true)
     }
     if(event.deltaY > 0) {
-      props.setPercentage(props.percentage + 1)
+      props.setPercentage(Math.max(props.percentage - 5, -100))
     }
     else if(event.deltaY < 0) {
-      props.setPercentage(props.percentage - 1)
+      props.setPercentage(Math.min(props.percentage + 5, 0))
     }
   }
 
@@ -130,7 +133,7 @@ const Projects: React.FC<Props> = (props) => {
 
     const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX
     const mouseDelta = props.mouseDown - clientX;
-    const maxDelta = window.innerWidth / 1.5;
+    const maxDelta = window.innerWidth;
     const percentage = (mouseDelta / maxDelta) * -100;
     const nextPercentageUnconstrained = (props.prevPercentage || 0) + percentage;
     const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
@@ -144,20 +147,36 @@ const Projects: React.FC<Props> = (props) => {
 
     if (!track) return;
 
-    track.animate(
-      [{ transform: `translate(${props.percentage}%, -50%)` }],
-      { duration: 1500, fill: 'forwards' }
-    );
+    if(props.switchPage > 0) {
+      // TODO: Handle switchPage >0
+      track.animate(
+        [{ transform: `translate(${props.percentage}%, -50%)` }],
+        { duration: 0, fill: 'forwards' }
+      );
 
-    const images = Array.from(track.getElementsByClassName('image'));
-    for (const image of images) {
-      (image as HTMLElement).animate(
-        [{ objectPosition: `${100 + props.percentage}% center` }],
+      const images = Array.from(track.getElementsByClassName('image'));
+      for (const image of images) {
+        (image as HTMLElement).animate(
+          [{ objectPosition: `${100 + props.percentage}% center` }],
+          { duration: 0, fill: 'forwards' }
+        );
+      }
+    }
+    else {
+      track.animate(
+        [{ transform: `translate(${props.percentage}%, -50%)` }],
         { duration: 1500, fill: 'forwards' }
       );
-    }
 
-  }, [props.percentage])
+      const images = Array.from(track.getElementsByClassName('image'));
+      for (const image of images) {
+        (image as HTMLElement).animate(
+          [{ objectPosition: `${100 + props.percentage}% center` }],
+          { duration: 1500, fill: 'forwards' }
+        );
+      }
+    }
+  }, [props.percentage, props.switchPage])
 
   return (
     <>

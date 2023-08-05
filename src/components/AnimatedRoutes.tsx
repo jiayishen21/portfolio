@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Route, Routes, useLocation } from 'react-router-dom'
 import About from './About'
 
@@ -22,6 +22,24 @@ interface Props {
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
   const location = useLocation()
 
+  const [switchPage, setSwitchPage] = useState<number>(0)
+
+  useEffect(() => {
+    const resetDelay = () => {
+      setSwitchPage(0)
+    }
+
+    if(switchPage > 0) {
+      const timeoutId = setTimeout(resetDelay, switchPage)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [switchPage])
+
+  useEffect(() => {
+    setSwitchPage(1000)
+  }, [location.pathname])
+
   return (
     <>
       <AnimatePresence>
@@ -44,6 +62,9 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               setMouseDown={props.setMouseDown}
               prevPercentage={props.prevPercentage}
               setPrevPercentage={props.setPrevPercentage}
+
+              switchPage={switchPage}
+              setSwitchPage={setSwitchPage}
             />}
           />
           <Route path='/about' element={<About />}/>
