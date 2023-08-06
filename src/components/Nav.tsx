@@ -16,7 +16,7 @@ const Nav: React.FC<Props> = (props: Props) => {
   const navigate = useNavigate()
 
   const redirect = (page: string) => {
-    if(props.switchPage === 0) {
+    if(props.switchPage === 0 && props.page !== page) {
       props.setSwitchPage(700)
       props.setPage(page)
       /*

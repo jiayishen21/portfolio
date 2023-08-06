@@ -168,7 +168,7 @@ nav .active {
 onMenu additions
 */
 #image-track {
-  z-index: 1000;
+  z-index: 1;
   display: flex;
   gap: 4vmin;
   position: fixed;

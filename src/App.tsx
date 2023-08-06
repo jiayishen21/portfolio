@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [percentage, setPercentage] = useState<number>(0)
 
   const [switchPage, setSwitchPage] = useState<number>(0)
-  const [page, setPage] = useState<string>('')
+  const [page, setPage] = useState<string>('/')
 
   useEffect(() => {
     const resetDelay = () => {

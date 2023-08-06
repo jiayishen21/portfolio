@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Project from "./Project";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 
 interface Props {
   curProject: number
@@ -151,43 +151,91 @@ const Projects: React.FC<Props> = (props) => {
 
     if (!track) return;
 
-    if(props.switchPage > 0 && props.page === '/') {
-      console.log('lol')
-      // TODO: Handle switchPage >0
-      // TODO: uselocation lags a little behind the actual router display change
+    // TODO: Clean up animation so that loading menu and scrolling animation don't coincide
+    // Position solutions include only doing translateX and setting -50% Y position by default
+
+    if(props.switchPage > 0 && props.page === '/'){
       track.animate(
         [
-          { transform: `translate(${props.percentage}%, -400%)` },
+          { transform: `translate(${props.percentage}%, -150%)` },
           { transform: `translate(${props.percentage}%, -50%)` }
         ],
-        { duration: 1000, fill: 'forwards', delay: 100 }
+        {
+          duration: 2300,
+          fill: 'forwards',
+          delay: 100,
+          easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        }
       );
 
       const images = Array.from(track.getElementsByClassName('image'));
-      for (const image of images) {
-        (image as HTMLElement).animate(
-          [{ objectPosition: `${100 + props.percentage}% center` }],
-          { duration: 1000, fill: 'forwards', delay: 100 }
+      for (const i in images) {
+        (images[i] as HTMLElement).animate(
+          [
+            { objectPosition: `${100 + props.percentage}% center` },
+          ],
+          { duration: 0, fill: 'forwards' }
+        );
+
+        (images[i] as HTMLElement).animate(
+          [
+            { transform: `translateY(-120%)` },
+            { transform: `translateY(0)` }
+          ],
+          {
+            duration: 1000,
+            fill: 'forwards',
+            delay: 100 + parseInt(i) * 75,
+            easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+          }
+        );
+      }
+    }
+
+    else if(props.onMenu && props.page === '/about' && props.switchPage > 0) {
+      track.animate(
+        [
+          { transform: `translate(${props.percentage}%, -50%)` },
+          { transform: `translate(${props.percentage}%, -150%)` }
+        ],
+        {
+          duration: 1300,
+          fill: 'forwards',
+          easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        }
+      );
+
+      const images = Array.from(track.getElementsByClassName('image'));
+      for (const i in images) {
+        (images[i] as HTMLElement).animate(
+          [
+            { transform: `translateY(-80%)` },
+          ],
+          { 
+            duration: 1000,
+            fill: 'forwards', 
+            delay: parseInt(i)*75,
+            easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+          }
         );
       }
     }
     else {
       track.animate(
         [{ transform: `translate(${props.percentage}%, -50%)` }],
-        { duration: 1500, fill: 'forwards' }
+        { duration: 1000, fill: 'forwards' }
       );
 
       const images = Array.from(track.getElementsByClassName('image'));
       for (const image of images) {
         (image as HTMLElement).animate(
           [{ objectPosition: `${100 + props.percentage}% center` }],
-          { duration: 1500, fill: 'forwards' }
+          { duration: 1000, fill: 'forwards' }
         );
       }
     }
   }, [props.percentage, props.switchPage, props.page])
 
-  // TODO: Seperate switchPage when exiting projects vs entering projects to change the 'none' className on image-track
   return (
     <>
       <div
@@ -202,7 +250,10 @@ const Projects: React.FC<Props> = (props) => {
         <div
           id='image-track'
           ref={trackRef}
-          className={props.onMenu && props.page === '/' && props.switchPage === 0 ? '' : 'none'}
+          className={
+            (props.onMenu && props.page === '/' && props.switchPage === 0) ||
+            (props.onMenu && props.page === '/about' && props.switchPage > 0)
+            ? '' : 'none'}
         >
           <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
           <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
