@@ -11,10 +11,27 @@ const App: React.FC = () => {
   const [prevPercentage, setPrevPercentage] = useState<number>(0)
   const [percentage, setPercentage] = useState<number>(0)
 
+  const [switchPage, setSwitchPage] = useState<number>(0)
+
+  useEffect(() => {
+    const resetDelay = () => {
+      setSwitchPage(0)
+    }
+
+    if(switchPage > 0) {
+      const timeoutId = setTimeout(resetDelay, switchPage)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [switchPage])
+
   return (
     <>
       <Router>
-        <Nav />
+        <Nav
+          switchPage={switchPage}
+          setSwitchPage={setSwitchPage}
+        />
         <AnimatedRoutes
           curProject={curProject}
           setCurProject={setCurProject}
@@ -27,6 +44,9 @@ const App: React.FC = () => {
           setPrevPercentage={setPrevPercentage}
           percentage={percentage}
           setPercentage={setPercentage}
+
+          switchPage={switchPage}
+          setSwitchPage={setSwitchPage}
         />
       </Router>
     </>

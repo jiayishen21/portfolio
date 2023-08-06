@@ -1,25 +1,45 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
-const Nav: React.FC = () => {
+interface Props {
+  switchPage: number
+  setSwitchPage: React.Dispatch<React.SetStateAction<number>>
+}
+
+const Nav: React.FC<Props> = (props: Props) => {
   const location = useLocation()
   const pathname = location.pathname
+
+  const navigate = useNavigate()
+
+  const redirect = (page: string) => {
+    if(props.switchPage === 0) {
+      props.setSwitchPage(700)
+
+      navigate(page)
+      /*
+      const timeoutId = setTimeout(() => navigate(page), 100)
+
+      return () => clearTimeout(timeoutId)
+      */
+    }
+  }
 
   return (
     <>
       <nav>
-        <Link
-          to='/'
+        <button
+          onClick={() => redirect('/')}
           className={pathname === '/' ? 'active' : ''}
         >
           Projects
-        </Link>
-        <Link
-          to='/about'
+        </button>
+        <button
+          onClick={() => redirect('/about')}
           className={pathname === '/about' ? 'active' : ''}
         >
           About
-        </Link>
+        </button>
       </nav> 
     </>
   )

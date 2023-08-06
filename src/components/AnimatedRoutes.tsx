@@ -17,28 +17,13 @@ interface Props {
   setPrevPercentage: React.Dispatch<React.SetStateAction<number>>
   percentage: number
   setPercentage: React.Dispatch<React.SetStateAction<number>>
+
+  switchPage: number
+  setSwitchPage: React.Dispatch<React.SetStateAction<number>>
 }
 
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
   const location = useLocation()
-
-  const [switchPage, setSwitchPage] = useState<number>(0)
-
-  useEffect(() => {
-    const resetDelay = () => {
-      setSwitchPage(0)
-    }
-
-    if(switchPage > 0) {
-      const timeoutId = setTimeout(resetDelay, switchPage)
-
-      return () => clearTimeout(timeoutId)
-    }
-  }, [switchPage])
-
-  useEffect(() => {
-    setSwitchPage(1000)
-  }, [location.pathname])
 
   return (
     <>
@@ -63,8 +48,8 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               prevPercentage={props.prevPercentage}
               setPrevPercentage={props.setPrevPercentage}
 
-              switchPage={switchPage}
-              setSwitchPage={setSwitchPage}
+              switchPage={props.switchPage}
+              setSwitchPage={props.setSwitchPage}
             />}
           />
           <Route path='/about' element={<About />}/>
