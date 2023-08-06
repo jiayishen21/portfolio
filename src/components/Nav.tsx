@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 interface Props {
   switchPage: number
   setSwitchPage: React.Dispatch<React.SetStateAction<number>>
+
+  page: string
+  setPage: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Nav: React.FC<Props> = (props: Props) => {
@@ -15,8 +18,7 @@ const Nav: React.FC<Props> = (props: Props) => {
   const redirect = (page: string) => {
     if(props.switchPage === 0) {
       props.setSwitchPage(700)
-
-      navigate(page)
+      props.setPage(page)
       /*
       const timeoutId = setTimeout(() => navigate(page), 100)
 
@@ -24,6 +26,12 @@ const Nav: React.FC<Props> = (props: Props) => {
       */
     }
   }
+
+  useEffect(() => {
+      const timeoutId = setTimeout(() => navigate(props.page), 100)
+
+      return () => clearTimeout(timeoutId)
+  }, [props.page])
 
   return (
     <>

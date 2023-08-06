@@ -19,6 +19,8 @@ interface Props {
 
   switchPage: number
   setSwitchPage: React.Dispatch<React.SetStateAction<number>>
+
+  page: string
 }
 
 const Projects: React.FC<Props> = (props) => {
@@ -149,16 +151,10 @@ const Projects: React.FC<Props> = (props) => {
 
     if (!track) return;
 
-    if(props.switchPage > 0) {
+    if(props.switchPage > 0 && props.page === '/') {
+      console.log('lol')
       // TODO: Handle switchPage >0
       // TODO: uselocation lags a little behind the actual router display change
-      track.animate(
-        [
-          { transform: `translate(${props.percentage}%, -400%)` },
-        ],
-        { duration: 0}
-      );
-
       track.animate(
         [
           { transform: `translate(${props.percentage}%, -400%)` },
@@ -189,8 +185,9 @@ const Projects: React.FC<Props> = (props) => {
         );
       }
     }
-  }, [props.percentage, props.switchPage])
+  }, [props.percentage, props.switchPage, props.page])
 
+  // TODO: Seperate switchPage when exiting projects vs entering projects to change the 'none' className on image-track
   return (
     <>
       <div
@@ -205,7 +202,7 @@ const Projects: React.FC<Props> = (props) => {
         <div
           id='image-track'
           ref={trackRef}
-          className={props.onMenu ? '' : 'none'}
+          className={props.onMenu && props.page === '/' && props.switchPage === 0 ? '' : 'none'}
         >
           <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
           <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />

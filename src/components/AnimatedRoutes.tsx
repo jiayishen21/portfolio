@@ -20,6 +20,8 @@ interface Props {
 
   switchPage: number
   setSwitchPage: React.Dispatch<React.SetStateAction<number>>
+
+  page: string
 }
 
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
@@ -50,6 +52,8 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
 
               switchPage={props.switchPage}
               setSwitchPage={props.setSwitchPage}
+
+              page={props.page}
             />}
           />
           <Route path='/about' element={<About />}/>

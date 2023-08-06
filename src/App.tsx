@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [percentage, setPercentage] = useState<number>(0)
 
   const [switchPage, setSwitchPage] = useState<number>(0)
+  const [page, setPage] = useState<string>('')
 
   useEffect(() => {
     const resetDelay = () => {
@@ -31,6 +32,9 @@ const App: React.FC = () => {
         <Nav
           switchPage={switchPage}
           setSwitchPage={setSwitchPage}
+
+          page={page}
+          setPage={setPage}
         />
         <AnimatedRoutes
           curProject={curProject}
@@ -47,6 +51,8 @@ const App: React.FC = () => {
 
           switchPage={switchPage}
           setSwitchPage={setSwitchPage}
+
+          page={page}
         />
       </Router>
     </>
