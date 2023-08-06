@@ -218,7 +218,7 @@ onMenu additions
 }
 
 .project-return {
-  animation: projectFadeIn 0.8s ease-in-out;
+  animation: projectFadeIn 1s ease-in-out;
 }
 
 @keyframes projectFadeIn {

@@ -170,6 +170,7 @@ const Projects: React.FC<Props> = (props) => {
 
     if (!track) return;
 
+    // Switching from about to menu
     if(props.switchPage > 0 && props.page === '/') {
       track.animate(
         [
@@ -208,6 +209,7 @@ const Projects: React.FC<Props> = (props) => {
       }
     }
 
+    // Opening menu
     else if(props.onMenu && switchMenu > 0) {
       track.animate(
         [
@@ -246,14 +248,18 @@ const Projects: React.FC<Props> = (props) => {
       }
     }
 
-    else if(props.onMenu && props.page === '/about' && props.switchPage > 0) {
+    // Switching to about or from menu to project
+    else if(
+      (props.onMenu && props.page === '/about' && props.switchPage > 0)
+      || (!props.onMenu && switchMenu > 0)
+    ) {
       track.animate(
         [
           { transform: `translate(${props.percentage}%, -50%)` },
           { transform: `translate(${props.percentage}%, -150%)` }
         ],
         {
-          duration: 1300,
+          duration: 800,
           fill: 'forwards',
           easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
         }
@@ -266,7 +272,7 @@ const Projects: React.FC<Props> = (props) => {
             { transform: `translateY(-80%)` },
           ],
           { 
-            duration: 1000,
+            duration: 700,
             fill: 'forwards', 
             delay: parseInt(i)*75,
             easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -275,44 +281,22 @@ const Projects: React.FC<Props> = (props) => {
       }
     }
 
+    // Scrolling
     else {
       track.animate(
         [{ transform: `translate(${props.percentage}%, -50%)` }],
-        { duration: 1000, fill: 'forwards' }
+        { duration: 800, fill: 'forwards' }
       );
 
       const images = Array.from(track.getElementsByClassName('image'));
       for (const image of images) {
         (image as HTMLElement).animate(
           [{ objectPosition: `${100 + props.percentage}% center` }],
-          { duration: 1000, fill: 'forwards' }
+          { duration: 800, fill: 'forwards' }
         );
       }
     }
   }, [props.percentage, props.switchPage, props.page, switchMenu])
-
-  const titleRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const title = titleRef.current
-
-    if (!title) return;
-
-    /*
-    if(props.onMenu && switchMenu > 0) {
-      title.animate(
-        [
-          { transform: `translateY(0)` },
-          { transform: `translateY(-400%)` },
-        ],
-        {
-          duration: 1000,
-        }
-      );
-    }
-    */
-
-  }, [switchMenu, props.onMenu])
 
   return (
     <>
@@ -331,7 +315,8 @@ const Projects: React.FC<Props> = (props) => {
             image-track 
             ${
               (props.onMenu && props.page === '/' && props.switchPage === 0) ||
-              (props.onMenu && props.page === '/about' && props.switchPage > 0)
+              (props.onMenu && props.page === '/about' && props.switchPage > 0) ||
+              (!props.onMenu && switchMenu > 0)
               ? '' : 'none'
             }
           `}
@@ -379,7 +364,6 @@ const Projects: React.FC<Props> = (props) => {
           >
             <div className="text-animation-container">
               <motion.h1
-                ref={titleRef}
                 className={`
                   ${
                     delayedTitle !== undefined ? 'up400' : 
