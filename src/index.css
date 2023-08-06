@@ -155,7 +155,7 @@ nav .active {
 }
 
 .slideAway {
-  animation: slideUpAnimation 0.4s ease-in-out;
+  animation: slideAwayAnimation 0.7s ease-in-out;
 }
 
 @keyframes slideAwayAnimation {

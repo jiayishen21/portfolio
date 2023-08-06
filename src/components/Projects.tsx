@@ -364,7 +364,7 @@ const Projects: React.FC<Props> = (props) => {
             switchMenu={switchMenu}
           />
         ))}
-        <div className={`full-screen ${props.onMenu ? 'none' : ''}`}>
+        <div className={`full-screen ${props.onMenu && switchMenu === 0 ? 'none' : ''}`}>
           <div
             className="left-half"
             onClick={() => slide(-1)}
@@ -381,11 +381,11 @@ const Projects: React.FC<Props> = (props) => {
               <motion.h1
                 ref={titleRef}
                 className={`
-                  ${delayedTitle !== undefined ? 'up400' : 
-                  !props.onMenu && switchMenu === 0 ?
-                  'slideUp' : 'up400'
+                  ${
+                    delayedTitle !== undefined ? 'up400' : 
+                    (!props.onMenu && switchMenu === 0) ? 'slideUp' :
+                    (props.onMenu && switchMenu > 0) ? 'slideAway' : 'up400'
                   }
-
                 `}
                 exit={{
                   y: '-400%',
