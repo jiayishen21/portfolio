@@ -38,7 +38,7 @@ code {
 }
 
 nav {
-  z-index: 1;
+  z-index: 10;
   display: flex;
   justify-content: center;
   margin-top: 2rem;
@@ -62,7 +62,7 @@ nav button {
   cursor: pointer;
 }
 
-nav a:hover,
+nav button:hover,
 nav .active {
   color: var(--highlight);
 }
@@ -160,6 +160,8 @@ nav .active {
 
 .about {
   z-index: 3;
+  /* TODO: Need to prevent people from scrolling this */
+  width: 100%;
   background-color: var(--primary);
   min-height: 100vh;
 }
@@ -167,7 +169,7 @@ nav .active {
 /*
 onMenu additions
 */
-#image-track {
+.image-track {
   z-index: 1;
   display: flex;
   gap: 4vmin;
@@ -178,7 +180,7 @@ onMenu additions
   user-select: none; /* -- Prevent image highlighting -- */
 }
 
-#image-track > .image {
+.image-track .image {
   width: 40vmin;
   height: 56vmin;
   object-fit: cover;

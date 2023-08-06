@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import Project from "./Project";
 import { Link } from "react-router-dom";
-import { easeOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Props {
   curProject: number
   setCurProject: React.Dispatch<React.SetStateAction<number>>
+
   onMenu: boolean
   setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 
@@ -91,9 +92,13 @@ const Projects: React.FC<Props> = (props) => {
   const trackRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    // TODO: Control percentage to be between 0 and 100
     if(!props.onMenu) {
       props.setOnMenu(true)
+      setSwitchMenu(700)
+      return
+    }
+    if(props.switchPage > 0 || switchMenu > 0) {
+      return
     }
     if(event.deltaY > 0) {
       props.setPrevPercentage(Math.max(props.percentage - 5, -100))
@@ -146,6 +151,20 @@ const Projects: React.FC<Props> = (props) => {
 
   };
 
+  const [switchMenu, setSwitchMenu] = useState<number>(0)
+
+  useEffect(() => {
+    const resetDelay = () => {
+      setSwitchMenu(0)
+    }
+
+    if(switchMenu > 0) {
+      const timeoutId = setTimeout(resetDelay, switchMenu)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [switchMenu])
+
   useEffect(() => {
     const track = trackRef.current;
 
@@ -154,7 +173,7 @@ const Projects: React.FC<Props> = (props) => {
     // TODO: Clean up animation so that loading menu and scrolling animation don't coincide
     // Position solutions include only doing translateX and setting -50% Y position by default
 
-    if(props.switchPage > 0 && props.page === '/'){
+    if(props.switchPage > 0 && props.page === '/') {
       track.animate(
         [
           { transform: `translate(${props.percentage}%, -150%)` },
@@ -185,11 +204,50 @@ const Projects: React.FC<Props> = (props) => {
           {
             duration: 1000,
             fill: 'forwards',
-            delay: 100 + parseInt(i) * 75,
+            delay:  100 + parseInt(i) * 75,
             easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
           }
         );
       }
+    }
+
+    else if(switchMenu > 0) {
+      track.animate(
+        [
+          { transform: `translate(${props.percentage}%, -250%)` },
+          { transform: `translate(${props.percentage}%, -50%)` }
+        ],
+        {
+          duration: 1500,
+          fill: 'forwards',
+          delay: 0,
+          easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        }
+      );
+
+      const images = Array.from(track.getElementsByClassName('image'));
+      for (const i in images) {
+        (images[i] as HTMLElement).animate(
+          [
+            { objectPosition: `${100 + props.percentage}% center` },
+          ],
+          { duration: 0, fill: 'forwards' }
+        );
+
+        (images[i] as HTMLElement).animate(
+          [
+            { transform: `translateY(-120%)` },
+            { transform: `translateY(0)` }
+          ],
+          {
+            duration: 1000,
+            fill: 'forwards',
+            delay:  parseInt(i) * 75,
+            easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+          }
+        );
+      }
+
     }
 
     else if(props.onMenu && props.page === '/about' && props.switchPage > 0) {
@@ -220,6 +278,7 @@ const Projects: React.FC<Props> = (props) => {
         );
       }
     }
+
     else {
       track.animate(
         [{ transform: `translate(${props.percentage}%, -50%)` }],
@@ -234,7 +293,7 @@ const Projects: React.FC<Props> = (props) => {
         );
       }
     }
-  }, [props.percentage, props.switchPage, props.page])
+  }, [props.percentage, props.switchPage, props.page, switchMenu])
 
   return (
     <>
@@ -248,12 +307,13 @@ const Projects: React.FC<Props> = (props) => {
         onTouchMove={handleOnMove}
       >
         <div
-          id='image-track'
           ref={trackRef}
           className={
+            `image-track ${
             (props.onMenu && props.page === '/' && props.switchPage === 0) ||
             (props.onMenu && props.page === '/about' && props.switchPage > 0)
-            ? '' : 'none'}
+            ? '' : 'none'}`
+          }
         >
           <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
           <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />

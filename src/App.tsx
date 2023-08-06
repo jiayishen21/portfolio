@@ -26,6 +26,7 @@ const App: React.FC = () => {
     }
   }, [switchPage])
 
+
   return (
     <>
       <Router>
@@ -39,6 +40,7 @@ const App: React.FC = () => {
         <AnimatedRoutes
           curProject={curProject}
           setCurProject={setCurProject}
+
           onMenu={onMenu}
           setOnMenu={setOnMenu}
 

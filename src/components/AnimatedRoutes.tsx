@@ -8,6 +8,7 @@ import Projects from "./Projects"
 interface Props {
   curProject: number
   setCurProject: React.Dispatch<React.SetStateAction<number>>
+
   onMenu: boolean
   setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 
@@ -39,6 +40,7 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
             element={<Projects
               curProject={props.curProject}
               setCurProject={props.setCurProject}
+
               onMenu={props.onMenu}
               setOnMenu={props.setOnMenu}
 
