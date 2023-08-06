@@ -94,9 +94,11 @@ const Projects: React.FC<Props> = (props) => {
       props.setOnMenu(true)
     }
     if(event.deltaY > 0) {
+      props.setPrevPercentage(Math.max(props.percentage - 5, -100))
       props.setPercentage(Math.max(props.percentage - 5, -100))
     }
     else if(event.deltaY < 0) {
+      props.setPrevPercentage(Math.max(props.percentage + 5, 0))
       props.setPercentage(Math.min(props.percentage + 5, 0))
     }
   }
@@ -149,16 +151,27 @@ const Projects: React.FC<Props> = (props) => {
 
     if(props.switchPage > 0) {
       // TODO: Handle switchPage >0
+      // TODO: uselocation lags a little behind the actual router display change
       track.animate(
-        [{ transform: `translate(${props.percentage}%, -50%)` }],
-        { duration: 0, fill: 'forwards' }
+        [
+          { transform: `translate(${props.percentage}%, -400%)` },
+        ],
+        { duration: 0}
+      );
+
+      track.animate(
+        [
+          { transform: `translate(${props.percentage}%, -400%)` },
+          { transform: `translate(${props.percentage}%, -50%)` }
+        ],
+        { duration: 1000, fill: 'forwards', delay: 100 }
       );
 
       const images = Array.from(track.getElementsByClassName('image'));
       for (const image of images) {
         (image as HTMLElement).animate(
           [{ objectPosition: `${100 + props.percentage}% center` }],
-          { duration: 0, fill: 'forwards' }
+          { duration: 1000, fill: 'forwards', delay: 100 }
         );
       }
     }
