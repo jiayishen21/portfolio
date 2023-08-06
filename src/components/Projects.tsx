@@ -298,9 +298,8 @@ const Projects: React.FC<Props> = (props) => {
 
     if (!title) return;
 
+    /*
     if(props.onMenu && switchMenu > 0) {
-      // TODO: Change this to close title
-      console.log('lel')
       title.animate(
         [
           { transform: `translateY(0)` },
@@ -311,6 +310,8 @@ const Projects: React.FC<Props> = (props) => {
         }
       );
     }
+    */
+
   }, [switchMenu, props.onMenu])
 
   return (
@@ -323,16 +324,17 @@ const Projects: React.FC<Props> = (props) => {
         onTouchEnd={handleOnUp}
         onMouseMove={handleOnMove}
         onTouchMove={handleOnMove}
-        className={props.onMenu ? 'black' : ''}
       >
         <div
           ref={trackRef}
-          className={
-            `image-track ${
-            (props.onMenu && props.page === '/' && props.switchPage === 0) ||
-            (props.onMenu && props.page === '/about' && props.switchPage > 0)
-            ? '' : 'none'}`
-          }
+          className={`
+            image-track 
+            ${
+              (props.onMenu && props.page === '/' && props.switchPage === 0) ||
+              (props.onMenu && props.page === '/about' && props.switchPage > 0)
+              ? '' : 'none'
+            }
+          `}
         >
           <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false"
             onClick={() => {
@@ -378,7 +380,13 @@ const Projects: React.FC<Props> = (props) => {
             <div className="text-animation-container">
               <motion.h1
                 ref={titleRef}
-                className={delayedTitle !== undefined || props.onMenu || switchMenu > 0 ? 'up400' : 'slideUp'}
+                className={`
+                  ${delayedTitle !== undefined ? 'up400' : 
+                  !props.onMenu && switchMenu === 0 ?
+                  'slideUp' : 'up400'
+                  }
+
+                `}
                 exit={{
                   y: '-400%',
                   transition: {

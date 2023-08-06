@@ -134,11 +134,11 @@ nav .active {
 }
 
 .text-animation-container h1 {
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.25s ease-in-out;
 }
 
 .up400 {
-  transform: translateY(-300%) !important;
+  transform: translateY(-500%) !important;
 }
 
 .slideUp {
@@ -147,10 +147,23 @@ nav .active {
 
 @keyframes slideUpAnimation {
   0% {
-    transform: translateY(400%);
+    transform: translateY(-500%);
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+.slideAway {
+  animation: slideUpAnimation 0.4s ease-in-out;
+}
+
+@keyframes slideAwayAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-500%);
   }
 }
 
