@@ -170,9 +170,6 @@ const Projects: React.FC<Props> = (props) => {
 
     if (!track) return;
 
-    // TODO: Clean up animation so that loading menu and scrolling animation don't coincide
-    // Position solutions include only doing translateX and setting -50% Y position by default
-
     if(props.switchPage > 0 && props.page === '/') {
       track.animate(
         [
@@ -294,6 +291,28 @@ const Projects: React.FC<Props> = (props) => {
     }
   }, [props.percentage, props.switchPage, props.page, switchMenu])
 
+  const titleRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const title = titleRef.current
+
+    if (!title) return;
+
+    if(props.onMenu && switchMenu > 0) {
+      // TODO: Change this to close title
+      console.log('lel')
+      title.animate(
+        [
+          { transform: `translateY(0)` },
+          { transform: `translateY(-400%)` },
+        ],
+        {
+          duration: 1000,
+        }
+      );
+    }
+  }, [switchMenu, props.onMenu])
+
   return (
     <>
       <div
@@ -304,6 +323,7 @@ const Projects: React.FC<Props> = (props) => {
         onTouchEnd={handleOnUp}
         onMouseMove={handleOnMove}
         onTouchMove={handleOnMove}
+        className={props.onMenu ? 'black' : ''}
       >
         <div
           ref={trackRef}
@@ -339,6 +359,7 @@ const Projects: React.FC<Props> = (props) => {
             delayedProject={delayedProject === index}
 
             onMenu={props.onMenu}
+            switchMenu={switchMenu}
           />
         ))}
         <div className={`full-screen ${props.onMenu ? 'none' : ''}`}>
@@ -356,6 +377,7 @@ const Projects: React.FC<Props> = (props) => {
           >
             <div className="text-animation-container">
               <motion.h1
+                ref={titleRef}
                 className={delayedTitle !== undefined || props.onMenu || switchMenu > 0 ? 'up400' : 'slideUp'}
                 exit={{
                   y: '-400%',

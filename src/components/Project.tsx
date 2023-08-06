@@ -8,13 +8,22 @@ interface Props {
   delayedProject: boolean
 
   onMenu: boolean
+  switchMenu: number
 }
 
 const Project: React.FC<Props> = (props) => {
   return (
     <>
       <motion.div
-        className='project'
+        className={`project
+          ${
+            props.switchMenu > 0 && props.onMenu ? 'project-exit' :
+            props.onMenu ? 'transparent' : ''
+          }
+          ${
+            props.switchMenu > 0 && !props.onMenu ? 'project-return' : ''
+          }
+        `}
         style={{
           x: props.delayedProject ? 0 : `${props.position*100}%`,
           zIndex: props.delayedProject ? -1 : 0,
@@ -47,30 +56,12 @@ const Project: React.FC<Props> = (props) => {
         }}
       >
         <motion.div
-          className="project-img"
+          className={
+            `project-img
+            ${props.switchMenu > 0 && props.onMenu ? 'project-img-exit' : ''}
+          `}
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL}${props.imgPath}`,
-          }}
-
-          initial={{
-            scale: 1,
-          }}
-          animate={{
-            scale: 1,
-            transition: {
-              scale: {
-                duration: 0.7,
-                delay: 0.5,
-              }
-            }
-          }}
-          exit={{
-            scale: 1,
-            transition: {
-              scale: {
-                duration: 1.2
-              }
-            }
           }}
         >
         </motion.div>

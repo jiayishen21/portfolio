@@ -134,11 +134,11 @@ nav .active {
 }
 
 .text-animation-container h1 {
-  transition: transform 0.4s ease-in-out
+  transition: transform 0.4s ease-in-out;
 }
 
 .up400 {
-  transform: translateY(-400%) !important;
+  transform: translateY(-300%) !important;
 }
 
 .slideUp {
@@ -189,4 +189,34 @@ onMenu additions
 
 .none {
   display: none !important;
+}
+
+.project-exit {
+  animation: projectFade 0.7s ease-in-out;
+}
+
+@keyframes projectFade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.project-return {
+  animation: projectFadeIn 0.8s ease-in-out;
+}
+
+@keyframes projectFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.transparent {
+  opacity: 0 !important;
 }
