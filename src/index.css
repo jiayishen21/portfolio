@@ -108,13 +108,13 @@ nav .active {
   align-items: center;
 }
 
-.full-screen a {
+.full-screen .title-link {
   color: var(--highlight);
   text-decoration: none;
   position: relative;
 }
 
-.full-screen a:after {
+.full-screen .title-link:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -128,7 +128,7 @@ nav .active {
   transition: transform 0.25s ease-out;
 }
 
-.full-screen a:hover:after {
+.full-screen .interact:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }

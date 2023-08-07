@@ -30,12 +30,14 @@ const Projects: React.FC<Props> = (props) => {
     {
       name: 'Visual Sorting Algorithms',
       link: 'https://jiayishen21.github.io/sorting-algorithms/',
-      imgPath: '/imgs/Visual-Sorting-Algorithms.png'
+      imgPath: '/imgs/Visual-Sorting-Algorithms.png',
+      menuImgPath: '/imgs/Menu-Visual-Sorting-Algorithms.png',
     },
     {
       name: 'Visual Sorting Algorithms2',
       link: 'https://jiayishen21.github.io/sorting-algorithms/',
-      imgPath: '/imgs/camera.jpeg'
+      imgPath: '/imgs/camera.jpeg',
+      menuImgPath: '/imgs/camera.jpeg',
     },
   ]
 
@@ -327,7 +329,7 @@ const Projects: React.FC<Props> = (props) => {
               key={`menu ${project.name}`}
               projectNumber={index}
               setCurProject={props.setCurProject}
-              imgPath={project.imgPath}
+              imgPath={project.menuImgPath}
               setOnMenu={props.setOnMenu}
               setSwitchMenu={setSwitchMenu}
             />
@@ -359,6 +361,7 @@ const Projects: React.FC<Props> = (props) => {
             onClick={() => slide(1)}
           />
           <Link
+            className={`title-link ${switchMenu === 0 ? 'interact' : ''}`}
             to={projects[props.curProject].link}
             onClick={(e) => e.stopPropagation()}
           >
