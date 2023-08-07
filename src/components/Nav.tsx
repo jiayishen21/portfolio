@@ -17,13 +17,13 @@ const Nav: React.FC<Props> = (props: Props) => {
 
   const redirect = (page: string) => {
     if(props.switchPage === 0 && props.page !== page) {
-      props.setSwitchPage(700)
+      if(page === '/') {
+        props.setSwitchPage(700)
+      }
+      else if(page === '/about') {
+        props.setSwitchPage(1400)
+      }
       props.setPage(page)
-      /*
-      const timeoutId = setTimeout(() => navigate(page), 100)
-
-      return () => clearTimeout(timeoutId)
-      */
     }
   }
 

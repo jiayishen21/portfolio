@@ -1,11 +1,16 @@
 import React from "react"
 import { motion } from 'framer-motion'
 
-const About: React.FC = () => {
+
+interface Props {
+  switchPage: number
+}
+
+const About: React.FC<Props> = (props: Props) => {
   return (
     <>
       <motion.div
-        className="about"
+        className={`about ${props.switchPage > 0 ? 'no-scroll' : ''}`}
 
         initial={{
           opacity: 1,
@@ -26,8 +31,7 @@ const About: React.FC = () => {
           }
         }}
       >
-        About
-        
+        About <br/>
       </motion.div> 
     </>
   )

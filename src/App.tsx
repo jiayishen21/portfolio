@@ -29,6 +29,9 @@ const App: React.FC = () => {
 
   return (
     <>
+      <div
+       className={switchPage > 0 ? 'no-scroll' : ''}
+      >
       <Router>
         <Nav
           switchPage={switchPage}
@@ -57,6 +60,7 @@ const App: React.FC = () => {
           page={page}
         />
       </Router>
+      </div>
     </>
   )
 }

@@ -171,17 +171,6 @@ nav .active {
   overflow: hidden;
 }
 
-.about {
-  z-index: 3;
-  /* TODO: Need to prevent people from scrolling this */
-  width: 100%;
-  background-color: var(--primary);
-  min-height: 100vh;
-}
-
-/*
-onMenu additions
-*/
 .image-track {
   z-index: 1;
   display: flex;
@@ -232,4 +221,15 @@ onMenu additions
 
 .transparent {
   opacity: 0 !important;
+}
+
+.about {
+  z-index: 3;
+  width: 100%;
+  background-color: var(--primary);
+  min-height: 100vh;
+}
+
+.no-scroll {
+  overflow: hidden;
 }

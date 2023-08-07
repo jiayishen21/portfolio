@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react"
 import { Route, Routes, useLocation } from 'react-router-dom'
 import About from './About'
 
@@ -58,7 +57,12 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               page={props.page}
             />}
           />
-          <Route path='/about' element={<About />}/>
+          <Route
+            path='/about'
+            element={<About 
+              switchPage={props.switchPage}
+            />}
+          />
         </Routes>
       </AnimatePresence>
     </>

@@ -95,6 +95,9 @@ const Projects: React.FC<Props> = (props) => {
   const trackRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    if(props.switchPage > 0) {
+      return
+    }
     if(!props.onMenu) {
       props.setOnMenu(true)
       setSwitchMenu(700)
