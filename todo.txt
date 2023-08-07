@@ -1,2 +1,4 @@
-- perhaps seperate the two onclick divs and the link from project and make project just a background
 - clean up project and projects files
+
+- clean up how class names are given
+- create component for menu items

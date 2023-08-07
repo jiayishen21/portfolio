@@ -27,7 +27,7 @@ const Project: React.FC<Props> = (props) => {
         style={{
           x: props.delayedProject ? 0 : `${props.position*100}%`,
           zIndex: props.delayedProject ? -1 : 0,
-          transition: props.position === 0 ? 'transform 0.7s ease' : 'transform 0s'
+          transition: props.position !== 0 || props.switchMenu > 0 ? 'transform 0s' : 'transform 0.7s ease'
         }}
 
         initial={{

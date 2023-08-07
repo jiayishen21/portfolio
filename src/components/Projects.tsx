@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Project from "./Project";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import MenuProject from "./MenuProject";
 
 interface Props {
   curProject: number
@@ -321,17 +322,16 @@ const Projects: React.FC<Props> = (props) => {
             }
           `}
         >
-          <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false"
-            onClick={() => {
-              props.setOnMenu(false)
-              setSwitchMenu(500)
-            }}
-          />
-          <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
-          <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
-          <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
-          <img className="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
-          <img className="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
+          {projects.map((project, index) => (
+            <MenuProject
+              key={`menu ${project.name}`}
+              projectNumber={index}
+              setCurProject={props.setCurProject}
+              imgPath={project.imgPath}
+              setOnMenu={props.setOnMenu}
+              setSwitchMenu={setSwitchMenu}
+            />
+          ))}
         </div>
 
         {projects.map((project, index) => (
