@@ -1,7 +1,6 @@
 import React from "react"
 import { motion } from 'framer-motion'
 
-
 interface Props {
   switchPage: number
 }
@@ -23,7 +22,7 @@ const About: React.FC<Props> = (props: Props) => {
           }
         }}
         animate={{
-          y: '0%',
+          y: 0,
           transition: {
             duration: 0.7,
             delay: 0.6,
@@ -31,7 +30,22 @@ const About: React.FC<Props> = (props: Props) => {
           }
         }}
       >
-        About <br/>
+        <div className="me">
+          <img
+            src={`${process.env.PUBLIC_URL}imgs/temp.png`}
+            alt='me'
+          />
+          <div className="me-text">
+            <p>
+              I'm Jiayi Shen, a Full-Stack Developer with a passion
+              for crafting practical applications that bridge imagination and functionality.
+            </p>
+            <p>
+              If you have any ideas in mind, feel free to reach out.
+              Let's build something incredible together!
+            </p>
+          </div>
+        </div>
       </motion.div> 
     </>
   )

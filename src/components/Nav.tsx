@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 interface Props {
@@ -27,10 +27,17 @@ const Nav: React.FC<Props> = (props: Props) => {
     }
   }
 
-  useEffect(() => {
-      const timeoutId = setTimeout(() => navigate(props.page), 100)
+  const [initialLoad, setInitialLoad] = useState<boolean>(true)
 
-      return () => clearTimeout(timeoutId)
+  useEffect(() => {
+    if(initialLoad) {
+      setInitialLoad(false)
+      props.setPage(location.pathname)
+      return
+    }
+    const timeoutId = setTimeout(() => navigate(props.page), 100)
+
+    return () => clearTimeout(timeoutId)
   }, [props.page])
 
   return (
