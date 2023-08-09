@@ -26,6 +26,15 @@ const App: React.FC = () => {
     }
   }, [switchPage])
 
+  const [initialLoad, setInitialLoad] = useState<boolean>(true)
+
+  useEffect(() => {
+    if(initialLoad) {
+      const timeoutId = setTimeout(() => setInitialLoad(false), 1000)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [initialLoad])
 
   return (
     <>
@@ -58,6 +67,8 @@ const App: React.FC = () => {
           setSwitchPage={setSwitchPage}
 
           page={page}
+
+          initialLoad={initialLoad}
         />
       </Router>
       </div>

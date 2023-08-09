@@ -54,7 +54,7 @@ nav button {
   transition: color 0.25s ease-in-out;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  font-variation-settings: 'wght' 500;
+  font-variation-settings: 'wght' 600;
 
   background: none;
   border: none;
@@ -228,29 +228,138 @@ nav .active {
   background-color: var(--primary);
   width: 100%;
   min-height: calc(100vh - 10rem);
-  padding-top: 10rem;
+  padding-bottom: 20rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  font-size: 1.4rem;
+  line-height: 130%;
+  transition: opacity 0.5s;
 }
 
 .no-scroll {
   overflow: hidden;
 }
 
+.me-wrapper {
+  width: 40rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .me {
-  max-width: 55rem;
-  min-width: 40rem;
-  width: 70%;
+  padding-top: 5rem;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 8rem;
+  column-gap: 4.5rem;
 }
 
 .me img {
   width: 100%;
+  height: 25rem;
+  object-fit: cover;
 }
 
 .me-text {
-  font-size: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.university {
+  margin-top: 2rem;
+  max-width: 35rem;
+  min-width: 27rem;
+  width: 45%;
+}
+
+.technologies {
+  display: grid;
+  width: 40rem;
+}
+
+.technologies img {
+  width: 100%;
+}
+
+.top-row {
+  margin-top: 8rem;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr 1.5fr 1fr;
+}
+
+.bot-row {
+  margin-top: 3.5rem;
+  grid-template-columns: 1.25fr 1fr 1.5fr 1fr 1.5fr 1fr 1.25fr;
+}
+
+.about h3 {
+  font-size: 3rem;
+  font-variation-settings: 'wght' 400;
+  margin-bottom: 5rem;
+}
+
+.contact {
+  width: 40rem;
+  margin-top: 7rem;
+}
+
+.contact a {
+  font-variation-settings: 'wght' 500;
+  line-height: 180%;
+  color: var(--inactive);
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+}
+
+.contact a:hover {
+  color: var(--highlight)
+}
+
+ul {
+  margin-left: 7rem;
+  list-style: none;
+}
+
+.contact a span {
+  height: 1.4rem;
+  margin-left: 0.2rem;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.full-contact {
+  font-size: 0.85rem;
+  transform: translateY(1.2rem);
+  transition: transform 0.8s;
+}
+
+.contact a:hover .full-contact {
+  transform: translateY(-8px);
+}
+
+.acknowledgements {
+  width: 40rem;
+  margin-top: 3rem;
+}
+
+.acknowledgements ul li{
+  color: var(--inactive);
+  font-size: 1.4rem;
+  line-height: 180%;
+  font-variation-settings: 'wght' 400;
+}
+
+.acknowledgements ul li a {
+  color: var(--inactive);
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+}
+
+.acknowledgements ul li a:hover {
+  color: var(--highlight);
 }

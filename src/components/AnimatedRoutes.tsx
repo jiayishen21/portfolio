@@ -3,6 +3,7 @@ import About from './About'
 
 import { AnimatePresence } from 'framer-motion'
 import Projects from "./Projects"
+import { useEffect, useState } from 'react'
 
 interface Props {
   curProject: number
@@ -22,6 +23,8 @@ interface Props {
   setSwitchPage: React.Dispatch<React.SetStateAction<number>>
 
   page: string
+
+  initialLoad: boolean
 }
 
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
@@ -61,6 +64,7 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
             path='/about'
             element={<About 
               switchPage={props.switchPage}
+              initialLoad={props.initialLoad}
             />}
           />
         </Routes>

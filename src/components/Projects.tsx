@@ -98,12 +98,12 @@ const Projects: React.FC<Props> = (props) => {
     if(props.switchPage > 0) {
       return
     }
+    if(switchMenu > 0) {
+      return
+    }
     if(!props.onMenu) {
       props.setOnMenu(true)
       setSwitchMenu(700)
-      return
-    }
-    if(props.switchPage > 0 || switchMenu > 0) {
       return
     }
     if(event.deltaY > 0) {
