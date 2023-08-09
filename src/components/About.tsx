@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { motion } from 'framer-motion'
 import { Link } from "react-router-dom"
 
@@ -8,10 +8,98 @@ interface Props {
 }
 
 const About: React.FC<Props> = (props: Props) => {
+  /*
+  Momentum scrolling
+  */
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [startY, setStartY] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setScrolling(true);
+    setStartY(e.clientY);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setScrolling(true);
+    setStartY(e.touches[0].clientY);
+  };
+
+  const handleMove = (clientY: number) => {
+    if (!scrolling) return;
+    if(!contentRef.current || !containerRef.current) {
+      return
+    }
+
+    const deltaY = clientY - startY;
+    const maxScroll = contentRef.current.scrollHeight - containerRef.current.clientHeight || 0;
+    let newScrollY = scrollY - 2*deltaY;
+
+    if (newScrollY < 0) {
+      newScrollY = 0;
+    } else if (newScrollY > maxScroll) {
+      newScrollY = maxScroll;
+    }
+
+    setScrollY(newScrollY);
+    setStartY(clientY);
+  };
+
+  const handleMouseUp = () => {
+    setScrolling(false);
+  };
+
+  const handleMoveMouse = (e: MouseEvent) => {
+    handleMove(e.clientY);
+  };
+
+  const handleMoveTouch = (e: TouchEvent) => {
+    handleMove(e.touches[0].clientY);
+  };
+
+  useEffect(() => {
+    if (scrolling) {
+      window.addEventListener('mousemove', handleMoveMouse);
+      window.addEventListener('touchmove', handleMoveTouch);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchend', handleMouseUp);
+    } else {
+      window.removeEventListener('mousemove', handleMoveMouse);
+      window.removeEventListener('touchmove', handleMoveTouch);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchend', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMoveMouse);
+      window.removeEventListener('touchmove', handleMoveTouch);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [scrolling]);
+
+
+  useEffect(() => {
+    if(!contentRef.current) {
+      return
+    }
+    contentRef.current.animate(
+      [{ transform: `translateY(-${scrollY}px)` }],
+      { duration: 1200, fill: 'forwards' }
+    );
+  }, [scrollY])
+  /*
+  */
+
   return (
     <>  
       <motion.div
-        className={`about ${props.switchPage > 0 ? 'no-scroll' : ''} ${props.initialLoad ? 'transparent' : ''}`}
+        ref={containerRef}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+        className={`about no-scroll ${props.initialLoad ? 'transparent' : ''}`}
 
         initial={{
           opacity: 1,
@@ -32,6 +120,11 @@ const About: React.FC<Props> = (props: Props) => {
           }
         }}
       >
+        <div
+          ref={contentRef}
+          className="content"
+          style={{ transform: `translateY(-${scrollY}px)` }}
+        >
         <div className="me-wrapper">
           <div className="me">
             <div className="me-text">
@@ -57,6 +150,7 @@ const About: React.FC<Props> = (props: Props) => {
               }}
               src={`${process.env.PUBLIC_URL}imgs/temp.png`}
               alt='me'
+              draggable='false'
             />
           </div> 
         </div>
@@ -65,27 +159,32 @@ const About: React.FC<Props> = (props: Props) => {
           className="university"
           src={`${process.env.PUBLIC_URL}imgs/white-logos/waterloo.png`}
           alt='University of Waterloo'
+          draggable='false'
         />
 
         <div className="technologies top-row">
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/postgres2.png`}
             alt="PostgreSQL"
+            draggable='false'
           />
           <br />
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/mongodb.png`}
             alt="MongoDB"
+            draggable='false'
           />
           <br />
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/python.png`}
             alt="Python"
+            draggable='false'
           />
           <br />
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/react.png`}
             alt="React"
+            draggable='false'
           />
         </div>
         <div className="technologies bot-row">
@@ -93,16 +192,19 @@ const About: React.FC<Props> = (props: Props) => {
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/typescript.png`}
             alt="TypeScript"
+            draggable='false'
           />
           <br />
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/next.png`}
             alt="NextJS"
+            draggable='false'
           />
           <br />
           <img
             src={`${process.env.PUBLIC_URL}imgs/white-logos/javascript.png`}
             alt="JavaScript"
+            draggable='false'
           />
           <br />
         </div>
@@ -187,6 +289,7 @@ const About: React.FC<Props> = (props: Props) => {
               Built by Jiayi Shen using React
             </li>
           </ul>
+        </div>
         </div>
       </motion.div> 
     </>
