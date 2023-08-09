@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { easeIn, easeOut, motion } from 'framer-motion'
+import React from "react"
+import { motion } from 'framer-motion'
 
 interface Props {
   position: number

@@ -3,7 +3,6 @@ import About from './About'
 
 import { AnimatePresence } from 'framer-motion'
 import Projects from "./Projects"
-import { useEffect, useState } from 'react'
 
 interface Props {
   curProject: number

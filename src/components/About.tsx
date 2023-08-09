@@ -26,7 +26,7 @@ const About: React.FC<Props> = (props: Props) => {
         animate={{
           y: 0,
           transition: {
-            duration: 0.55,
+            duration: 0.8,
             delay: 0.4,
             ease: [0.1, 0.2, 0.65, 1]
           }
