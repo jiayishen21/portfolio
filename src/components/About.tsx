@@ -53,7 +53,7 @@ const About: React.FC<Props> = (props: Props) => {
 
     setScrollY(newScrollY);
     setStartY(clientY);
-    setScrollPercentage(newScrollY / maxScroll * 101)
+    setScrollPercentage(newScrollY / maxScroll * 100)
   };
 
   const handleMouseUp = () => {
@@ -107,7 +107,7 @@ const About: React.FC<Props> = (props: Props) => {
     }
 
     setScrollY(newScrollY)
-    setScrollPercentage(newScrollY / maxScroll * 101)
+    setScrollPercentage(newScrollY / maxScroll * 100)
   }
 
   useEffect(() => {
@@ -129,7 +129,7 @@ const About: React.FC<Props> = (props: Props) => {
       return
     }
     scrollRef.current.animate(
-      [{ transform: `translateY(-${101 - scrollPercentage}%)` }],
+      [{ transform: `translateY(-${100 - scrollPercentage}%)` }],
       {
         duration: 1200,
         fill: 'forwards',
