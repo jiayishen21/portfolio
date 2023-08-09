@@ -160,6 +160,11 @@ const About: React.FC<Props> = (props: Props) => {
                 target="_blank"
               >
                 LinkedIn
+                <span>
+                  <div className="full-contact">
+                    Jiayi Shen
+                  </div>
+                </span>
               </Link>
             </li>
           </ul>
