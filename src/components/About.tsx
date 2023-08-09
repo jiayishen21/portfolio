@@ -87,9 +87,34 @@ const About: React.FC<Props> = (props: Props) => {
     }
     contentRef.current.animate(
       [{ transform: `translateY(-${scrollY}px)` }],
-      { duration: 1200, fill: 'forwards' }
+      {
+        duration: 1200,
+        easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+      }
     );
   }, [scrollY])
+
+  const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    if(props.switchPage > 0) {
+      return
+    }
+    if(!contentRef.current || !containerRef.current) {
+      return
+    }
+
+    const maxScroll = contentRef.current.scrollHeight - containerRef.current.clientHeight || 0;
+    let newScrollY = scrollY + event.deltaY;
+
+    if (newScrollY < 0) {
+      newScrollY = 0;
+    } else if (newScrollY > maxScroll) {
+      newScrollY = maxScroll;
+    }
+
+    setScrollY(newScrollY)
+  }
+
+
   /*
   */
 
@@ -99,6 +124,7 @@ const About: React.FC<Props> = (props: Props) => {
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
+        onWheel={handleMouseWheel}
         className={`about no-scroll ${props.initialLoad ? 'transparent' : ''}`}
 
         initial={{
