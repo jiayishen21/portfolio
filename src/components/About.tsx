@@ -52,7 +52,7 @@ const About: React.FC<Props> = (props: Props) => {
                 opacity: 1,
                 transition: {
                   duration: 0.5,
-                  delay: 0.6 + 0.55 - 0.2,
+                  delay: 1.5,
                 }
               }}
               src={`${process.env.PUBLIC_URL}imgs/temp.png`}
