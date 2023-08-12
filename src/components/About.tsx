@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { motion } from 'framer-motion'
 import { Link } from "react-router-dom"
+import Reveal from "./Reveal"
 
 interface Props {
   switchPage: number
@@ -20,7 +21,7 @@ const About: React.FC<Props> = (props: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if(props.initialLoad || props.switchPage > 0) {
+    if (props.initialLoad || props.switchPage > 0) {
       return
     }
     setScrolling(true);
@@ -28,7 +29,7 @@ const About: React.FC<Props> = (props: Props) => {
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if(props.initialLoad || props.switchPage > 0) {
+    if (props.initialLoad || props.switchPage > 0) {
       return
     }
     setScrolling(true);
@@ -37,13 +38,13 @@ const About: React.FC<Props> = (props: Props) => {
 
   const handleMove = (clientY: number) => {
     if (!scrolling) return;
-    if(!contentRef.current || !containerRef.current) {
+    if (!contentRef.current || !containerRef.current) {
       return
     }
 
     const deltaY = clientY - startY;
     const maxScroll = contentRef.current.scrollHeight - containerRef.current.clientHeight || 0;
-    let newScrollY = scrollY - 1.5*deltaY;
+    let newScrollY = scrollY - 1.5 * deltaY;
 
     if (newScrollY < 0) {
       newScrollY = 0;
@@ -90,10 +91,10 @@ const About: React.FC<Props> = (props: Props) => {
   }, [scrolling]);
 
   const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    if(!contentRef.current || !containerRef.current) {
+    if (!contentRef.current || !containerRef.current) {
       return
     }
-    if(props.initialLoad || props.switchPage > 0) {
+    if (props.initialLoad || props.switchPage > 0) {
       return
     }
 
@@ -111,7 +112,7 @@ const About: React.FC<Props> = (props: Props) => {
   }
 
   useEffect(() => {
-    if(!contentRef.current) {
+    if (!contentRef.current) {
       return
     }
     contentRef.current.animate(
@@ -125,7 +126,7 @@ const About: React.FC<Props> = (props: Props) => {
   }, [scrollY])
 
   useEffect(() => {
-    if(!scrollRef.current) {
+    if (!scrollRef.current) {
       return
     }
     scrollRef.current.animate(
@@ -167,7 +168,7 @@ const About: React.FC<Props> = (props: Props) => {
           }
         }}
       >
-        <div 
+        <div
           ref={scrollRef}
           className="scrollbar"
         />
@@ -179,31 +180,118 @@ const About: React.FC<Props> = (props: Props) => {
           <div className="me-wrapper">
             <div className="me">
               <div className="me-text">
-                <p>
-                  I'm Jiayi Shen, a Full-Stack Developer with a passion
-                  for crafting practical applications that bridge imagination and functionality.
-                </p>
-                <p>
-                  If you have any ideas in mind, feel free to reach out.
-                  Let's build something incredible together!
-                </p>
+                <div className="para-spacer">
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      I'm Jiayi Shen, a Full-Stack
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      Engineer with a passion for
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      crafting practical
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      applications that bridge
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      imagination and
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      functionality.
+                    </>
+                  </Reveal>
+                </div>
+                <div>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      If you have any ideas in
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      mind, feel free to reach out.
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      Let's build something
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height='1.5rem'
+                  >
+                    <>
+                      incredible together!
+                    </>
+                  </Reveal>
+                </div>
               </div>
               <motion.img
                 initial={{
                   opacity: 0
+                  // TODO: Create revealImg component to sync the img reveal with text reveal
                 }}
                 animate={{
                   opacity: 1,
                   transition: {
-                    duration: 0.5,
-                    delay: 1.5,
+                    duration: 0.8,
+                    delay: 1.6,
                   }
                 }}
                 src={`${process.env.PUBLIC_URL}imgs/temp.png`}
                 alt='me'
                 draggable='false'
               />
-            </div> 
+            </div>
           </div>
 
           <img
@@ -239,7 +327,7 @@ const About: React.FC<Props> = (props: Props) => {
             />
           </div>
           <div className="technologies bot-row">
-            <br/>
+            <br />
             <img
               src={`${process.env.PUBLIC_URL}imgs/white-logos/typescript.png`}
               alt="TypeScript"
@@ -264,85 +352,142 @@ const About: React.FC<Props> = (props: Props) => {
             className="contact"
           >
             <h3>
-              Let's Talk
+              <Reveal
+                initialLoad={props.initialLoad}
+                switchPage={props.switchPage}
+                height={'3.5rem'}
+              >
+                <>
+                  Let's Talk
+                </>
+              </Reveal>
             </h3>
             <ul>
               <li>
-                <Link
-                  to="mailto:lucasshen21@gmail.com"
-                  target="_blank"
-                  draggable='false'
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height="2rem"
                 >
-                  Email
-                  <span>
-                    <div className="full-contact">
-                      lucasshen21@gmail.com
-                    </div>
-                  </span>
-                </Link>
+                  <Link
+                    to="mailto:lucasshen21@gmail.com"
+                    target="_blank"
+                    draggable='false'
+                  >
+                    Email
+                    <span>
+                      <div className="full-contact">
+                        lucasshen21@gmail.com
+                      </div>
+                    </span>
+                  </Link>
+                </Reveal>
               </li>
               <li>
-                <Link
-                  to="https://www.instagram.com/lucas.shen21/"
-                  target="_blank"
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height="2rem"
                 >
-                  Instagram
-                  <span>
-                    <div className="full-contact">
-                      @lucas.shen21
-                    </div>
-                  </span>
-                </Link>
+                  <Link
+                    to="https://www.instagram.com/lucas.shen21/"
+                    target="_blank"
+                  >
+                    Instagram
+                    <span>
+                      <div className="full-contact">
+                        @lucas.shen21
+                      </div>
+                    </span>
+                  </Link>
+                </Reveal>
               </li>
               <li>
-                <Link
-                  to="https://github.com/jiayishen21"
-                  target="_blank"
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height="2rem"
                 >
-                  GitHub
-                  <span>
-                    <div className="full-contact">
-                      jiayishen21
-                    </div>
-                  </span>
-                </Link>
+                  <Link
+                    to="https://github.com/jiayishen21"
+                    target="_blank"
+                  >
+                    GitHub
+                    <span>
+                      <div className="full-contact">
+                        jiayishen21
+                      </div>
+                    </span>
+                  </Link>
+                </Reveal>
               </li>
               <li>
-                <Link
-                  to="https://www.linkedin.com/in/jiayi-shen-8b5035209/"
-                  target="_blank"
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height="2rem"
                 >
-                  LinkedIn
-                  <span>
-                    <div className="full-contact">
-                      Jiayi Shen
-                    </div>
-                  </span>
-                </Link>
+                  <Link
+                    to="https://www.linkedin.com/in/jiayi-shen-8b5035209/"
+                    target="_blank"
+                  >
+                    LinkedIn
+                    <span>
+                      <div className="full-contact">
+                        Jiayi Shen
+                      </div>
+                    </span>
+                  </Link>
+
+                </Reveal>
               </li>
             </ul>
           </div>
           <div className="acknowledgements">
             <h3>
-              Acknowledgements
+              <Reveal
+                initialLoad={props.initialLoad}
+                switchPage={props.switchPage}
+                height={'3.5rem'}
+              >
+                <>
+                  Acknowledgements
+                </>
+              </Reveal>
             </h3>
             <ul>
               <li>
-                {'Inspired by '}
-                <Link 
-                  to='https://camillemormal.com/'
-                  target="_blank"
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'1.8rem'}
                 >
-                  camillemormal.com
-                </Link>
+                  <>
+                    {'Inspired by '}
+                    <Link
+                      to='https://camillemormal.com/'
+                      target="_blank"
+                    >
+                      camillemormal.com
+                    </Link>
+                  </>
+                </Reveal>
               </li>
               <li>
-                Built by Jiayi Shen using React
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'1.8rem'}
+                >
+                  <>
+                    Built by Jiayi Shen using React
+                  </>
+                </Reveal>
               </li>
             </ul>
           </div>
         </div>
-      </motion.div> 
+      </motion.div>
     </>
   )
 }

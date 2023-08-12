@@ -326,9 +326,12 @@ nav .active {
   margin-top: 7rem;
 }
 
-.contact a {
+.contact li {
   font-variation-settings: 'wght' 500;
-  line-height: 180%;
+  margin-bottom: 0.6rem;
+}
+
+.contact li a {
   color: var(--inactive);
   text-decoration: none;
   transition: color 0.25s ease-in-out;
@@ -369,7 +372,7 @@ ul {
 .acknowledgements ul li {
   color: var(--inactive);
   font-size: 1.4rem;
-  line-height: 180%;
+  margin-bottom: 0.8rem;
   font-variation-settings: 'wght' 400;
 }
 
@@ -391,4 +394,18 @@ ul {
   height: 100vh;
   background: var(--highlight);
   width: 8px;
+}
+
+.reveal-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.me-text .reveal-container {
+  margin-bottom: 0.5rem;
+}
+
+.me-text .para-spacer {
+  margin-bottom: 1.5rem;
 }
