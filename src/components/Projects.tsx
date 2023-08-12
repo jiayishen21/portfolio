@@ -42,17 +42,17 @@ const Projects: React.FC<Props> = (props) => {
   ]
 
   const slide = (direction: number) => {
-    if(delay > 0) {
+    if (delay > 0) {
       return
     }
-    if(direction === 1 && props.curProject < projects.length - 1) {
+    if (direction === 1 && props.curProject < projects.length - 1) {
       setDelayedProject(props.curProject)
       setDelayedTitle(props.curProject)
       setDelay(700)
       setTitleDelay(300)
       props.setCurProject(props.curProject + 1)
     }
-    else if(direction === -1 && props.curProject > 0) {
+    else if (direction === -1 && props.curProject > 0) {
       setDelayedProject(props.curProject)
       setDelayedTitle(props.curProject)
       setDelay(700)
@@ -72,7 +72,7 @@ const Projects: React.FC<Props> = (props) => {
       setDelay(0)
     }
 
-    if(delay > 0) {
+    if (delay > 0) {
       const timeoutId = setTimeout(resetDelay, delay)
 
       return () => clearTimeout(timeoutId)
@@ -85,7 +85,7 @@ const Projects: React.FC<Props> = (props) => {
       setTitleDelay(0)
     }
 
-    if(titleDelay > 0) {
+    if (titleDelay > 0) {
       const timeoutId = setTimeout(resetDelay, titleDelay)
 
       return () => clearTimeout(timeoutId)
@@ -95,29 +95,29 @@ const Projects: React.FC<Props> = (props) => {
   const trackRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    if(props.switchPage > 0) {
+    if (props.switchPage > 0) {
       return
     }
-    if(switchMenu > 0) {
+    if (switchMenu > 0) {
       return
     }
-    if(!props.onMenu) {
+    if (!props.onMenu) {
       props.setOnMenu(true)
       setSwitchMenu(700)
       return
     }
-    if(event.deltaY > 0) {
+    if (event.deltaY > 0) {
       props.setPrevPercentage(Math.max(props.percentage - 5, -100))
       props.setPercentage(Math.max(props.percentage - 5, -100))
     }
-    else if(event.deltaY < 0) {
+    else if (event.deltaY < 0) {
       props.setPrevPercentage(Math.max(props.percentage + 5, 0))
       props.setPercentage(Math.min(props.percentage + 5, 0))
     }
   }
 
   const handleOnDown = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    if(!props.onMenu) {
+    if (!props.onMenu) {
       return
     }
 
@@ -131,7 +131,7 @@ const Projects: React.FC<Props> = (props) => {
   }
 
   const handleOnUp = () => {
-    if(!props.onMenu) {
+    if (!props.onMenu) {
       return
     }
 
@@ -140,7 +140,7 @@ const Projects: React.FC<Props> = (props) => {
   }
 
   const handleOnMove = (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    if(!props.onMenu) {
+    if (!props.onMenu) {
       return
     }
 
@@ -164,7 +164,7 @@ const Projects: React.FC<Props> = (props) => {
       setSwitchMenu(0)
     }
 
-    if(switchMenu > 0) {
+    if (switchMenu > 0) {
       const timeoutId = setTimeout(resetDelay, switchMenu)
 
       return () => clearTimeout(timeoutId)
@@ -177,7 +177,7 @@ const Projects: React.FC<Props> = (props) => {
     if (!track) return;
 
     // Switching from about to menu
-    if(props.switchPage > 0 && props.page === '/') {
+    if (props.switchPage > 0 && props.page === '/') {
       track.animate(
         [
           { transform: `translate(${props.percentage}%, -200%)` },
@@ -208,7 +208,7 @@ const Projects: React.FC<Props> = (props) => {
           {
             duration: 1000,
             fill: 'forwards',
-            delay:  100 + parseInt(i) * 75,
+            delay: 100 + parseInt(i) * 75,
             easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
           }
         );
@@ -216,7 +216,7 @@ const Projects: React.FC<Props> = (props) => {
     }
 
     // Opening menu
-    else if(props.onMenu && switchMenu > 0) {
+    else if (props.onMenu && switchMenu > 0) {
       track.animate(
         [
           { transform: `translate(${props.percentage}%, -250%)` },
@@ -247,7 +247,7 @@ const Projects: React.FC<Props> = (props) => {
           {
             duration: 1000,
             fill: 'forwards',
-            delay:  parseInt(i) * 75,
+            delay: parseInt(i) * 75,
             easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
           }
         );
@@ -255,7 +255,7 @@ const Projects: React.FC<Props> = (props) => {
     }
 
     // Switching to about or from menu to project
-    else if(
+    else if (
       (props.onMenu && props.page === '/about' && props.switchPage > 0)
       || (!props.onMenu && switchMenu > 0)
     ) {
@@ -277,10 +277,10 @@ const Projects: React.FC<Props> = (props) => {
           [
             { transform: `translateY(-80%)` },
           ],
-          { 
+          {
             duration: 700,
-            fill: 'forwards', 
-            delay: parseInt(i)*75,
+            fill: 'forwards',
+            delay: parseInt(i) * 75,
             easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
           }
         );
@@ -319,8 +319,7 @@ const Projects: React.FC<Props> = (props) => {
           ref={trackRef}
           className={`
             image-track 
-            ${
-              (props.onMenu && props.page === '/' && props.switchPage === 0) ||
+            ${(props.onMenu && props.page === '/' && props.switchPage === 0) ||
               (props.onMenu && props.page === '/about' && props.switchPage > 0) ||
               (!props.onMenu && switchMenu > 0)
               ? '' : 'none'
@@ -344,7 +343,7 @@ const Projects: React.FC<Props> = (props) => {
             key={project.name}
             position={
               index - props.curProject === 0 ? 0 :
-              index - props.curProject < 0 ? -1 : 1
+                index - props.curProject < 0 ? -1 : 1
             }
             imgPath={project.imgPath}
             slide={slide}
@@ -360,7 +359,7 @@ const Projects: React.FC<Props> = (props) => {
             onClick={() => slide(-1)}
           />
           <div
-            className="right-half" 
+            className="right-half"
             onClick={() => slide(1)}
           />
           <Link
@@ -371,10 +370,10 @@ const Projects: React.FC<Props> = (props) => {
             <div className="text-animation-container">
               <motion.h1
                 className={`
-                  ${
-                    delayedTitle !== undefined ? 'up400' : 
+                  x
+                  ${delayedTitle !== undefined ? 'up400' :
                     (!props.onMenu && switchMenu === 0) ? 'slideUp' :
-                    (props.onMenu && switchMenu > 0) ? 'slideAway' : 'up400'
+                      (props.onMenu && switchMenu > 0) ? 'slideAway' : 'up400'
                   }
                 `}
                 exit={{
