@@ -16,7 +16,7 @@ const Project: React.FC<Props> = (props) => {
     <>
       <motion.div
         className={`project ${props.switchMenu > 0 && props.onMenu ? 'project-exit' :
-            props.onMenu ? 'transparent' : ''
+          props.onMenu ? 'transparent' : ''
           } ${props.switchMenu > 0 && !props.onMenu ? 'project-return' : ''
           }`
         }
@@ -28,7 +28,6 @@ const Project: React.FC<Props> = (props) => {
 
         initial={{
           opacity: 0,
-          scale: 1.2,
         }}
         exit={{
           opacity: 1,
@@ -57,6 +56,27 @@ const Project: React.FC<Props> = (props) => {
           }
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL}${props.imgPath}`,
+          }}
+
+          initial={{
+            scale: 1.2,
+          }}
+          exit={{
+            scale: 1,
+            y: '-20%',
+            transition: {
+              duration: 0.8,
+              delay: 0.4,
+              ease: [0.1, 0.2, 0.65, 1],
+            },
+          }}
+          animate={{
+            scale: 1,
+            transition: {
+              duration: 1,
+              ease: "easeInOut",
+              delay: 0.2,
+            },
           }}
         >
         </motion.div>
