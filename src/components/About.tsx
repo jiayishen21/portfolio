@@ -3,10 +3,16 @@ import { motion } from 'framer-motion'
 import { Link } from "react-router-dom"
 import Reveal from "./Reveal"
 import ImgReveal from "./ImgReveal"
+import Nav from "./Nav"
 
 interface Props {
   switchPage: number
+  setSwitchPage: React.Dispatch<React.SetStateAction<number>>
+
   initialLoad: boolean
+
+  page: string
+  setPage: React.Dispatch<React.SetStateAction<string>>
 }
 
 const About: React.FC<Props> = (props: Props) => {
@@ -143,6 +149,13 @@ const About: React.FC<Props> = (props: Props) => {
 
   return (
     <>
+      <Nav
+        switchPage={props.switchPage}
+        setSwitchPage={props.setSwitchPage}
+
+        page={props.page}
+        setPage={props.setPage}
+      />
       <motion.div
         ref={containerRef}
         onMouseDown={handleMouseDown}

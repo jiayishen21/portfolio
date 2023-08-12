@@ -22,6 +22,7 @@ interface Props {
   setSwitchPage: React.Dispatch<React.SetStateAction<number>>
 
   page: string
+  setPage: React.Dispatch<React.SetStateAction<string>>
 
   initialLoad: boolean
 }
@@ -47,7 +48,7 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
 
               percentage={props.percentage}
               setPercentage={props.setPercentage}
-              
+
               mouseDown={props.mouseDown}
               setMouseDown={props.setMouseDown}
               prevPercentage={props.prevPercentage}
@@ -57,13 +58,18 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               setSwitchPage={props.setSwitchPage}
 
               page={props.page}
+              setPage={props.setPage}
             />}
           />
           <Route
             path='/about'
-            element={<About 
+            element={<About
               switchPage={props.switchPage}
+              setSwitchPage={props.setSwitchPage}
               initialLoad={props.initialLoad}
+
+              page={props.page}
+              setPage={props.setPage}
             />}
           />
         </Routes>

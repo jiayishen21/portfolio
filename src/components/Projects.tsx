@@ -3,6 +3,7 @@ import Project from "./Project";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MenuProject from "./MenuProject";
+import Nav from "./Nav";
 
 interface Props {
   curProject: number
@@ -23,6 +24,7 @@ interface Props {
   setSwitchPage: React.Dispatch<React.SetStateAction<number>>
 
   page: string
+  setPage: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Projects: React.FC<Props> = (props) => {
@@ -306,6 +308,13 @@ const Projects: React.FC<Props> = (props) => {
 
   return (
     <>
+      <Nav
+        switchPage={props.switchPage}
+        setSwitchPage={props.setSwitchPage}
+
+        page={props.page}
+        setPage={props.setPage}
+      />
       <div
         onWheel={handleMouseWheel}
         onMouseDown={handleOnDown}

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router } from 'react-router-dom'
-import Nav from './components/Nav'
 import AnimatedRoutes from './components/AnimatedRoutes';
 import { useEffect, useState } from 'react';
 
@@ -19,7 +18,7 @@ const App: React.FC = () => {
       setSwitchPage(0)
     }
 
-    if(switchPage > 0) {
+    if (switchPage > 0) {
       const timeoutId = setTimeout(resetDelay, switchPage)
 
       return () => clearTimeout(timeoutId)
@@ -29,7 +28,7 @@ const App: React.FC = () => {
   const [initialLoad, setInitialLoad] = useState<boolean>(true)
 
   useEffect(() => {
-    if(initialLoad) {
+    if (initialLoad) {
       const timeoutId = setTimeout(() => setInitialLoad(false), 1000)
 
       return () => clearTimeout(timeoutId)
@@ -39,38 +38,32 @@ const App: React.FC = () => {
   return (
     <>
       <div
-       className={switchPage > 0 ? 'no-scroll' : ''}
+        className={switchPage > 0 ? 'no-scroll' : ''}
       >
-      <Router>
-        <Nav
-          switchPage={switchPage}
-          setSwitchPage={setSwitchPage}
+        <Router>
+          <AnimatedRoutes
+            curProject={curProject}
+            setCurProject={setCurProject}
 
-          page={page}
-          setPage={setPage}
-        />
-        <AnimatedRoutes
-          curProject={curProject}
-          setCurProject={setCurProject}
+            onMenu={onMenu}
+            setOnMenu={setOnMenu}
 
-          onMenu={onMenu}
-          setOnMenu={setOnMenu}
+            mouseDown={mouseDown}
+            setMouseDown={setMouseDown}
+            prevPercentage={prevPercentage}
+            setPrevPercentage={setPrevPercentage}
+            percentage={percentage}
+            setPercentage={setPercentage}
 
-          mouseDown={mouseDown}
-          setMouseDown={setMouseDown}
-          prevPercentage={prevPercentage}
-          setPrevPercentage={setPrevPercentage}
-          percentage={percentage}
-          setPercentage={setPercentage}
+            switchPage={switchPage}
+            setSwitchPage={setSwitchPage}
 
-          switchPage={switchPage}
-          setSwitchPage={setSwitchPage}
+            page={page}
+            setPage={setPage}
 
-          page={page}
-
-          initialLoad={initialLoad}
-        />
-      </Router>
+            initialLoad={initialLoad}
+          />
+        </Router>
       </div>
     </>
   )
