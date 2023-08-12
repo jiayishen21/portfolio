@@ -1,6 +1,5 @@
 - clean up project and projects files
 
-- clean up how class names are given
 - add new projects
 - take professional photo of myself
 - revise image reveal animations

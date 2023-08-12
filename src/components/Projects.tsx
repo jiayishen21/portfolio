@@ -317,14 +317,12 @@ const Projects: React.FC<Props> = (props) => {
       >
         <div
           ref={trackRef}
-          className={`
-            image-track 
-            ${(props.onMenu && props.page === '/' && props.switchPage === 0) ||
-              (props.onMenu && props.page === '/about' && props.switchPage > 0) ||
-              (!props.onMenu && switchMenu > 0)
-              ? '' : 'none'
-            }
-          `}
+          className={`image-track ${(props.onMenu && props.page === '/' && props.switchPage === 0) ||
+            (props.onMenu && props.page === '/about' && props.switchPage > 0) ||
+            (!props.onMenu && switchMenu > 0)
+            ? '' : 'none'
+            }`
+          }
         >
           {projects.map((project, index) => (
             <MenuProject
@@ -369,9 +367,7 @@ const Projects: React.FC<Props> = (props) => {
           >
             <div className="text-animation-container">
               <motion.h1
-                className={`
-                  x
-                  ${delayedTitle !== undefined ? 'up400' :
+                className={`${delayedTitle !== undefined ? 'up400' :
                     (!props.onMenu && switchMenu === 0) ? 'slideUp' :
                       (props.onMenu && switchMenu > 0) ? 'slideAway' : 'up400'
                   }

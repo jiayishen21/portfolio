@@ -15,17 +15,13 @@ const Project: React.FC<Props> = (props) => {
   return (
     <>
       <motion.div
-        className={`project
-          ${
-            props.switchMenu > 0 && props.onMenu ? 'project-exit' :
+        className={`project ${props.switchMenu > 0 && props.onMenu ? 'project-exit' :
             props.onMenu ? 'transparent' : ''
-          }
-          ${
-            props.switchMenu > 0 && !props.onMenu ? 'project-return' : ''
-          }
-        `}
+          } ${props.switchMenu > 0 && !props.onMenu ? 'project-return' : ''
+          }`
+        }
         style={{
-          x: props.delayedProject ? 0 : `${props.position*100}%`,
+          x: props.delayedProject ? 0 : `${props.position * 100}%`,
           zIndex: props.delayedProject ? -1 : 0,
           transition: props.position !== 0 || props.switchMenu > 0 ? 'transform 0s' : 'transform 0.7s ease'
         }}
@@ -57,15 +53,14 @@ const Project: React.FC<Props> = (props) => {
       >
         <motion.div
           className={
-            `project-img
-            ${props.switchMenu > 0 && props.onMenu ? 'project-img-exit' : ''}
-          `}
+            `project-img ${props.switchMenu > 0 && props.onMenu ? 'project-img-exit' : ''}`
+          }
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL}${props.imgPath}`,
           }}
         >
         </motion.div>
-      </motion.div> 
+      </motion.div>
     </>
   )
 }
