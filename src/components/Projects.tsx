@@ -35,7 +35,7 @@ const Projects: React.FC<Props> = (props) => {
     },
     {
       name: 'Visual Sorting Algorithms2',
-      link: 'https://jiayishen21.github.io/sorting-algorithms/',
+      link: 'https://www.youtube.com/',
       imgPath: '/imgs/camera.jpeg',
       menuImgPath: '/imgs/camera.jpeg',
     },
@@ -363,13 +363,14 @@ const Projects: React.FC<Props> = (props) => {
           <Link
             className={`title-link ${switchMenu === 0 ? 'interact' : ''}`}
             to={projects[props.curProject].link}
+            target="_blank"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="text-animation-container">
               <motion.h1
                 className={`${delayedTitle !== undefined ? 'up400' :
-                    (!props.onMenu && switchMenu === 0) ? 'slideUp' :
-                      (props.onMenu && switchMenu > 0) ? 'slideAway' : 'up400'
+                  (!props.onMenu && switchMenu === 0) ? 'slideUp' :
+                    (props.onMenu && switchMenu > 0) ? 'slideAway' : 'up400'
                   }
                 `}
                 exit={{

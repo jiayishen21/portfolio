@@ -38,8 +38,8 @@ const Reveal: React.FC<Props> = (props: Props) => {
 						visible: { y: 0 },
 					}}
 					transition={{
-						duration: 0.3,
-						delay: props.initialLoad || props.switchPage ? 1.3 : 0.2,
+						duration: 0.4,
+						delay: props.initialLoad || props.switchPage ? 0.5 : 0,
 						ease: 'easeOut',
 					}}
 					initial='hidden'

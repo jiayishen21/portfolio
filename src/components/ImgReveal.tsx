@@ -36,7 +36,7 @@ const ImgReveal: React.FC<Props> = (props: Props) => {
 					}}
 					transition={{
 						duration: 0.6,
-						delay: props.initialLoad || props.switchPage ? 1.4 : 0.3,
+						delay: props.initialLoad || props.switchPage ? 0.6 : 0.3,
 						ease: 'easeOut',
 					}}
 					initial='hidden'
