@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { motion } from 'framer-motion'
 import { Link } from "react-router-dom"
 import Reveal from "./Reveal"
+import ImgReveal from "./ImgReveal"
 
 interface Props {
   switchPage: number
@@ -184,7 +185,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       I'm Jiayi Shen, a Full-Stack
@@ -193,7 +194,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       Engineer with a passion for
@@ -202,7 +203,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       crafting practical
@@ -211,7 +212,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       applications that bridge
@@ -220,7 +221,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       imagination and
@@ -229,7 +230,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       functionality.
@@ -240,7 +241,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       If you have any ideas in
@@ -249,7 +250,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       mind, feel free to reach out.
@@ -258,7 +259,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       Let's build something
@@ -267,7 +268,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Reveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.5rem'
+                    height='1.6rem'
                   >
                     <>
                       incredible together!
@@ -275,78 +276,88 @@ const About: React.FC<Props> = (props: Props) => {
                   </Reveal>
                 </div>
               </div>
-              <motion.img
-                initial={{
-                  opacity: 0
-                  // TODO: Create revealImg component to sync the img reveal with text reveal
-                }}
-                animate={{
-                  opacity: 1,
-                  transition: {
-                    duration: 0.8,
-                    delay: 1.6,
-                  }
-                }}
-                src={`${process.env.PUBLIC_URL}imgs/temp.png`}
-                alt='me'
-                draggable='false'
-              />
+              <ImgReveal
+                initialLoad={props.initialLoad}
+                switchPage={props.switchPage}
+              >
+                <img
+                  src={`${process.env.PUBLIC_URL}imgs/temp.png`}
+                  alt='me'
+                  draggable='false'
+                />
+              </ImgReveal>
+
             </div>
           </div>
 
-          <img
-            className="university"
-            src={`${process.env.PUBLIC_URL}imgs/white-logos/waterloo.png`}
-            alt='University of Waterloo'
-            draggable='false'
-          />
+          <ImgReveal
+            initialLoad={props.initialLoad}
+            switchPage={props.switchPage}
+          >
+            <img
+              className="university"
+              src={`${process.env.PUBLIC_URL}imgs/white-logos/waterloo.png`}
+              alt='University of Waterloo'
+              draggable='false'
+            />
+          </ImgReveal>
 
-          <div className="technologies top-row">
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/postgres2.png`}
-              alt="PostgreSQL"
-              draggable='false'
-            />
-            <br />
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/mongodb.png`}
-              alt="MongoDB"
-              draggable='false'
-            />
-            <br />
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/python.png`}
-              alt="Python"
-              draggable='false'
-            />
-            <br />
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/react.png`}
-              alt="React"
-              draggable='false'
-            />
-          </div>
-          <div className="technologies bot-row">
-            <br />
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/typescript.png`}
-              alt="TypeScript"
-              draggable='false'
-            />
-            <br />
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/next.png`}
-              alt="NextJS"
-              draggable='false'
-            />
-            <br />
-            <img
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/javascript.png`}
-              alt="JavaScript"
-              draggable='false'
-            />
-            <br />
-          </div>
+          <ImgReveal
+            initialLoad={props.initialLoad}
+            switchPage={props.switchPage}
+          >
+            <div className="technologies top-row">
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/postgres2.png`}
+                alt="PostgreSQL"
+                draggable='false'
+              />
+              <br />
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/mongodb.png`}
+                alt="MongoDB"
+                draggable='false'
+              />
+              <br />
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/python.png`}
+                alt="Python"
+                draggable='false'
+              />
+              <br />
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/react.png`}
+                alt="React"
+                draggable='false'
+              />
+            </div>
+          </ImgReveal>
+          <ImgReveal
+            initialLoad={props.initialLoad}
+            switchPage={props.switchPage}
+          >
+            <div className="technologies bot-row">
+              <br />
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/typescript.png`}
+                alt="TypeScript"
+                draggable='false'
+              />
+              <br />
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/next.png`}
+                alt="NextJS"
+                draggable='false'
+              />
+              <br />
+              <img
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/javascript.png`}
+                alt="JavaScript"
+                draggable='false'
+              />
+              <br />
+            </div>
+          </ImgReveal>
 
           <div
             className="contact"

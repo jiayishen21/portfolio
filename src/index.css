@@ -264,6 +264,7 @@ nav .active {
 .me-wrapper {
   width: 40rem;
   height: 100vh;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,7 +291,6 @@ nav .active {
 }
 
 .university {
-  margin-top: 2rem;
   max-width: 35rem;
   min-width: 27rem;
   width: 45%;
@@ -403,7 +403,7 @@ ul {
 }
 
 .me-text .reveal-container {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .me-text .para-spacer {

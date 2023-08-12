@@ -3,12 +3,11 @@ import { motion, useInView, useAnimation } from 'framer-motion'
 
 interface Props {
 	children: JSX.Element,
-	height: string,
 	initialLoad: boolean,
 	switchPage: number,
 }
 
-const Reveal: React.FC<Props> = (props: Props) => {
+const ImgReveal: React.FC<Props> = (props: Props) => {
 	const ref = useRef(null)
 	const inView = useInView(ref,
 		{
@@ -29,17 +28,15 @@ const Reveal: React.FC<Props> = (props: Props) => {
 		<>
 			<div
 				ref={ref}
-				className="reveal-container"
-				style={{ height: props.height }}
 			>
 				<motion.div
 					variants={{
-						hidden: { y: '150%' },
-						visible: { y: 0 },
+						hidden: { opacity: 0 },
+						visible: { opacity: 1 },
 					}}
 					transition={{
-						duration: 0.3,
-						delay: props.initialLoad || props.switchPage ? 1.3 : 0.2,
+						duration: 0.6,
+						delay: props.initialLoad || props.switchPage ? 1.4 : 0.3,
 						ease: 'easeOut',
 					}}
 					initial='hidden'
@@ -54,5 +51,5 @@ const Reveal: React.FC<Props> = (props: Props) => {
 	)
 }
 
-export default Reveal
+export default ImgReveal
 
