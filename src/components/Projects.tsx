@@ -310,12 +310,7 @@ const Projects: React.FC<Props> = (props) => {
   // Navigation
   const redirect = (page: string) => {
     if (props.switchPage === 0 && props.page !== page) {
-      if (page === '/') {
-        props.setSwitchPage(700)
-      }
-      else if (page === '/about') {
-        props.setSwitchPage(1400)
-      }
+      props.setSwitchPage(1400)
       props.setPage(page)
     }
   }

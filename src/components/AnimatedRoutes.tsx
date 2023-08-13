@@ -4,6 +4,8 @@ import About from './About'
 import { AnimatePresence } from 'framer-motion'
 import Projects from "./Projects"
 import Nav from './Nav'
+import VisualSortingAlgorithms from './projects/VisualSortingAlgorithms'
+import ProjectNav from './ProjectNav'
 
 interface Props {
   curProject: number
@@ -34,6 +36,14 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
   return (
     <>
       <Nav
+        switchPage={props.switchPage}
+        setSwitchPage={props.setSwitchPage}
+
+        page={props.page}
+        setPage={props.setPage}
+        initialLoad={props.initialLoad}
+      />
+      <ProjectNav
         switchPage={props.switchPage}
         setSwitchPage={props.setSwitchPage}
 
@@ -78,7 +88,15 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               switchPage={props.switchPage}
               setSwitchPage={props.setSwitchPage}
               initialLoad={props.initialLoad}
-
+              page={props.page}
+            />}
+          />
+          <Route
+            path='/visual-sorting-algorithms'
+            element={<VisualSortingAlgorithms
+              switchPage={props.switchPage}
+              setSwitchPage={props.setSwitchPage}
+              initialLoad={props.initialLoad}
               page={props.page}
             />}
           />

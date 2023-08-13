@@ -43,16 +43,18 @@ const Nav: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <nav>
+      <nav
+        className={`nav ${(props.page === '/' || props.page === '/about') ? 'front' : ''}`}
+      >
         <button
           onClick={() => redirect('/')}
-          className={`${pathname === '/' ? 'active' : ''} ${(props.page !== '/' && props.page !== '/about') ? 'up400' : ''}`}
+          className={`${pathname === '/' ? 'active' : ''} ${(props.page !== '/' && props.page !== '/about') || initialLoad ? 'up400' : ''}`}
         >
           Projects
         </button>
         <button
           onClick={() => redirect('/about')}
-          className={`${pathname === '/about' ? 'active' : ''} ${(props.page !== '/' && props.page !== '/about') ? 'up400' : ''}`}
+          className={`${pathname === '/about' ? 'active' : ''} ${(props.page !== '/' && props.page !== '/about') || initialLoad ? 'up400' : ''}`}
         >
           About
         </button>
