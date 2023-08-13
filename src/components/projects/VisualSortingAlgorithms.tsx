@@ -147,6 +147,22 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 
 	}, [scrollPercentage])
 
+	const scrollDown = () => {
+		if (!containerRef.current || !contentRef.current) {
+			return
+		}
+		const maxScroll = contentRef.current.scrollHeight - containerRef.current.clientHeight || 0;
+		let newScrollY = containerRef.current.clientHeight || 0
+
+		if (newScrollY < 0) {
+			newScrollY = 0;
+		} else if (newScrollY > maxScroll) {
+			newScrollY = maxScroll;
+		}
+		setScrollY(newScrollY)
+		setScrollPercentage(newScrollY / maxScroll * 100)
+	}
+
 	return (
 		<>
 			<motion.div
@@ -261,7 +277,10 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										</>
 									</Reveal>
 								</div>
-								<button className="built-with">
+								<button
+									className="built-with"
+									onClick={scrollDown}
+								>
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
@@ -275,7 +294,176 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								</button>
 							</div>
 						</div>
+					</div>
 
+					<div className="reflections">
+						<div>
+							<Reveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
+								height='4rem'
+							>
+								<h3>
+									Challenges
+								</h3>
+							</Reveal>
+							<ul>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Could not use loops and recursion
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											when sorting because state variable
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											changes are not detected.
+										</>
+									</Reveal>
+								</li>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Storing and displaying all variables
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											involved in a recursive process.
+										</>
+									</Reveal>
+								</li>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Rendering arrays involved in recursive
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											proccesses, which were stored in a
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											unordered binary tree.
+										</>
+									</Reveal>
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<Reveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
+								height='4rem'
+							>
+								<h3>
+									What I Learned
+								</h3>
+							</Reveal>
+							<ul>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Using event listeners.
+										</>
+									</Reveal>
+								</li>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Using promise and state variables to
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											create a timer that responds to state
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											variable changes.
+										</>
+									</Reveal>
+								</li>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Version control with GitHub
+										</>
+									</Reveal>
+								</li>
+								<li>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Deploying a React app to GitHub Pages.
+										</>
+									</Reveal>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</motion.div>

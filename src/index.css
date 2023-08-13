@@ -378,7 +378,7 @@ nav button {
   color: var(--highlight)
 }
 
-ul {
+.about ul {
   margin-left: 7rem;
   list-style: none;
 }
@@ -467,13 +467,14 @@ ul {
   flex-direction: column;
 }
 
-.project-page .layout1 {
+.layout1 {
   display: grid;
   width: 70rem;
   grid-template-columns: 1fr 30rem;
   height: calc(100vh - 25rem);
   padding-top: 12.5rem;
   padding-bottom: 12.5rem;
+  margin-bottom: 2rem;
 }
 
 .layout1 img {
@@ -544,4 +545,33 @@ ul {
 
 .built-with:hover svg {
   transform: translateY(-10%);
+}
+
+.reflections {
+  display: grid;
+  width: 70rem;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
+  margin-bottom: 13rem;
+}
+
+.reflections h3 {
+  font-size: 3rem;
+  font-variation-settings: 'wght' 500 !important;
+}
+
+.reflections ul {
+  margin-left: 4rem;
+  list-style: none;
+}
+
+.reflections li {
+  color: var(--subtitle);
+  margin-bottom: 0.5rem;
+}
+
+.reflections li::before {
+  content: '\2014';
+  position: absolute;
+  margin-left: -3rem;
 }
