@@ -37,7 +37,7 @@ const Projects: React.FC<Props> = (props) => {
     },
     {
       name: 'Visual Sorting Algorithms2',
-      link: 'https://www.youtube.com/',
+      link: '/visual-sorting-algorithms',
       imgPath: '/imgs/camera.jpeg',
       menuImgPath: '/imgs/camera.jpeg',
     },

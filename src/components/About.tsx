@@ -370,7 +370,7 @@ const About: React.FC<Props> = (props: Props) => {
               <Reveal
                 initialLoad={props.initialLoad}
                 switchPage={props.switchPage}
-                height={'3.5rem'}
+                height={'4.3rem'}
               >
                 <>
                   Let's Talk
@@ -407,6 +407,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Link
                     to="https://www.instagram.com/lucas.shen21/"
                     target="_blank"
+                    draggable='false'
                   >
                     Instagram
                     <span>
@@ -426,6 +427,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Link
                     to="https://github.com/jiayishen21"
                     target="_blank"
+                    draggable='false'
                   >
                     GitHub
                     <span>
@@ -445,6 +447,7 @@ const About: React.FC<Props> = (props: Props) => {
                   <Link
                     to="https://www.linkedin.com/in/jiayi-shen-8b5035209/"
                     target="_blank"
+                    draggable='false'
                   >
                     LinkedIn
                     <span>
@@ -463,7 +466,7 @@ const About: React.FC<Props> = (props: Props) => {
               <Reveal
                 initialLoad={props.initialLoad}
                 switchPage={props.switchPage}
-                height={'3.5rem'}
+                height={'4.3rem'}
               >
                 <>
                   Acknowledgements
@@ -482,6 +485,7 @@ const About: React.FC<Props> = (props: Props) => {
                     <Link
                       to='https://camillemormal.com/'
                       target="_blank"
+                      draggable='false'
                     >
                       camillemormal.com
                     </Link>
