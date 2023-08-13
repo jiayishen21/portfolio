@@ -7,6 +7,7 @@ interface Props {
 
   page: string
   setPage: React.Dispatch<React.SetStateAction<string>>
+  initialLoad: boolean
 }
 
 const Nav: React.FC<Props> = (props: Props) => {
@@ -16,11 +17,11 @@ const Nav: React.FC<Props> = (props: Props) => {
   const navigate = useNavigate()
 
   const redirect = (page: string) => {
-    if(props.switchPage === 0 && props.page !== page) {
-      if(page === '/') {
+    if (props.switchPage === 0 && props.page !== page) {
+      if (page === '/') {
         props.setSwitchPage(700)
       }
-      else if(page === '/about') {
+      else if (page === '/about') {
         props.setSwitchPage(1400)
       }
       props.setPage(page)
@@ -30,7 +31,7 @@ const Nav: React.FC<Props> = (props: Props) => {
   const [initialLoad, setInitialLoad] = useState<boolean>(true)
 
   useEffect(() => {
-    if(initialLoad) {
+    if (initialLoad) {
       setInitialLoad(false)
       props.setPage(location.pathname)
       return
@@ -45,17 +46,17 @@ const Nav: React.FC<Props> = (props: Props) => {
       <nav>
         <button
           onClick={() => redirect('/')}
-          className={pathname === '/' ? 'active' : ''}
+          className={`${pathname === '/' ? 'active' : ''} ${(props.page !== '/' && props.page !== '/about') ? 'up400' : ''}`}
         >
           Projects
         </button>
         <button
           onClick={() => redirect('/about')}
-          className={pathname === '/about' ? 'active' : ''}
+          className={`${pathname === '/about' ? 'active' : ''} ${(props.page !== '/' && props.page !== '/about') ? 'up400' : ''}`}
         >
           About
         </button>
-      </nav> 
+      </nav>
     </>
   )
 }

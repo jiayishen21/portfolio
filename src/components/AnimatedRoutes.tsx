@@ -3,6 +3,7 @@ import About from './About'
 
 import { AnimatePresence } from 'framer-motion'
 import Projects from "./Projects"
+import Nav from './Nav'
 
 interface Props {
   curProject: number
@@ -32,6 +33,14 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
 
   return (
     <>
+      <Nav
+        switchPage={props.switchPage}
+        setSwitchPage={props.setSwitchPage}
+
+        page={props.page}
+        setPage={props.setPage}
+        initialLoad={props.initialLoad}
+      />
       <AnimatePresence>
         <Routes
           location={location}
@@ -59,6 +68,8 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
 
               page={props.page}
               setPage={props.setPage}
+
+              initialLoad={props.initialLoad}
             />}
           />
           <Route
@@ -69,7 +80,6 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               initialLoad={props.initialLoad}
 
               page={props.page}
-              setPage={props.setPage}
             />}
           />
         </Routes>

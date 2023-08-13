@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Project from "./Project";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MenuProject from "./MenuProject";
-import Nav from "./Nav";
 
 interface Props {
   curProject: number
@@ -25,13 +23,15 @@ interface Props {
 
   page: string
   setPage: React.Dispatch<React.SetStateAction<string>>
+
+  initialLoad: boolean
 }
 
 const Projects: React.FC<Props> = (props) => {
   const projects = [
     {
       name: 'Visual Sorting Algorithms',
-      link: 'https://jiayishen21.github.io/sorting-algorithms/',
+      link: '/visual-sorting-algorithms',
       imgPath: '/imgs/Visual-Sorting-Algorithms.png',
       menuImgPath: '/imgs/Menu-Visual-Sorting-Algorithms.png',
     },
@@ -306,15 +306,22 @@ const Projects: React.FC<Props> = (props) => {
     }
   }, [props.percentage, props.switchPage, props.page, switchMenu])
 
+
+  // Navigation
+  const redirect = (page: string) => {
+    if (props.switchPage === 0 && props.page !== page) {
+      if (page === '/') {
+        props.setSwitchPage(700)
+      }
+      else if (page === '/about') {
+        props.setSwitchPage(1400)
+      }
+      props.setPage(page)
+    }
+  }
+
   return (
     <>
-      <Nav
-        switchPage={props.switchPage}
-        setSwitchPage={props.setSwitchPage}
-
-        page={props.page}
-        setPage={props.setPage}
-      />
       <div
         onWheel={handleMouseWheel}
         onMouseDown={handleOnDown}
@@ -369,11 +376,9 @@ const Projects: React.FC<Props> = (props) => {
             className="right-half"
             onClick={() => slide(1)}
           />
-          <Link
-            className={`title-link ${switchMenu === 0 ? 'interact' : ''}`}
-            to={projects[props.curProject].link}
-            target="_blank"
-            onClick={(e) => e.stopPropagation()}
+          <button
+            className={`title-link ${switchMenu === 0 && delayedTitle === undefined ? 'interact' : ''}`}
+            onClick={() => redirect(projects[props.curProject].link)}
           >
             <div className="text-animation-container">
               <motion.h1
@@ -392,7 +397,7 @@ const Projects: React.FC<Props> = (props) => {
                 {delayedTitle !== undefined ? projects[delayedTitle].name : projects[props.curProject].name}
               </motion.h1>
             </div>
-          </Link>
+          </button>
         </div>
 
       </div>
