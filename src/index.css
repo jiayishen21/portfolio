@@ -149,6 +149,7 @@ nav button {
   font: inherit;
   border: none;
   background: none;
+  z-index: 3;
 }
 
 .full-screen .interact {
@@ -471,15 +472,17 @@ nav button {
   display: grid;
   width: 70rem;
   grid-template-columns: 1fr 30rem;
-  height: calc(100vh - 25rem);
+  max-height: calc(100vh - 25rem);
+  min-height: 30rem;
   padding-top: 12.5rem;
   padding-bottom: 12.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 12rem;
 }
 
 .layout1 img {
   width: 100%;
-  height: calc(100vh - 25rem);
+  max-height: calc(100vh - 25rem);
+  min-height: 30rem;
   object-fit: cover;
 }
 
@@ -500,6 +503,17 @@ nav button {
 .layout1-text h1 {
   font-size: 3rem;
   font-variation-settings: 'wght' 500 !important;
+}
+
+.layout1-text h1 svg {
+  font-size: 2rem;
+  margin-left: 1rem;
+  transform: translate(0, -10%);
+  transition: transform 0.6s ease-out;
+}
+
+.layout1-text a:hover svg {
+  transform: translate(5%, -30%);
 }
 
 /*
@@ -540,11 +554,12 @@ nav button {
 
 .built-with svg {
   margin-left: 1rem;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.6s ease-out;
+  transform: translate(0, 0);
 }
 
 .built-with:hover svg {
-  transform: translateY(-10%);
+  transform: translate(5%, -20%);
 }
 
 .reflections {
@@ -574,4 +589,65 @@ nav button {
   content: '\2014';
   position: absolute;
   margin-left: -3rem;
+}
+
+.pictures-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pictures {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.pictures img {
+  width: 100%;
+}
+
+.next-project-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.next-project {
+  background: none;
+  border: none;
+  position: relative;
+  font: inherit;
+  color: var(--highlight);
+  padding: 0;
+}
+
+.next-project img {
+  width: 20rem;
+  height: 30rem;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+.next-project .text-centering {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150%;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.next-project h2 {
+  font-size: 4rem;
+  font-variation-settings: 'wght' 500 !important;
+}
+
+.next-project h4 {
+  font-size: 1.8rem;
+  font-variation-settings: 'wght' 500 !important;
 }

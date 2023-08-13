@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Reveal from "../Reveal"
 import ImgReveal from "../ImgReveal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
+import { faArrowDown, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
 
 interface Props {
 	switchPage: number
@@ -234,6 +234,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									>
 										<h1>
 											Algorithms
+											<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
 										</h1>
 									</Reveal>
 								</Link>
@@ -284,7 +285,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height='2.3rem'
 									>
 										<>
 											Built with React
@@ -465,6 +466,80 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 							</ul>
 						</div>
 					</div>
+
+					<div className="pictures-wrapper">
+						<div className="pictures">
+							<ImgReveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
+							>
+								<img
+									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/0.png`}
+									alt='visual sorting picture'
+									draggable='false'
+								/>
+							</ImgReveal>
+							<ImgReveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
+							>
+								<img
+									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/1.png`}
+									alt='visual sorting picture'
+									draggable='false'
+								/>
+							</ImgReveal>
+							<ImgReveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
+							>
+								<img
+									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/2.png`}
+									alt='visual sorting picture'
+									draggable='false'
+								/>
+							</ImgReveal>
+						</div>
+					</div>
+
+					<div className="next-project-wrapper">
+						<button className="next-project">
+							<ImgReveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
+							>
+								<img
+									src={`${process.env.PUBLIC_URL}imgs/camera.jpeg`}
+									alt='visual sorting picture'
+									draggable='false'
+								/>
+							</ImgReveal>
+
+							<div className="text-centering">
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='4rem'
+								>
+									<h2>
+										Slime Scholars
+									</h2>
+								</Reveal>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='4rem'
+								>
+									<h4>
+										Next Project
+									</h4>
+								</Reveal>
+
+							</div>
+						</button>
+
+					</div>
+
 				</div>
 			</motion.div>
 		</>
