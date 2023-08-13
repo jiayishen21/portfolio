@@ -355,8 +355,8 @@ const About: React.FC<Props> = (props: Props) => {
               />
               <br />
               <img
-                src={`${process.env.PUBLIC_URL}imgs/white-logos/javascript.png`}
-                alt="JavaScript"
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/express.png`}
+                alt="Express"
                 draggable='false'
               />
               <br />
