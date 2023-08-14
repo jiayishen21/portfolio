@@ -218,7 +218,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 							switchPage={props.switchPage}
 						>
 							<img
-								src={`${process.env.PUBLIC_URL}imgs/project-page-visual-sorting-algorithms.png`}
+								src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/main.png`}
 								alt='visual sorting picture'
 								draggable='false'
 							/>
