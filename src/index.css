@@ -343,14 +343,30 @@ nav button {
   width: 100%;
 }
 
-.top-row {
+.top-row-icons {
   margin-top: 8rem;
   grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr 1.5fr 1fr;
+  margin-bottom: 1rem;
 }
 
-.bot-row {
+.top-row-text {
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr 1.5fr 1fr;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--subtitle);
+}
+
+.bot-row-icons {
   margin-top: 3.5rem;
   grid-template-columns: 1.25fr 1fr 1.5fr 1fr 1.5fr 1fr 1.25fr;
+  margin-bottom: 1rem;
+}
+
+.bot-row-text {
+  grid-template-columns: 1.25fr 1fr 1.5fr 1fr 1.5fr 1fr 1.25fr;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--subtitle);
 }
 
 .about h3 {
@@ -437,7 +453,8 @@ nav button {
 .reveal-container {
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: visible;
 }
 
 .me-text .reveal-container {

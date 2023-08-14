@@ -310,7 +310,7 @@ const About: React.FC<Props> = (props: Props) => {
             initialLoad={props.initialLoad}
             switchPage={props.switchPage}
           >
-            <div className="technologies top-row">
+            <div className="technologies top-row-icons">
               <img
                 src={`${process.env.PUBLIC_URL}imgs/white-logos/postgres2.png`}
                 alt="PostgreSQL"
@@ -336,11 +336,28 @@ const About: React.FC<Props> = (props: Props) => {
               />
             </div>
           </ImgReveal>
+
+          <Reveal
+            initialLoad={props.initialLoad}
+            switchPage={props.switchPage}
+            height='1.6rem'
+          >
+            <div className="technologies top-row-text">
+              <div>PostgreSQL</div>
+              <br />
+              <div>MongoDB</div>
+              <br />
+              <div>Python</div>
+              <br />
+              <div>React</div>
+            </div>
+          </Reveal>
+
           <ImgReveal
             initialLoad={props.initialLoad}
             switchPage={props.switchPage}
           >
-            <div className="technologies bot-row">
+            <div className="technologies bot-row-icons">
               <br />
               <img
                 src={`${process.env.PUBLIC_URL}imgs/white-logos/typescript.png`}
@@ -362,6 +379,22 @@ const About: React.FC<Props> = (props: Props) => {
               <br />
             </div>
           </ImgReveal>
+
+          <Reveal
+            initialLoad={props.initialLoad}
+            switchPage={props.switchPage}
+            height='1.6rem'
+          >
+            <div className="technologies bot-row-text">
+              <br />
+              <div>TypeScript</div>
+              <br />
+              <div>Next JS</div>
+              <br />
+              <div>Express</div>
+              <br />
+            </div>
+          </Reveal>
 
           <div
             className="contact"
