@@ -509,8 +509,8 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								switchPage={props.switchPage}
 							>
 								<img
-									src={`${process.env.PUBLIC_URL}imgs/camera.jpeg`}
-									alt='visual sorting picture'
+									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/next-project.png`}
+									alt='passionfruit youth'
 									draggable='false'
 								/>
 							</ImgReveal>
@@ -522,19 +522,17 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									height='4rem'
 								>
 									<h2>
-										Slime Scholars
+										PassionFruit Youth
 									</h2>
 								</Reveal>
-								<Reveal
-									initialLoad={props.initialLoad}
-									switchPage={props.switchPage}
-									height='4rem'
+								<div
+									className="reveal-container"
+									style={{ height: '2.3rem' }}
 								>
 									<h4>
 										Next Project
 									</h4>
-								</Reveal>
-
+								</div>
 							</div>
 						</button>
 

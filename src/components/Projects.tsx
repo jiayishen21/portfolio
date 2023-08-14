@@ -36,10 +36,10 @@ const Projects: React.FC<Props> = (props) => {
       menuImgPath: '/imgs/Menu-Visual-Sorting-Algorithms.png',
     },
     {
-      name: 'Visual Sorting Algorithms2',
-      link: '/visual-sorting-algorithms',
-      imgPath: '/imgs/camera.jpeg',
-      menuImgPath: '/imgs/camera.jpeg',
+      name: 'PassionFruit Youth',
+      link: '/passionfruit-youth',
+      imgPath: '/imgs/passionfruit-youth.png',
+      menuImgPath: '/imgs/menu-passionfruit-youth.png',
     },
   ]
 

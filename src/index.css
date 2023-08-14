@@ -647,6 +647,7 @@ nav button {
   font: inherit;
   color: var(--highlight);
   padding: 0;
+  cursor: pointer;
 }
 
 .next-project img {
@@ -661,7 +662,7 @@ nav button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150%;
+  width: 180%;
 
   top: 50%;
   left: 50%;
@@ -674,6 +675,12 @@ nav button {
 }
 
 .next-project h4 {
+  transform: translateY(200%);
   font-size: 1.8rem;
   font-variation-settings: 'wght' 500 !important;
+  transition: transform 0.4s ease-out;
+}
+
+.next-project:hover h4 {
+  transform: translateY(0);
 }
