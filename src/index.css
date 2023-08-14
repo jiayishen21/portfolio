@@ -490,7 +490,7 @@ nav button {
   width: 70rem;
   grid-template-columns: 1fr 30rem;
   max-height: calc(100vh - 25rem);
-  min-height: 30rem;
+  min-height: 29rem;
   padding-top: 12.5rem;
   padding-bottom: 12.5rem;
   margin-bottom: 12rem;
@@ -499,8 +499,16 @@ nav button {
 .layout1 img {
   width: 100%;
   max-height: calc(100vh - 25rem);
-  min-height: 30rem;
+  min-height: 29rem;
   object-fit: cover;
+}
+
+@media (max-height: 54rem) {
+  .layout1 {
+    /* (100vh - 29rem) / 2 */
+    padding-top: calc(50vh - 14.5rem);
+    padding-bottom: calc(50vh - 14.5rem);
+  }
 }
 
 .layout1-text {
@@ -571,12 +579,13 @@ nav button {
 
 .built-with svg {
   margin-left: 1rem;
+  margin-right: 1rem;
   transition: transform 0.6s ease-out;
   transform: translate(0, 0);
 }
 
 .built-with:hover svg {
-  transform: translate(5%, -20%);
+  transform: translate(5%, -15%);
 }
 
 .reflections {
