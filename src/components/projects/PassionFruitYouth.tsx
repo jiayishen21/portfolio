@@ -453,7 +453,6 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											trigger on hover to create interactivity.
 											Animating numbers with the @property
 										</>
 									</Reveal>
@@ -545,8 +544,8 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								switchPage={props.switchPage}
 							>
 								<img
-									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/next-project.png`}
-									alt='passionfruit youth'
+									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/next-project.png`}
+									alt='visual sorting algorithms'
 									draggable='false'
 								/>
 							</ImgReveal>
@@ -558,7 +557,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									height='4rem'
 								>
 									<h2>
-										PassionFruit Youth
+										Visual Sorting Algorithms
 									</h2>
 								</Reveal>
 								<div
