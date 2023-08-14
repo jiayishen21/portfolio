@@ -285,7 +285,7 @@ const About: React.FC<Props> = (props: Props) => {
                 switchPage={props.switchPage}
               >
                 <img
-                  src={`${process.env.PUBLIC_URL}imgs/temp.png`}
+                  src={`${process.env.PUBLIC_URL}imgs/me.png`}
                   alt='me'
                   draggable='false'
                 />
