@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react"
 import { motion } from 'framer-motion'
 import { Link } from "react-router-dom"
@@ -19,7 +20,7 @@ interface Props {
 	setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
+const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 	/*
 	Momentum scrolling
 	*/
@@ -169,10 +170,9 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 
 	const redirect = () => {
 		props.setOnMenu(false)
-		props.setCurProject(1)
+		props.setCurProject(0)
 		props.setSwitchPage(700)
 		props.setPage('/')
-		// TODO: Double check if PassionFruitYouth at index 1
 	}
 
 	return (
@@ -212,100 +212,102 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 					className="content"
 					style={{ transform: `translateY(-${scrollY}px)` }}
 				>
-					<div className="layout1">
-						<ImgReveal
-							initialLoad={props.initialLoad}
-							switchPage={props.switchPage}
-						>
-							<img
-								src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/main.png`}
-								alt='visual sorting picture'
-								draggable='false'
-							/>
-						</ImgReveal>
+					<div
+						className="layout2"
+						style={{
+							backgroundImage: `url(${process.env.PUBLIC_URL}/imgs/passionfruit-youth/main.png`,
+						}}
+					>
 						<div className="layout-text">
-							<div className="para-spacer">
-								<Link
-									to='https://jiayishen21.github.io/sorting-algorithms/'
-									target="_blank"
-									draggable="false"
+							<Link
+								to='https://jiayishen21.github.io/sorting-algorithms/'
+								target="_blank"
+								draggable="false"
+							>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='4rem'
 								>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='4rem'
-									>
-										<h1>
-											Visual Sorting
-										</h1>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='4rem'
-									>
-										<h1>
-											Algorithms
-											<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-										</h1>
-									</Reveal>
-								</Link>
-								<div className="role-title">
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='2rem'
-									>
-										<>
-											Sole Frontend Developer
-										</>
-									</Reveal>
-								</div>
-								<div className="role-description">
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='1.6rem'
-									>
-										<>
-											Visual Sorting Algorithms is a website that
-										</>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='1.6rem'
-									>
-										<>
-											displays the swaps and comparisons being
-										</>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='1.6rem'
-									>
-										<>
-											made during various sorting algorithms.
-										</>
-									</Reveal>
-								</div>
-								<button
-									className="built-with"
-									onClick={scrollDown}
+									<h1>
+										PassionFruit
+									</h1>
+								</Reveal>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='4rem'
 								>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='2.3rem'
-									>
-										<>
-											Built with React
-											<FontAwesomeIcon icon={faArrowDown} />
-										</>
-									</Reveal>
-								</button>
+									<h1>
+										Youth
+										<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+									</h1>
+								</Reveal>
+							</Link>
+							<div className="role-title">
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='2rem'
+								>
+									<>
+										Sole Frontend Developer
+									</>
+								</Reveal>
 							</div>
+							<div className="role-description">
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='1.6rem'
+								>
+									<>
+										PassionFruit Youth is a non-profit that helps
+									</>
+								</Reveal>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='1.6rem'
+								>
+									<>
+										youth grasp the intricacies of various
+									</>
+								</Reveal>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='1.6rem'
+								>
+									<>
+										careers, enabling them to make informed
+									</>
+								</Reveal>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='1.6rem'
+								>
+									<>
+										career decisions.
+									</>
+								</Reveal>
+							</div>
+							<button
+								className="built-with"
+								onClick={scrollDown}
+							>
+								<Reveal
+									initialLoad={props.initialLoad}
+									switchPage={props.switchPage}
+									height='2.3rem'
+								>
+									<>
+										Built with HTML + CSS
+										<FontAwesomeIcon icon={faArrowDown} />
+									</>
+								</Reveal>
+							</button>
 						</div>
 					</div>
 
@@ -328,7 +330,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Could not use loops and recursion
+											Had to find ways to make a landing
 										</>
 									</Reveal>
 									<Reveal
@@ -337,16 +339,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											when sorting because state variable
-										</>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='2rem'
-									>
-										<>
-											changes are not detected.
+											page interactive.
 										</>
 									</Reveal>
 								</li>
@@ -357,7 +350,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Storing and displaying all variables
+											Handling responsive design purely with
 										</>
 									</Reveal>
 									<Reveal
@@ -366,7 +359,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											involved in a recursive process.
+											CSS media queries.
 										</>
 									</Reveal>
 								</li>
@@ -377,7 +370,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Rendering arrays involved in recursive
+											Search engine optimization without
 										</>
 									</Reveal>
 									<Reveal
@@ -386,7 +379,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											proccesses, which were stored in a
+											dynamic content and changing meta
 										</>
 									</Reveal>
 									<Reveal
@@ -395,7 +388,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											unordered binary tree.
+											tags.
 										</>
 									</Reveal>
 								</li>
@@ -420,7 +413,16 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Using event listeners.
+											Meta tag for search engine optimization
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											in HTML.
 										</>
 									</Reveal>
 								</li>
@@ -431,7 +433,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Using promise and state variables to
+											Using unique CSS animations that
 										</>
 									</Reveal>
 									<Reveal
@@ -440,16 +442,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											create a timer that responds to state
-										</>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='2rem'
-									>
-										<>
-											variable changes.
+											trigger on hover to create interactivity.
 										</>
 									</Reveal>
 								</li>
@@ -460,7 +453,17 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Version control with GitHub.
+											trigger on hover to create interactivity.
+											Animating numbers with the @property
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											CSS rule
 										</>
 									</Reveal>
 								</li>
@@ -471,7 +474,25 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										height='2rem'
 									>
 										<>
-											Deploying a React app to GitHub Pages.
+											Deploying a HTML project to GitHub
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											Pages and configuring a custom
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height='2rem'
+									>
+										<>
+											domain.
 										</>
 									</Reveal>
 								</li>
@@ -486,7 +507,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								switchPage={props.switchPage}
 							>
 								<img
-									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/0.png`}
+									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/0.png`}
 									alt='visual sorting picture'
 									draggable='false'
 								/>
@@ -496,7 +517,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								switchPage={props.switchPage}
 							>
 								<img
-									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/1.png`}
+									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/1.png`}
 									alt='visual sorting picture'
 									draggable='false'
 								/>
@@ -506,7 +527,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								switchPage={props.switchPage}
 							>
 								<img
-									src={`${process.env.PUBLIC_URL}imgs/visual-sorting-algorithms/2.png`}
+									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/2.png`}
 									alt='visual sorting picture'
 									draggable='false'
 								/>
@@ -559,4 +580,4 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 	)
 }
 
-export default VisualSortingAlgorithms
+export default PassionFruitYouth

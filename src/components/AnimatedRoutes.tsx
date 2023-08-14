@@ -6,6 +6,7 @@ import Projects from "./Projects"
 import Nav from './Nav'
 import VisualSortingAlgorithms from './projects/VisualSortingAlgorithms'
 import ProjectNav from './ProjectNav'
+import PassionFruitYouth from './projects/PassionFruitYouth'
 
 interface Props {
   curProject: number
@@ -94,6 +95,18 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
           <Route
             path='/visual-sorting-algorithms'
             element={<VisualSortingAlgorithms
+              switchPage={props.switchPage}
+              setSwitchPage={props.setSwitchPage}
+              initialLoad={props.initialLoad}
+              page={props.page}
+              setPage={props.setPage}
+              setOnMenu={props.setOnMenu}
+              setCurProject={props.setCurProject}
+            />}
+          />
+          <Route
+            path='/passionfruit-youth'
+            element={<PassionFruitYouth
               switchPage={props.switchPage}
               setSwitchPage={props.setSwitchPage}
               initialLoad={props.initialLoad}
