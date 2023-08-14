@@ -507,7 +507,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 							>
 								<img
 									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/0.png`}
-									alt='visual sorting picture'
+									alt='home page'
 									draggable='false'
 								/>
 							</ImgReveal>
@@ -517,7 +517,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 							>
 								<img
 									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/1.png`}
-									alt='visual sorting picture'
+									alt='impact'
 									draggable='false'
 								/>
 							</ImgReveal>
@@ -527,7 +527,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 							>
 								<img
 									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/2.png`}
-									alt='visual sorting picture'
+									alt='events'
 									draggable='false'
 								/>
 							</ImgReveal>
