@@ -11,8 +11,12 @@ interface Props {
 	setSwitchPage: React.Dispatch<React.SetStateAction<number>>
 
 	page: string
+	setPage: React.Dispatch<React.SetStateAction<string>>
 
 	initialLoad: boolean
+
+	setCurProject: React.Dispatch<React.SetStateAction<number>>
+	setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
@@ -161,6 +165,14 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 		}
 		setScrollY(newScrollY)
 		setScrollPercentage(newScrollY / maxScroll * 100)
+	}
+
+	const redirect = () => {
+		props.setOnMenu(false)
+		props.setCurProject(1)
+		props.setSwitchPage(700)
+		props.setPage('/')
+		// TODO: Double check if PassionFruitYouth at index 1
 	}
 
 	return (
@@ -503,7 +515,10 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 					</div>
 
 					<div className="next-project-wrapper">
-						<button className="next-project">
+						<button
+							className="next-project"
+							onClick={redirect}
+						>
 							<ImgReveal
 								initialLoad={props.initialLoad}
 								switchPage={props.switchPage}

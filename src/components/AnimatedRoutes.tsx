@@ -98,6 +98,9 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               setSwitchPage={props.setSwitchPage}
               initialLoad={props.initialLoad}
               page={props.page}
+              setPage={props.setPage}
+              setOnMenu={props.setOnMenu}
+              setCurProject={props.setCurProject}
             />}
           />
         </Routes>
