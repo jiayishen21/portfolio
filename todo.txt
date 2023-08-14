@@ -1,6 +1,1 @@
-- clean up project and projects files
-
-- add new projects
-- take professional photo of myself
-- revise image reveal animations
-- mobile responsive design
+- TODO: mobile responsive design

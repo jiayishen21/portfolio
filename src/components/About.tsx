@@ -294,17 +294,20 @@ const About: React.FC<Props> = (props: Props) => {
             </div>
           </div>
 
-          <ImgReveal
-            initialLoad={props.initialLoad}
-            switchPage={props.switchPage}
-          >
-            <img
-              className="university"
-              src={`${process.env.PUBLIC_URL}imgs/white-logos/waterloo.png`}
-              alt='University of Waterloo'
-              draggable='false'
-            />
-          </ImgReveal>
+          <div className="university-wrapper">
+            <ImgReveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+            >
+              <img
+                className="university"
+                src={`${process.env.PUBLIC_URL}imgs/white-logos/waterloo.png`}
+                alt='University of Waterloo'
+                draggable='false'
+              />
+            </ImgReveal>
+
+          </div>
 
           <ImgReveal
             initialLoad={props.initialLoad}

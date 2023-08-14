@@ -333,6 +333,11 @@ nav button {
   justify-content: center;
 }
 
+.university-wrapper div div {
+  display: flex;
+  justify-content: center;
+}
+
 .university {
   max-width: 35rem;
   min-width: 27rem;
