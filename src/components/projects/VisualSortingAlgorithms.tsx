@@ -280,7 +280,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='calc((10vw - 0.15rem)/3 + 0.3rem)'
+											height='calc((12vw - 0.2rem)/3 + 0.3rem)'
 										>
 											<>
 												Visual Sorting Algorithms is a website that
@@ -289,7 +289,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='calc((10vw - 0.15rem)/3 + 0.3rem)'
+											height='calc((12vw - 0.2rem)/3 + 0.3rem)'
 										>
 											<>
 												displays the swaps and comparisons being
@@ -298,7 +298,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='calc((10vw - 0.15rem)/3 + 0.3rem)'
+											height='calc((12vw - 0.2rem)/3 + 0.3rem)'
 										>
 											<>
 												made during various sorting algorithms.
@@ -578,7 +578,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.8rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											Could not use loops and recursion
@@ -587,7 +593,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.8rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											when sorting because state variable
@@ -596,7 +608,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											changes are not detected.
@@ -607,7 +625,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											Storing and displaying all variables
@@ -616,7 +640,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											involved in a recursive process.
@@ -627,7 +657,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											Rendering arrays involved in recursive
@@ -636,7 +672,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											proccesses, which were stored in a
@@ -645,7 +687,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											unordered binary tree.
@@ -670,7 +718,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											Using event listeners.
@@ -681,7 +735,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											Using promise and state variables to
@@ -690,7 +750,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											create a timer that responds to state
@@ -699,7 +765,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											variable changes.
@@ -710,7 +782,13 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
 											Version control with GitHub.
@@ -721,10 +799,31 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
 									>
 										<>
-											Deploying a React app to GitHub Pages.
+											Deploying a React app to GitHub
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height={
+											screenWidth > 1200 ? '2rem' :
+												screenWidth >= 1023 ? '1.3rem' :
+													screenWidth >= 768 ? '1.2rem' :
+														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)) + 0.2rem)' :
+															'calc((12vw - 0.2rem)/3 + 0.3rem)'
+										}
+									>
+										<>
+											Pages.
 										</>
 									</Reveal>
 								</li>
@@ -787,7 +886,11 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='4rem'
+									height={
+										screenWidth >= 768 ? '4rem' :
+											screenWidth >= 481 ? '3rem' :
+												'calc((10vw - 0.25rem)*(4/5) + 0.5rem)'
+									}
 								>
 									<h2>
 										PassionFruit Youth
@@ -795,7 +898,11 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								</Reveal>
 								<div
 									className="reveal-container"
-									style={{ height: '2.3rem' }}
+									style={{
+										height: screenWidth >= 768 ? '2.3rem' :
+											'calc(3*(10vw - 0.25rem)/5 + 0.3rem)'
+
+									}}
 								>
 									<h4>
 										Next Project
@@ -807,7 +914,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 					</div>
 
 				</div>
-			</motion.div>
+			</motion.div >
 		</>
 	)
 }
