@@ -19,6 +19,19 @@ interface Props {
 	setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+interface heights {
+	projectName: string
+	roleTitle: string
+	roleDesc: string
+	builtWith: string
+
+	reflectionsTitle: string
+	reflectionsPoint: string
+
+	nextProjectTitle: string
+	nextProject: string
+}
+
 const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 	/*
 	Momentum scrolling
@@ -189,6 +202,94 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 		};
 	}, [])
 
+	const defaultHeights: heights = {
+		projectName: '4rem',
+		roleTitle: '2rem',
+		roleDesc: '1.6rem',
+		builtWith: '2.3rem',
+
+		reflectionsTitle: '4rem',
+		reflectionsPoint: '2rem',
+
+		nextProjectTitle: '4rem',
+		nextProject: '2.3rem',
+	}
+
+	const [heights, setHeights] = useState<heights>(defaultHeights)
+
+	useEffect(() => {
+		if (screenWidth > 1200) {
+			setHeights({
+				projectName: '4rem',
+				roleTitle: '2rem',
+				roleDesc: '1.6rem',
+				builtWith: '2.3rem',
+
+				reflectionsTitle: '4rem',
+				reflectionsPoint: '1.3rem',
+
+				nextProjectTitle: '4rem',
+				nextProject: '2.3rem',
+			})
+		}
+		if (screenWidth > 1023) {
+			setHeights({
+				projectName: '4rem',
+				roleTitle: '2rem',
+				roleDesc: '1.6rem',
+				builtWith: '2.3rem',
+
+				reflectionsTitle: '4rem',
+				reflectionsPoint: '2rem',
+
+				nextProjectTitle: '4rem',
+				nextProject: '2.3rem',
+			})
+		}
+		else if (screenWidth > 767) {
+			setHeights({
+				projectName: '3.2rem',
+				roleTitle: '1.45rem',
+				roleDesc: '1.45rem',
+				builtWith: '1.75rem',
+
+				reflectionsTitle: '3.2rem',
+				reflectionsPoint: '1.8rem',
+
+				nextProjectTitle: '3.2rem',
+				nextProject: '2.3rem',
+			})
+		}
+		else if (screenWidth > 480) {
+			setHeights({
+				projectName: '6vw',
+				roleTitle: 'calc((6vw - 0.5rem)*0.75 + 0.25rem)',
+				roleDesc: 'calc((5.5vw - 0.3rem)*0.5 + 0.2rem)',
+				builtWith: 'calc((6vw - 0.5rem)*0.75 + 0.5rem)',
+
+				reflectionsTitle: '6vw',
+				reflectionsPoint: 'calc((5.5vw - 0.3rem)*0.5 + 0.2rem',
+
+				nextProjectTitle: '3rem',
+				nextProject: 'calc((10vw - 0.25rem)*0.6 + 0.3rem)',
+			})
+		}
+		else {
+			setHeights({
+				projectName: 'calc(10vw + 1rem)',
+				roleTitle: 'calc((10vw - 0.25rem)*0.6 + 0.5rem)',
+				roleDesc: 'calc((12vw - 0.2rem)/3 + 0.3rem)',
+				builtWith: 'calc((10vw - 0.25rem)*0.6 + 0.5rem)',
+
+				reflectionsTitle: 'calc(12vw + 0.2rem)',
+				reflectionsPoint: 'calc((12vw - 0.2rem)/3 + 0.3rem)',
+
+				nextProjectTitle: '3rem',
+				nextProject: 'calc((10vw - 0.25rem)*0.6 + 0.3rem)',
+			})
+		}
+	}, [screenWidth])
+
 	return (
 		<>
 			<motion.div
@@ -239,171 +340,27 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 						</ImgReveal>
 						<div className="layout-text">
 							<div className="para-spacer">
-								{screenWidth <= 480 && <>
-									<Link
-										to='https://jiayishen21.github.io/sorting-algorithms/'
-										target="_blank"
-										draggable="false"
-									>
+								<Link
+									to='https://jiayishen21.github.io/sorting-algorithms/'
+									target="_blank"
+									draggable="false"
+								>
+									{(screenWidth > 480 && screenWidth <= 767) ? <>
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='calc(10vw + 1rem)'
-										>
-											<h1>
-												Visual Sorting
-											</h1>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc(10vw + 1rem)'
-										>
-											<h1>
-												Algorithms
-												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-											</h1>
-										</Reveal>
-									</Link>
-									<div className="role-title">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='2rem'
-										>
-											<>
-												Sole Frontend Developer
-											</>
-										</Reveal>
-									</div>
-									<div className="role-description">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc((12vw - 0.2rem)/3 + 0.3rem)'
-										>
-											<>
-												Visual Sorting Algorithms is a website that
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc((12vw - 0.2rem)/3 + 0.3rem)'
-										>
-											<>
-												displays the swaps and comparisons being
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc((12vw - 0.2rem)/3 + 0.3rem)'
-										>
-											<>
-												made during various sorting algorithms.
-											</>
-										</Reveal>
-									</div>
-									<button
-										className="built-with"
-										onClick={scrollDown}
-									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='2.3rem'
-										>
-											<>
-												Built with React
-												<FontAwesomeIcon icon={faArrowDown} />
-											</>
-										</Reveal>
-									</button>
-								</>}
-								{screenWidth > 480 && screenWidth <= 767 && <>
-									<Link
-										to='https://jiayishen21.github.io/sorting-algorithms/'
-										target="_blank"
-										draggable="false"
-									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc(6vw)'
+											height={heights.projectName}
 										>
 											<h1>
 												Visual Sorting Algorithms
 												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
 											</h1>
 										</Reveal>
-									</Link>
-									<div className="role-title">
+									</> : <>
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='calc(3*(6vw - 0.5rem)/4 + 0.5rem'
-										>
-											<>
-												Sole Frontend Developer
-											</>
-										</Reveal>
-									</div>
-									<div className="role-description">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc((5.5vw - 0.3rem)/2 + 0.2rem)'
-										>
-											<>
-												Visual Sorting Algorithms is a website that
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc((5.5vw - 0.3rem)/2 + 0.2rem)'
-										>
-											<>
-												displays the swaps and comparisons being
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc((5.5vw - 0.3rem)/2 + 0.2rem)'
-										>
-											<>
-												made during various sorting algorithms.
-											</>
-										</Reveal>
-									</div>
-									<button
-										className="built-with"
-										onClick={scrollDown}
-									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='calc(3*(6vw - 0.5rem)/4 + 0.5rem'
-										>
-											<>
-												Built with React
-												<FontAwesomeIcon icon={faArrowDown} />
-											</>
-										</Reveal>
-									</button>
-								</>}
-								{screenWidth > 767 && screenWidth <= 1023 && <>
-									<Link
-										to='https://jiayishen21.github.io/sorting-algorithms/'
-										target="_blank"
-										draggable="false"
-									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='3.2rem'
+											height={heights.projectName}
 										>
 											<h1>
 												Visual Sorting
@@ -412,152 +369,71 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='3.2rem'
+											height={heights.projectName}
 										>
 											<h1>
 												Algorithms
 												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
 											</h1>
 										</Reveal>
-									</Link>
-									<div className="role-title">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='2rem'
-										>
-											<>
-												Sole Frontend Developer
-											</>
-										</Reveal>
-									</div>
-									<div className="role-description">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='1.45rem'
-										>
-											<>
-												Visual Sorting Algorithms is a website that
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='1.45rem'
-										>
-											<>
-												displays the swaps and comparisons being
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='1.45rem'
-										>
-											<>
-												made during various sorting algorithms.
-											</>
-										</Reveal>
-									</div>
-									<button
-										className="built-with"
-										onClick={scrollDown}
+									</>
+									}
+								</Link>
+								<div className="role-title">
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height={heights.roleTitle}
 									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='2.3rem'
-										>
-											<>
-												Built with React
-												<FontAwesomeIcon icon={faArrowDown} />
-											</>
-										</Reveal>
-									</button>
-								</>}
-								{screenWidth >= 1024 && <>
-									<Link
-										to='https://jiayishen21.github.io/sorting-algorithms/'
-										target="_blank"
-										draggable="false"
+										<>
+											Sole Frontend Developer
+										</>
+									</Reveal>
+								</div>
+								<div className="role-description">
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height={heights.roleDesc}
 									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='4rem'
-										>
-											<h1>
-												Visual Sorting
-											</h1>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='4rem'
-										>
-											<h1>
-												Algorithms
-												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-											</h1>
-										</Reveal>
-									</Link>
-									<div className="role-title">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='2rem'
-										>
-											<>
-												Sole Frontend Developer
-											</>
-										</Reveal>
-									</div>
-									<div className="role-description">
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='1.6rem'
-										>
-											<>
-												Visual Sorting Algorithms is a website that
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='1.6rem'
-										>
-											<>
-												displays the swaps and comparisons being
-											</>
-										</Reveal>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='1.6rem'
-										>
-											<>
-												made during various sorting algorithms.
-											</>
-										</Reveal>
-									</div>
-									<button
-										className="built-with"
-										onClick={scrollDown}
+										<>
+											Visual Sorting Algorithms is a website that
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height={heights.roleDesc}
 									>
-										<Reveal
-											initialLoad={props.initialLoad}
-											switchPage={props.switchPage}
-											height='2.3rem'
-										>
-											<>
-												Built with React
-												<FontAwesomeIcon icon={faArrowDown} />
-											</>
-										</Reveal>
-									</button>
-								</>}
+										<>
+											displays the swaps and comparisons being
+										</>
+									</Reveal>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height={heights.roleDesc}
+									>
+										<>
+											made during various sorting algorithms.
+										</>
+									</Reveal>
+								</div>
+								<button
+									className="built-with"
+									onClick={scrollDown}
+								>
+									<Reveal
+										initialLoad={props.initialLoad}
+										switchPage={props.switchPage}
+										height={heights.builtWith}
+									>
+										<>
+											Built with React
+											<FontAwesomeIcon icon={faArrowDown} />
+										</>
+									</Reveal>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -567,7 +443,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 							<Reveal
 								initialLoad={props.initialLoad}
 								switchPage={props.switchPage}
-								height='4rem'
+								height={heights.reflectionsTitle}
 							>
 								<h3>
 									Challenges
@@ -578,13 +454,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.8rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Could not use loops and recursion
@@ -593,13 +463,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.8rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											when sorting because state variable
@@ -608,13 +472,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											changes are not detected.
@@ -625,13 +483,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Storing and displaying all variables
@@ -640,13 +492,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											involved in a recursive process.
@@ -657,46 +503,28 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
-											Rendering arrays involved in recursive
+											Rendering arrays involved in
 										</>
 									</Reveal>
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
-											proccesses, which were stored in a
+											recursive proccesses, which were
 										</>
 									</Reveal>
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
-											unordered binary tree.
+											stored in an unordered binary tree.
 										</>
 									</Reveal>
 								</li>
@@ -707,7 +535,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 							<Reveal
 								initialLoad={props.initialLoad}
 								switchPage={props.switchPage}
-								height='4rem'
+								height={heights.reflectionsTitle}
 							>
 								<h3>
 									What I Learned
@@ -718,13 +546,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Using event listeners.
@@ -735,13 +557,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Using promise and state variables to
@@ -750,13 +566,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											create a timer that responds to state
@@ -765,13 +575,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											variable changes.
@@ -782,13 +586,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Version control with GitHub.
@@ -799,13 +597,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)/2 + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Deploying a React app to GitHub
@@ -814,13 +606,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height={
-											screenWidth > 1200 ? '2rem' :
-												screenWidth >= 1023 ? '1.3rem' :
-													screenWidth >= 768 ? '1.2rem' :
-														screenWidth >= 481 ? 'calc((5.5vw - 0.3rem)) + 0.2rem)' :
-															'calc((12vw - 0.2rem)/3 + 0.3rem)'
-										}
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Pages.
@@ -886,11 +672,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height={
-										screenWidth >= 768 ? '4rem' :
-											screenWidth >= 481 ? '3rem' :
-												'calc((10vw - 0.25rem)*(4/5) + 0.5rem)'
-									}
+									height={heights.nextProjectTitle}
 								>
 									<h2>
 										PassionFruit Youth
@@ -898,11 +680,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 								</Reveal>
 								<div
 									className="reveal-container"
-									style={{
-										height: screenWidth >= 768 ? '2.3rem' :
-											'calc(3*(10vw - 0.25rem)/5 + 0.3rem)'
-
-									}}
+									style={{ height: heights.nextProject }}
 								>
 									<h4>
 										Next Project
