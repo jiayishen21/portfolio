@@ -145,6 +145,20 @@ const About: React.FC<Props> = (props: Props) => {
 
   }, [scrollPercentage])
 
+  // Screen size
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [])
+
   return (
     <>
       <motion.div
@@ -184,113 +198,320 @@ const About: React.FC<Props> = (props: Props) => {
         >
           <div className="me-wrapper">
             <div className="me">
-              <div className="me-text">
-                <div className="para-spacer">
-                  <Reveal
+              {screenWidth <= 480 &&
+                <>
+                  <ImgReveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.6rem'
                   >
-                    <>
-                      I'm Jiayi Shen, a Full-Stack
-                    </>
-                  </Reveal>
-                  <Reveal
+                    <img
+                      src={`${process.env.PUBLIC_URL}imgs/me2.png`}
+                      alt='me'
+                      draggable='false'
+                    />
+                  </ImgReveal>
+                  <div className="me-text">
+                    <div className="para-spacer">
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='0.75rem'
+                      >
+                        <>
+                          I'm Lucas Shen, a Full-Stack Engineer with a
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='0.75rem'
+                      >
+                        <>
+                          passion for crafting practical applications
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='0.75rem'
+                      >
+                        <>
+                          that bridge imagination and functionality.
+                        </>
+                      </Reveal>
+                    </div>
+                    <div>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='0.75rem'
+                      >
+                        <>
+                          If you have any ideas in mind, feel free to
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='0.75rem'
+                      >
+                        <>
+                          reach out. Let's build something incredible
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='0.75rem'
+                      >
+                        <>
+                          together!
+                        </>
+                      </Reveal>
+                    </div>
+                  </div>
+                </>
+              }
+              {screenWidth > 480 && screenWidth <= 767 &&
+                <>
+                  <ImgReveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.6rem'
                   >
-                    <>
-                      Engineer with a passion for
-                    </>
-                  </Reveal>
-                  <Reveal
+                    <img
+                      src={`${process.env.PUBLIC_URL}imgs/me2.png`}
+                      alt='me'
+                      draggable='false'
+                    />
+                  </ImgReveal>
+                  <div className="me-text">
+                    <div className="para-spacer">
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.1rem'
+                      >
+                        <>
+                          I'm Lucas Shen, a Full-Stack Engineer with a passion
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.1rem'
+                      >
+                        <>
+                          for crafting practical applications that bridge
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.1rem'
+                      >
+                        <>
+                          imagination and functionality.
+                        </>
+                      </Reveal>
+                    </div>
+                    <div>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.1rem'
+                      >
+                        <>
+                          If you have any ideas in mind, feel free to reach out.
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.1rem'
+                      >
+                        <>
+                          Let's build something incredible together!
+                        </>
+                      </Reveal>
+                    </div>
+                  </div>
+                </>
+              }
+              {screenWidth > 767 && screenWidth <= 1023 &&
+                <>
+                  <ImgReveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.6rem'
                   >
-                    <>
-                      crafting practical
-                    </>
-                  </Reveal>
-                  <Reveal
+                    <img
+                      src={`${process.env.PUBLIC_URL}imgs/me2.png`}
+                      alt='me'
+                      draggable='false'
+                    />
+                  </ImgReveal>
+                  <div className="me-text">
+                    <div className="para-spacer">
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.3rem'
+                      >
+                        <>
+                          I'm Lucas Shen, a Full-Stack Engineer with a passion
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.3rem'
+                      >
+                        <>
+                          for crafting practical applications that bridge
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.3rem'
+                      >
+                        <>
+                          imagination and functionality.
+                        </>
+                      </Reveal>
+                    </div>
+                    <div>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.3rem'
+                      >
+                        <>
+                          If you have any ideas in mind, feel free to reach out.
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.3rem'
+                      >
+                        <>
+                          Let's build something incredible together!
+                        </>
+                      </Reveal>
+                    </div>
+                  </div>
+                </>
+              }
+              {screenWidth >= 1024 &&
+                <>
+                  <div className="me-text">
+                    <div className="para-spacer">
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          I'm Lucas Shen, a Full-Stack
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          Engineer with a passion for
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          crafting practical
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          applications that bridge
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          imagination and
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          functionality.
+                        </>
+                      </Reveal>
+                    </div>
+                    <div>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          If you have any ideas in
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          mind, feel free to reach out.
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          Let's build something
+                        </>
+                      </Reveal>
+                      <Reveal
+                        initialLoad={props.initialLoad}
+                        switchPage={props.switchPage}
+                        height='1.6rem'
+                      >
+                        <>
+                          incredible together!
+                        </>
+                      </Reveal>
+                    </div>
+                  </div>
+                  <ImgReveal
                     initialLoad={props.initialLoad}
                     switchPage={props.switchPage}
-                    height='1.6rem'
                   >
-                    <>
-                      applications that bridge
-                    </>
-                  </Reveal>
-                  <Reveal
-                    initialLoad={props.initialLoad}
-                    switchPage={props.switchPage}
-                    height='1.6rem'
-                  >
-                    <>
-                      imagination and
-                    </>
-                  </Reveal>
-                  <Reveal
-                    initialLoad={props.initialLoad}
-                    switchPage={props.switchPage}
-                    height='1.6rem'
-                  >
-                    <>
-                      functionality.
-                    </>
-                  </Reveal>
-                </div>
-                <div>
-                  <Reveal
-                    initialLoad={props.initialLoad}
-                    switchPage={props.switchPage}
-                    height='1.6rem'
-                  >
-                    <>
-                      If you have any ideas in
-                    </>
-                  </Reveal>
-                  <Reveal
-                    initialLoad={props.initialLoad}
-                    switchPage={props.switchPage}
-                    height='1.6rem'
-                  >
-                    <>
-                      mind, feel free to reach out.
-                    </>
-                  </Reveal>
-                  <Reveal
-                    initialLoad={props.initialLoad}
-                    switchPage={props.switchPage}
-                    height='1.6rem'
-                  >
-                    <>
-                      Let's build something
-                    </>
-                  </Reveal>
-                  <Reveal
-                    initialLoad={props.initialLoad}
-                    switchPage={props.switchPage}
-                    height='1.6rem'
-                  >
-                    <>
-                      incredible together!
-                    </>
-                  </Reveal>
-                </div>
-              </div>
-              <ImgReveal
-                initialLoad={props.initialLoad}
-                switchPage={props.switchPage}
-              >
-                <img
-                  src={`${process.env.PUBLIC_URL}imgs/me.png`}
-                  alt='me'
-                  draggable='false'
-                />
-              </ImgReveal>
-
+                    <img
+                      src={`${process.env.PUBLIC_URL}imgs/me.png`}
+                      alt='me'
+                      draggable='false'
+                    />
+                  </ImgReveal>
+                </>
+              }
             </div>
           </div>
 
@@ -340,21 +561,58 @@ const About: React.FC<Props> = (props: Props) => {
             </div>
           </ImgReveal>
 
-          <Reveal
-            initialLoad={props.initialLoad}
-            switchPage={props.switchPage}
-            height='1.6rem'
-          >
-            <div className="technologies top-row-text">
-              <div>PostgreSQL</div>
-              <br />
-              <div>MongoDB</div>
-              <br />
-              <div>Python</div>
-              <br />
-              <div>React</div>
-            </div>
-          </Reveal>
+          {screenWidth <= 480 && <></>}
+          {screenWidth > 480 && screenWidth <= 767 && <>
+            <Reveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+              height='1.2rem'
+            >
+              <div className="technologies top-row-text">
+                <div>PostgreSQL</div>
+                <br />
+                <div>MongoDB</div>
+                <br />
+                <div>Python</div>
+                <br />
+                <div>React</div>
+              </div>
+            </Reveal>
+          </>}
+          {screenWidth > 767 && screenWidth <= 1023 && <>
+            <Reveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+              height='1.4rem'
+            >
+              <div className="technologies top-row-text">
+                <div>PostgreSQL</div>
+                <br />
+                <div>MongoDB</div>
+                <br />
+                <div>Python</div>
+                <br />
+                <div>React</div>
+              </div>
+            </Reveal>
+          </>}
+          {screenWidth >= 1024 && <>
+            <Reveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+              height='1.6rem'
+            >
+              <div className="technologies top-row-text">
+                <div>PostgreSQL</div>
+                <br />
+                <div>MongoDB</div>
+                <br />
+                <div>Python</div>
+                <br />
+                <div>React</div>
+              </div>
+            </Reveal>
+          </>}
 
           <ImgReveal
             initialLoad={props.initialLoad}
@@ -383,163 +641,642 @@ const About: React.FC<Props> = (props: Props) => {
             </div>
           </ImgReveal>
 
-          <Reveal
-            initialLoad={props.initialLoad}
-            switchPage={props.switchPage}
-            height='1.6rem'
-          >
-            <div className="technologies bot-row-text">
-              <br />
-              <div>TypeScript</div>
-              <br />
-              <div>Next JS</div>
-              <br />
-              <div>Express</div>
-              <br />
-            </div>
-          </Reveal>
+          {screenWidth <= 480 && <></>}
+          {screenWidth > 480 && screenWidth <= 767 && <>
+            <Reveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+              height='1.2rem'
+            >
+              <div className="technologies bot-row-text">
+                <br />
+                <div>TypeScript</div>
+                <br />
+                <div>Next JS</div>
+                <br />
+                <div>Express</div>
+                <br />
+              </div>
+            </Reveal>
+          </>}
+          {screenWidth > 767 && screenWidth <= 1023 && <>
+            <Reveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+              height='1.4rem'
+            >
+              <div className="technologies bot-row-text">
+                <br />
+                <div>TypeScript</div>
+                <br />
+                <div>Next JS</div>
+                <br />
+                <div>Express</div>
+                <br />
+              </div>
+            </Reveal>
+          </>}
+          {screenWidth >= 1024 && <>
+            <Reveal
+              initialLoad={props.initialLoad}
+              switchPage={props.switchPage}
+              height='1.6rem'
+            >
+              <div className="technologies bot-row-text">
+                <br />
+                <div>TypeScript</div>
+                <br />
+                <div>Next JS</div>
+                <br />
+                <div>Express</div>
+                <br />
+              </div>
+            </Reveal>
+          </>}
 
           <div
             className="contact"
           >
-            <h3>
-              <Reveal
-                initialLoad={props.initialLoad}
-                switchPage={props.switchPage}
-                height={'4.3rem'}
-              >
-                <>
-                  Let's Talk
-                </>
-              </Reveal>
-            </h3>
-            <ul>
-              <li>
-                <Reveal
-                  initialLoad={props.initialLoad}
-                  switchPage={props.switchPage}
-                  height="2rem"
-                >
-                  <Link
-                    to="mailto:lucasshen21@gmail.com"
-                    target="_blank"
-                    draggable='false'
-                  >
-                    Email
-                    <span>
-                      <div className="full-contact">
-                        lucasshen21@gmail.com
-                      </div>
-                    </span>
-                  </Link>
-                </Reveal>
-              </li>
-              <li>
-                <Reveal
-                  initialLoad={props.initialLoad}
-                  switchPage={props.switchPage}
-                  height="2rem"
-                >
-                  <Link
-                    to="https://www.instagram.com/lucas.shen21/"
-                    target="_blank"
-                    draggable='false'
-                  >
-                    Instagram
-                    <span>
-                      <div className="full-contact">
-                        @lucas.shen21
-                      </div>
-                    </span>
-                  </Link>
-                </Reveal>
-              </li>
-              <li>
-                <Reveal
-                  initialLoad={props.initialLoad}
-                  switchPage={props.switchPage}
-                  height="2rem"
-                >
-                  <Link
-                    to="https://github.com/jiayishen21"
-                    target="_blank"
-                    draggable='false'
-                  >
-                    GitHub
-                    <span>
-                      <div className="full-contact">
-                        jiayishen21
-                      </div>
-                    </span>
-                  </Link>
-                </Reveal>
-              </li>
-              <li>
-                <Reveal
-                  initialLoad={props.initialLoad}
-                  switchPage={props.switchPage}
-                  height="2rem"
-                >
-                  <Link
-                    to="https://www.linkedin.com/in/jiayi-shen-8b5035209/"
-                    target="_blank"
-                    draggable='false'
-                  >
-                    LinkedIn
-                    <span>
-                      <div className="full-contact">
-                        Jiayi Shen
-                      </div>
-                    </span>
-                  </Link>
 
-                </Reveal>
-              </li>
-            </ul>
-          </div>
-          <div className="acknowledgements">
-            <h3>
-              <Reveal
-                initialLoad={props.initialLoad}
-                switchPage={props.switchPage}
-                height={'4.3rem'}
-              >
-                <>
-                  Acknowledgements
-                </>
-              </Reveal>
-            </h3>
-            <ul>
-              <li>
+            {screenWidth <= 480 && <>
+              <h3>
                 <Reveal
                   initialLoad={props.initialLoad}
                   switchPage={props.switchPage}
-                  height={'1.8rem'}
+                  height={'2.2rem'}
                 >
                   <>
-                    {'Inspired by '}
+                    Let's Talk
+                  </>
+                </Reveal>
+              </h3>
+
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.2rem"
+                  >
                     <Link
-                      to='https://camillemormal.com/'
+                      to="mailto:lucasshen21@gmail.com"
                       target="_blank"
                       draggable='false'
                     >
-                      camillemormal.com
+                      Email
+                      <span>
+                        <div className="full-contact">
+                          lucasshen21@gmail.com
+                        </div>
+                      </span>
                     </Link>
-                  </>
-                </Reveal>
-              </li>
-              <li>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.2rem"
+                  >
+                    <Link
+                      to="https://www.instagram.com/lucas.shen21/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Instagram
+                      <span>
+                        <div className="full-contact">
+                          @lucas.shen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.2rem"
+                  >
+                    <Link
+                      to="https://github.com/jiayishen21"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      GitHub
+                      <span>
+                        <div className="full-contact">
+                          jiayishen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.2rem"
+                  >
+                    <Link
+                      to="https://www.linkedin.com/in/lucas-shen-8b5035209/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      LinkedIn
+                      <span>
+                        <div className="full-contact">
+                          Lucas Shen
+                        </div>
+                      </span>
+                    </Link>
+
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+
+            {screenWidth > 480 && screenWidth <= 767 && <>
+              <h3>
                 <Reveal
                   initialLoad={props.initialLoad}
                   switchPage={props.switchPage}
-                  height={'1.8rem'}
+                  height={'3rem'}
                 >
                   <>
-                    Built by Jiayi Shen using React
+                    Let's Talk
                   </>
                 </Reveal>
-              </li>
-            </ul>
+              </h3>
+
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.5rem"
+                  >
+                    <Link
+                      to="mailto:lucasshen21@gmail.com"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Email
+                      <span>
+                        <div className="full-contact">
+                          lucasshen21@gmail.com
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.5rem"
+                  >
+                    <Link
+                      to="https://www.instagram.com/lucas.shen21/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Instagram
+                      <span>
+                        <div className="full-contact">
+                          @lucas.shen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.5rem"
+                  >
+                    <Link
+                      to="https://github.com/jiayishen21"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      GitHub
+                      <span>
+                        <div className="full-contact">
+                          jiayishen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="1.5rem"
+                  >
+                    <Link
+                      to="https://www.linkedin.com/in/lucas-shen-8b5035209/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      LinkedIn
+                      <span>
+                        <div className="full-contact">
+                          Lucas Shen
+                        </div>
+                      </span>
+                    </Link>
+
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+            {screenWidth > 767 && screenWidth <= 1023 && <>
+              <h3>
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'4rem'}
+                >
+                  <>
+                    Let's Talk
+                  </>
+                </Reveal>
+              </h3>
+
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2rem"
+                  >
+                    <Link
+                      to="mailto:lucasshen21@gmail.com"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Email
+                      <span>
+                        <div className="full-contact">
+                          lucasshen21@gmail.com
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2rem"
+                  >
+                    <Link
+                      to="https://www.instagram.com/lucas.shen21/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Instagram
+                      <span>
+                        <div className="full-contact">
+                          @lucas.shen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2rem"
+                  >
+                    <Link
+                      to="https://github.com/jiayishen21"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      GitHub
+                      <span>
+                        <div className="full-contact">
+                          jiayishen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2rem"
+                  >
+                    <Link
+                      to="https://www.linkedin.com/in/lucas-shen-8b5035209/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      LinkedIn
+                      <span>
+                        <div className="full-contact">
+                          Lucas Shen
+                        </div>
+                      </span>
+                    </Link>
+
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+            {screenWidth >= 1024 && <>
+              <h3>
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'4.3rem'}
+                >
+                  <>
+                    Let's Talk
+                  </>
+                </Reveal>
+              </h3>
+
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2.2rem"
+                  >
+                    <Link
+                      to="mailto:lucasshen21@gmail.com"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Email
+                      <span>
+                        <div className="full-contact">
+                          lucasshen21@gmail.com
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2.2rem"
+                  >
+                    <Link
+                      to="https://www.instagram.com/lucas.shen21/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      Instagram
+                      <span>
+                        <div className="full-contact">
+                          @lucas.shen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2.2rem"
+                  >
+                    <Link
+                      to="https://github.com/jiayishen21"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      GitHub
+                      <span>
+                        <div className="full-contact">
+                          jiayishen21
+                        </div>
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height="2.2rem"
+                  >
+                    <Link
+                      to="https://www.linkedin.com/in/lucas-shen-8b5035209/"
+                      target="_blank"
+                      draggable='false'
+                    >
+                      LinkedIn
+                      <span>
+                        <div className="full-contact">
+                          Lucas Shen
+                        </div>
+                      </span>
+                    </Link>
+
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+          </div>
+          <div className="acknowledgements">
+            {screenWidth <= 480 && <>
+              <h3>
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'2.2rem'}
+                >
+                  <>
+                    Acknowledgements
+                  </>
+                </Reveal>
+              </h3>
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.5rem'}
+                  >
+                    <>
+                      {'Inspired by '}
+                      <Link
+                        to='https://camillemormal.com/'
+                        target="_blank"
+                        draggable='false'
+                      >
+                        camillemormal.com
+                      </Link>
+                    </>
+                  </Reveal>
+                </li>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.5rem'}
+                  >
+                    <>
+                      Built by Lucas Shen using React
+                    </>
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+            {screenWidth > 480 && screenWidth <= 767 && <>
+              <h3>
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'3rem'}
+                >
+                  <>
+                    Acknowledgements
+                  </>
+                </Reveal>
+              </h3>
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.2rem'}
+                  >
+                    <>
+                      {'Inspired by '}
+                      <Link
+                        to='https://camillemormal.com/'
+                        target="_blank"
+                        draggable='false'
+                      >
+                        camillemormal.com
+                      </Link>
+                    </>
+                  </Reveal>
+                </li>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.2rem'}
+                  >
+                    <>
+                      Built by Lucas Shen using React
+                    </>
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+            {screenWidth > 767 && screenWidth <= 1023 && <>
+              <h3>
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'4rem'}
+                >
+                  <>
+                    Acknowledgements
+                  </>
+                </Reveal>
+              </h3>
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'2rem'}
+                  >
+                    <>
+                      {'Inspired by '}
+                      <Link
+                        to='https://camillemormal.com/'
+                        target="_blank"
+                        draggable='false'
+                      >
+                        camillemormal.com
+                      </Link>
+                    </>
+                  </Reveal>
+                </li>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'2rem'}
+                  >
+                    <>
+                      Built by Lucas Shen using React
+                    </>
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
+            {screenWidth >= 1024 && <>
+              <h3>
+                <Reveal
+                  initialLoad={props.initialLoad}
+                  switchPage={props.switchPage}
+                  height={'4.3rem'}
+                >
+                  <>
+                    Acknowledgements
+                  </>
+                </Reveal>
+              </h3>
+              <ul>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'2.2rem'}
+                  >
+                    <>
+                      {'Inspired by '}
+                      <Link
+                        to='https://camillemormal.com/'
+                        target="_blank"
+                        draggable='false'
+                      >
+                        camillemormal.com
+                      </Link>
+                    </>
+                  </Reveal>
+                </li>
+                <li>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'2.2rem'}
+                  >
+                    <>
+                      Built by Lucas Shen using React
+                    </>
+                  </Reveal>
+                </li>
+              </ul>
+            </>}
           </div>
         </div>
       </motion.div>
