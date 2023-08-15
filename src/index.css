@@ -742,7 +742,7 @@ nav button {
   width: 100%;
   min-height: calc(100vh);
 
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 130%;
   display: flex;
   align-items: center;
@@ -751,7 +751,9 @@ nav button {
 
 .layout1 {
   display: grid;
-  width: 70rem;
+  max-width: 70rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
   grid-template-columns: 1fr 30rem;
   max-height: calc(100vh - 25rem);
   min-height: 29rem;
@@ -767,7 +769,17 @@ nav button {
   object-fit: cover;
 }
 
-@media (max-height: 54rem) {
+@media only screen and (min-width: 1023px) and (max-width: 1200px) {
+  .layout1 img {
+    object-position: 10%;
+  }
+
+  .reflections {
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 54rem) and (min-width: 1024px) {
   .layout1 {
     /* (100vh - 29rem) / 2 */
     padding-top: calc(50vh - 14.5rem);
@@ -806,6 +818,7 @@ nav button {
 }
 
 /*
+If you want to make text right aligned
 .layout-text .reveal-container {
   justify-content: end;
 }
@@ -852,9 +865,211 @@ nav button {
   transform: translate(5%, -15%);
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+  /* TODO: make reflections, image gallery, and next project*/
+  .layout1 .layout-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .layout1 .layout-text h1 svg {
+    font-size: 1.8rem;
+  }
+
+  .layout1 .role-title {
+    margin-top: 2.5rem;
+    font-size: 1.4rem;
+  }
+
+  .layout1 .role-description {
+    font-size: 0.9rem;
+  }
+
+  .layout1 .built-with {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .layout1 {
+    min-height: 25rem;
+    /* (100vh - 25rem)/2 = 50vh - 12.5rem */
+    padding-top: calc(50vh - 12.5rem);
+    padding-bottom: calc(50vh - 12.5rem);
+    grid-template-columns: 1fr 21rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  .layout1 img {
+    min-height: 25rem;
+  }
+
+  .layout1 .layout-text {
+    padding-left: 3rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .layout1 .layout-text h1 {
+    font-size: calc(6vw - 0.5rem);
+  }
+
+  .layout1 .layout-text h1 svg {
+    font-size: calc(6vw - 0.5rem);
+  }
+
+  .layout-text a {
+    transition: none;
+  }
+
+  .layout-text a:hover svg {
+    transform: translate(0, -10%);
+  }
+
+  .layout1 .role-title {
+    margin-top: 1rem;
+    font-size: calc(3*(6vw - 0.5rem)/4);
+  }
+
+  .layout1 .built-with {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    position: relative;
+    font-size: calc(3*(6vw - 0.5rem)/4);
+  }
+
+  .layout1 .role-description {
+    font-size: calc((5.5vw - 0.3rem)/2);
+  }
+
+  .layout1 {
+    grid-template-columns: 1fr;
+    width: calc(100% - 10rem);
+    margin-left: 5rem;
+    margin-right: 5rem;
+    padding-top: 6rem;
+  }
+
+  .layout1 img {
+    min-height: 10rem;
+    max-height: 100vh;
+    height: 40vh;
+  }
+
+  .layout1 .layout-text {
+    margin-top: 2rem;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .role-title,
+  .role-description,
+  .built-with {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .para-spacer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .built-with:hover svg {
+    transform: translate(0);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .layout1 .layout-text h1 {
+    font-size: calc(10vw - 0.25rem);
+  }
+
+  .layout1 .layout-text h1 svg {
+    margin-left: 0.5rem;
+    margin-right: 0.05rem;
+    font-size: calc(10vw - 0.25rem);
+  }
+
+  .layout-text a {
+    transition: none;
+  }
+
+  .layout1 a .reveal-container {
+    justify-content: center;
+  }
+
+  .layout-text a:hover svg {
+    transform: translate(0, -10%);
+  }
+
+  .layout1 .role-title {
+    margin-top: 1rem;
+    font-size: calc(3*(10vw - 0.25rem)/5);
+  }
+
+  .layout1 .built-with {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    position: relative;
+    font-size: calc(3*(10vw - 0.25rem)/5);
+  }
+
+  .layout1 .role-description {
+    font-size: calc((10vw - 0.15rem)/3);
+  }
+
+  .project-nav {
+    margin-left: 2rem;
+  }
+
+  .layout1 {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    width: calc(100% - 4rem);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-top: 5rem;
+  }
+
+  .layout1 img {
+    min-height: 5rem;
+    max-height: 15rem;
+    height: calc(25vh + 15vw);
+  }
+
+  .layout1 .layout-text {
+    margin-top: 1rem;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .role-title,
+  .role-description,
+  .built-with {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .para-spacer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .built-with:hover svg {
+    transform: translate(0);
+  }
+
+}
+
 .reflections {
   display: grid;
-  width: 70rem;
+  max-width: 70rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
   grid-template-columns: 1fr 1fr;
   column-gap: 5rem;
   margin-bottom: 13rem;

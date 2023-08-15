@@ -175,6 +175,20 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 		// TODO: Double check if PassionFruitYouth at index 1
 	}
 
+	// Screen size
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+	useEffect(() => {
+		const handleResize = () => {
+			setScreenWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, [])
+
 	return (
 		<>
 			<motion.div
@@ -225,86 +239,325 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 						</ImgReveal>
 						<div className="layout-text">
 							<div className="para-spacer">
-								<Link
-									to='https://jiayishen21.github.io/sorting-algorithms/'
-									target="_blank"
-									draggable="false"
-								>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='4rem'
+								{screenWidth <= 480 && <>
+									<Link
+										to='https://jiayishen21.github.io/sorting-algorithms/'
+										target="_blank"
+										draggable="false"
 									>
-										<h1>
-											Visual Sorting
-										</h1>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='4rem'
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc(10vw + 1rem)'
+										>
+											<h1>
+												Visual Sorting
+											</h1>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc(10vw + 1rem)'
+										>
+											<h1>
+												Algorithms
+												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+											</h1>
+										</Reveal>
+									</Link>
+									<div className="role-title">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='2rem'
+										>
+											<>
+												Sole Frontend Developer
+											</>
+										</Reveal>
+									</div>
+									<div className="role-description">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc((10vw - 0.15rem)/3 + 0.3rem)'
+										>
+											<>
+												Visual Sorting Algorithms is a website that
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc((10vw - 0.15rem)/3 + 0.3rem)'
+										>
+											<>
+												displays the swaps and comparisons being
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc((10vw - 0.15rem)/3 + 0.3rem)'
+										>
+											<>
+												made during various sorting algorithms.
+											</>
+										</Reveal>
+									</div>
+									<button
+										className="built-with"
+										onClick={scrollDown}
 									>
-										<h1>
-											Algorithms
-											<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-										</h1>
-									</Reveal>
-								</Link>
-								<div className="role-title">
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='2rem'
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='2.3rem'
+										>
+											<>
+												Built with React
+												<FontAwesomeIcon icon={faArrowDown} />
+											</>
+										</Reveal>
+									</button>
+								</>}
+								{screenWidth > 480 && screenWidth <= 767 && <>
+									<Link
+										to='https://jiayishen21.github.io/sorting-algorithms/'
+										target="_blank"
+										draggable="false"
 									>
-										<>
-											Sole Frontend Developer
-										</>
-									</Reveal>
-								</div>
-								<div className="role-description">
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='1.6rem'
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc(6vw)'
+										>
+											<h1>
+												Visual Sorting Algorithms
+												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+											</h1>
+										</Reveal>
+									</Link>
+									<div className="role-title">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc(3*(6vw - 0.5rem)/4 + 0.5rem'
+										>
+											<>
+												Sole Frontend Developer
+											</>
+										</Reveal>
+									</div>
+									<div className="role-description">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc((5.5vw - 0.3rem)/2 + 0.2rem)'
+										>
+											<>
+												Visual Sorting Algorithms is a website that
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc((5.5vw - 0.3rem)/2 + 0.2rem)'
+										>
+											<>
+												displays the swaps and comparisons being
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc((5.5vw - 0.3rem)/2 + 0.2rem)'
+										>
+											<>
+												made during various sorting algorithms.
+											</>
+										</Reveal>
+									</div>
+									<button
+										className="built-with"
+										onClick={scrollDown}
 									>
-										<>
-											Visual Sorting Algorithms is a website that
-										</>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='1.6rem'
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='calc(3*(6vw - 0.5rem)/4 + 0.5rem'
+										>
+											<>
+												Built with React
+												<FontAwesomeIcon icon={faArrowDown} />
+											</>
+										</Reveal>
+									</button>
+								</>}
+								{screenWidth > 767 && screenWidth <= 1023 && <>
+									<Link
+										to='https://jiayishen21.github.io/sorting-algorithms/'
+										target="_blank"
+										draggable="false"
 									>
-										<>
-											displays the swaps and comparisons being
-										</>
-									</Reveal>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='1.6rem'
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='3.2rem'
+										>
+											<h1>
+												Visual Sorting
+											</h1>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='3.2rem'
+										>
+											<h1>
+												Algorithms
+												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+											</h1>
+										</Reveal>
+									</Link>
+									<div className="role-title">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='2rem'
+										>
+											<>
+												Sole Frontend Developer
+											</>
+										</Reveal>
+									</div>
+									<div className="role-description">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='1.45rem'
+										>
+											<>
+												Visual Sorting Algorithms is a website that
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='1.45rem'
+										>
+											<>
+												displays the swaps and comparisons being
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='1.45rem'
+										>
+											<>
+												made during various sorting algorithms.
+											</>
+										</Reveal>
+									</div>
+									<button
+										className="built-with"
+										onClick={scrollDown}
 									>
-										<>
-											made during various sorting algorithms.
-										</>
-									</Reveal>
-								</div>
-								<button
-									className="built-with"
-									onClick={scrollDown}
-								>
-									<Reveal
-										initialLoad={props.initialLoad}
-										switchPage={props.switchPage}
-										height='2.3rem'
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='2.3rem'
+										>
+											<>
+												Built with React
+												<FontAwesomeIcon icon={faArrowDown} />
+											</>
+										</Reveal>
+									</button>
+								</>}
+								{screenWidth >= 1024 && <>
+									<Link
+										to='https://jiayishen21.github.io/sorting-algorithms/'
+										target="_blank"
+										draggable="false"
 									>
-										<>
-											Built with React
-											<FontAwesomeIcon icon={faArrowDown} />
-										</>
-									</Reveal>
-								</button>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='4rem'
+										>
+											<h1>
+												Visual Sorting
+											</h1>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='4rem'
+										>
+											<h1>
+												Algorithms
+												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+											</h1>
+										</Reveal>
+									</Link>
+									<div className="role-title">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='2rem'
+										>
+											<>
+												Sole Frontend Developer
+											</>
+										</Reveal>
+									</div>
+									<div className="role-description">
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='1.6rem'
+										>
+											<>
+												Visual Sorting Algorithms is a website that
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='1.6rem'
+										>
+											<>
+												displays the swaps and comparisons being
+											</>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='1.6rem'
+										>
+											<>
+												made during various sorting algorithms.
+											</>
+										</Reveal>
+									</div>
+									<button
+										className="built-with"
+										onClick={scrollDown}
+									>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='2.3rem'
+										>
+											<>
+												Built with React
+												<FontAwesomeIcon icon={faArrowDown} />
+											</>
+										</Reveal>
+									</button>
+								</>}
 							</div>
 						</div>
 					</div>
