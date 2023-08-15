@@ -20,6 +20,19 @@ interface Props {
 	setOnMenu: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+interface heights {
+	projectName: string
+	roleTitle: string
+	roleDesc: string
+	builtWith: string
+
+	reflectionsTitle: string
+	reflectionsPoint: string
+
+	nextProjectTitle: string
+	nextProject: string
+}
+
 const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 	/*
 	Momentum scrolling
@@ -175,6 +188,108 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		props.setPage('/')
 	}
 
+	// Screen size
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+	useEffect(() => {
+		const handleResize = () => {
+			setScreenWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, [])
+
+	const defaultHeights: heights = {
+		projectName: '4rem',
+		roleTitle: '2rem',
+		roleDesc: '1.6rem',
+		builtWith: '2.3rem',
+
+		reflectionsTitle: '4rem',
+		reflectionsPoint: '2rem',
+
+		nextProjectTitle: '4rem',
+		nextProject: '2.3rem',
+	}
+
+	const [heights, setHeights] = useState<heights>(defaultHeights)
+
+	useEffect(() => {
+		if (screenWidth > 1200) {
+			setHeights({
+				projectName: '4rem',
+				roleTitle: '2rem',
+				roleDesc: '1.6rem',
+				builtWith: '2.3rem',
+
+				reflectionsTitle: '4rem',
+				reflectionsPoint: '1.3rem',
+
+				nextProjectTitle: '4rem',
+				nextProject: '2.3rem',
+			})
+		}
+		if (screenWidth > 1023) {
+			setHeights({
+				projectName: '4rem',
+				roleTitle: '2rem',
+				roleDesc: '1.6rem',
+				builtWith: '2.3rem',
+
+				reflectionsTitle: '4rem',
+				reflectionsPoint: '2rem',
+
+				nextProjectTitle: '4rem',
+				nextProject: '2.3rem',
+			})
+		}
+		else if (screenWidth > 767) {
+			setHeights({
+				projectName: '3.2rem',
+				roleTitle: '1.45rem',
+				roleDesc: '1.45rem',
+				builtWith: '1.75rem',
+
+				reflectionsTitle: '3.2rem',
+				reflectionsPoint: '1.8rem',
+
+				nextProjectTitle: '3.2rem',
+				nextProject: '2.3rem',
+			})
+		}
+		else if (screenWidth > 480) {
+			setHeights({
+				projectName: '6vw',
+				roleTitle: 'calc((6vw - 0.5rem)*0.75 + 0.25rem)',
+				roleDesc: 'calc((5.5vw - 0.3rem)*0.5 + 0.2rem)',
+				builtWith: 'calc((6vw - 0.5rem)*0.75 + 0.5rem)',
+
+				reflectionsTitle: '6vw',
+				reflectionsPoint: 'calc((5.5vw - 0.3rem)*0.5 + 0.2rem',
+
+				nextProjectTitle: '3rem',
+				nextProject: 'calc((10vw - 0.25rem)*0.6 + 0.3rem)',
+			})
+		}
+		else {
+			setHeights({
+				projectName: 'calc(10vw + 1rem)',
+				roleTitle: 'calc((10vw - 0.25rem)*0.6 + 0.5rem)',
+				roleDesc: 'calc((12vw - 0.2rem)/3 + 0.3rem)',
+				builtWith: 'calc((10vw - 0.25rem)*0.6 + 0.5rem)',
+
+				reflectionsTitle: 'calc(12vw + 0.2rem)',
+				reflectionsPoint: 'calc((12vw - 0.2rem)/3 + 0.3rem)',
+
+				nextProjectTitle: '3rem',
+				nextProject: 'calc((10vw - 0.25rem)*0.6 + 0.3rem)',
+			})
+		}
+	}, [screenWidth])
+
 	return (
 		<>
 			<motion.div
@@ -212,38 +327,77 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 					className="content"
 					style={{ transform: `translateY(-${scrollY}px)` }}
 				>
+					{
+						// @media only screen and (min-width: 481px) and (max-width: 767px) {
+					}
 					<div
-						className="layout2"
-						style={{
-							backgroundImage: `url(${process.env.PUBLIC_URL}/imgs/passionfruit-youth/main.png`,
-						}}
+						className={screenWidth > 767 ? 'layout2' : 'layout1'}
+						style={
+							screenWidth > 767 ? {
+								backgroundImage: `url(${process.env.PUBLIC_URL}/imgs/passionfruit-youth/main.png`,
+							} : {}
+						}
 					>
-						<div className="layout-text">
-							<Link
-								to='https://jiayishen21.github.io/sorting-algorithms/'
-								target="_blank"
-								draggable="false"
+						{screenWidth < 768 &&
+							<ImgReveal
+								initialLoad={props.initialLoad}
+								switchPage={props.switchPage}
 							>
-								<Reveal
-									initialLoad={props.initialLoad}
-									switchPage={props.switchPage}
-									height='4rem'
-								>
-									<h1>
-										PassionFruit
-									</h1>
-								</Reveal>
-								<Reveal
-									initialLoad={props.initialLoad}
-									switchPage={props.switchPage}
-									height='4rem'
-								>
-									<h1>
-										Youth
-										<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-									</h1>
-								</Reveal>
-							</Link>
+								<img
+									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/main.png`}
+									alt='happy child and parent learning'
+									draggable='false'
+								/>
+							</ImgReveal>
+						}
+
+						<div className="layout-text">
+							{(screenWidth < 768 && screenWidth > 480) ?
+								<>
+									<Link
+										to='https://jiayishen21.github.io/sorting-algorithms/'
+										target="_blank"
+										draggable="false"
+									>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='4rem'
+										>
+											<h1>
+												PassionFruit Youth
+												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+											</h1>
+										</Reveal>
+									</Link>
+								</> : <>
+									<Link
+										to='https://jiayishen21.github.io/sorting-algorithms/'
+										target="_blank"
+										draggable="false"
+									>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='4rem'
+										>
+											<h1>
+												PassionFruit
+											</h1>
+										</Reveal>
+										<Reveal
+											initialLoad={props.initialLoad}
+											switchPage={props.switchPage}
+											height='4rem'
+										>
+											<h1>
+												Youth
+												<FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+											</h1>
+										</Reveal>
+									</Link>
+								</>
+							}
 							<div className="role-title">
 								<Reveal
 									initialLoad={props.initialLoad}
