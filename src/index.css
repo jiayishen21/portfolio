@@ -539,7 +539,7 @@ nav button {
 /* Smartphone */
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .about .content {
-    font-size: 0.9rem;
+    font-size: calc(3.3vw - 0.15rem);
   }
 
   .me-wrapper {
@@ -547,6 +547,7 @@ nav button {
   }
 
   .me {
+    padding-top: 1rem;
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -555,10 +556,6 @@ nav button {
     object-position: center center;
     height: 20rem;
     margin-bottom: 2rem;
-  }
-
-  .me-text>div {
-    width: 23rem;
   }
 
   .me-text {
@@ -629,7 +626,7 @@ nav button {
 /* Old phone */
 @media only screen and (max-width: 480px) {
   .about .content {
-    font-size: 0.65rem;
+    font-size: calc(4vw - 0.15rem);
   }
 
   .me-wrapper {
@@ -645,10 +642,6 @@ nav button {
     object-position: center center;
     height: 20rem;
     margin-bottom: 2rem;
-  }
-
-  .me-text>div {
-    width: 14rem;
   }
 
   .me-text {

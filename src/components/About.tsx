@@ -242,28 +242,28 @@ const About: React.FC<Props> = (props: Props) => {
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='0.75rem'
+                        height='calc((4vw - 0.15rem(*1.3)'
                       >
                         <>
-                          I'm Lucas Shen, a Full-Stack Engineer with a
+                          I'm Lucas Shen, a Full-Stack Engineer with
                         </>
                       </Reveal>
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='0.75rem'
+                        height='calc((4vw - 0.15rem(*1.3)'
                       >
                         <>
-                          passion for crafting practical applications
+                          a passion for crafting practical applications
                         </>
                       </Reveal>
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='0.75rem'
+                        height='calc((4vw - 0.15rem(*1.3)'
                       >
                         <>
-                          that bridge imagination and functionality.
+                          that brdige imagination and reality.
                         </>
                       </Reveal>
                     </div>
@@ -271,7 +271,7 @@ const About: React.FC<Props> = (props: Props) => {
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='0.75rem'
+                        height='calc((4vw - 0.15rem(*1.3)'
                       >
                         <>
                           If you have any ideas in mind, feel free to
@@ -280,7 +280,7 @@ const About: React.FC<Props> = (props: Props) => {
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='0.75rem'
+                        height='calc((4vw - 0.15rem)*1.3)'
                       >
                         <>
                           reach out. Let's build something incredible
@@ -289,10 +289,10 @@ const About: React.FC<Props> = (props: Props) => {
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='0.75rem'
+                        height='calc((4vw - 0.15rem(*1.3)'
                       >
                         <>
-                          together!
+                          together.
                         </>
                       </Reveal>
                     </div>
@@ -316,28 +316,28 @@ const About: React.FC<Props> = (props: Props) => {
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='1.1rem'
+                        height='calc((3.3vw - 0.15rem)*1.3)'
                       >
                         <>
-                          I'm Lucas Shen, a Full-Stack Engineer with a passion
+                          I'm Lucas Shen, a Full-Stack Engineer with a
                         </>
                       </Reveal>
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='1.1rem'
+                        height='calc((3.3vw - 0.15rem)*1.3)'
                       >
                         <>
-                          for crafting practical applications that bridge
+                          passion for crafting practical applications
                         </>
                       </Reveal>
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='1.1rem'
+                        height='calc((3.3vw - 0.15rem)*1.3)'
                       >
                         <>
-                          imagination and functionality.
+                          that bridge imagination and reality.
                         </>
                       </Reveal>
                     </div>
@@ -345,19 +345,19 @@ const About: React.FC<Props> = (props: Props) => {
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='1.1rem'
+                        height='calc((3.3vw - 0.15rem)*1.3)'
                       >
                         <>
-                          If you have any ideas in mind, feel free to reach out.
+                          If you have any ideas in mind, feel free to reach
                         </>
                       </Reveal>
                       <Reveal
                         initialLoad={props.initialLoad}
                         switchPage={props.switchPage}
-                        height='1.1rem'
+                        height='calc((3.3vw - 0.15rem)*1.3)'
                       >
                         <>
-                          Let's build something incredible together!
+                          out. Let's build something incredible together.
                         </>
                       </Reveal>
                     </div>
