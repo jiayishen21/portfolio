@@ -885,7 +885,7 @@ If you want to make text right aligned
 }
 
 .pictures {
-  width: 80%;
+  width: 80vw;
   max-width: 75rem;
   display: grid;
   grid-template-columns: 1fr;
