@@ -284,10 +284,10 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		}
 		else if (screenWidth > 767) {
 			setHeights({
-				projectName: '3.2rem',
-				roleTitle: '1.45rem',
-				roleDesc: '1.45rem',
-				builtWith: '1.75rem',
+				projectName: '4rem',
+				roleTitle: '2rem',
+				roleDesc: '1.6rem',
+				builtWith: '2.3rem',
 
 				reflectionsTitle: '3.2rem',
 				reflectionsPoint: '1.8rem',
@@ -398,7 +398,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='4rem'
+											height={heights.projectName}
 										>
 											<h1>
 												PassionFruit Youth
@@ -415,7 +415,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='4rem'
+											height={heights.projectName}
 										>
 											<h1>
 												PassionFruit
@@ -424,7 +424,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 										<Reveal
 											initialLoad={props.initialLoad}
 											switchPage={props.switchPage}
-											height='4rem'
+											height={heights.projectName}
 										>
 											<h1>
 												Youth
@@ -438,7 +438,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='2rem'
+									height={heights.roleTitle}
 								>
 									<>
 										Sole Frontend Developer
@@ -449,7 +449,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='1.6rem'
+									height={heights.roleDesc}
 								>
 									<>
 										PassionFruit Youth is a non-profit that helps
@@ -458,7 +458,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='1.6rem'
+									height={heights.roleDesc}
 								>
 									<>
 										youth grasp the intricacies of various
@@ -467,7 +467,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='1.6rem'
+									height={heights.roleDesc}
 								>
 									<>
 										careers, enabling them to make informed
@@ -476,7 +476,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='1.6rem'
+									height={heights.roleDesc}
 								>
 									<>
 										career decisions.
@@ -490,7 +490,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='2.3rem'
+									height={heights.builtWith}
 								>
 									<>
 										Built with HTML + CSS
@@ -506,7 +506,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 							<Reveal
 								initialLoad={props.initialLoad}
 								switchPage={props.switchPage}
-								height='4rem'
+								height={heights.reflectionsTitle}
 							>
 								<h3>
 									Challenges
@@ -517,7 +517,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Had to find ways to make a landing
@@ -526,7 +526,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											page interactive.
@@ -537,7 +537,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Handling responsive design purely with
@@ -546,7 +546,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											CSS media queries.
@@ -557,7 +557,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Search engine optimization without
@@ -566,7 +566,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											dynamic content and changing meta
@@ -575,7 +575,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											tags.
@@ -589,7 +589,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 							<Reveal
 								initialLoad={props.initialLoad}
 								switchPage={props.switchPage}
-								height='4rem'
+								height={heights.reflectionsTitle}
 							>
 								<h3>
 									What I Learned
@@ -600,7 +600,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Meta tag for search engine optimization
@@ -609,7 +609,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											in HTML.
@@ -620,7 +620,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Using unique CSS animations that
@@ -629,7 +629,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											trigger on hover to create interactivity.
@@ -640,7 +640,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Animating numbers with the @property
@@ -649,7 +649,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											CSS rule
@@ -660,7 +660,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Deploying a HTML project to GitHub
@@ -669,7 +669,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											Pages and configuring a custom
@@ -678,7 +678,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									<Reveal
 										initialLoad={props.initialLoad}
 										switchPage={props.switchPage}
-										height='2rem'
+										height={heights.reflectionsPoint}
 									>
 										<>
 											domain.
@@ -744,7 +744,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								<Reveal
 									initialLoad={props.initialLoad}
 									switchPage={props.switchPage}
-									height='4rem'
+									height={heights.nextProjectTitle}
 								>
 									<h2>
 										Visual Sorting Algorithms
@@ -752,7 +752,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 								</Reveal>
 								<div
 									className="reveal-container"
-									style={{ height: '2.3rem' }}
+									style={{ height: heights.nextProject }}
 								>
 									<h4>
 										Next Project
