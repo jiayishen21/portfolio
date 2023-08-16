@@ -1044,6 +1044,10 @@ If you want to make text right aligned
     margin-right: 2.5rem;
   }
 
+  .layout2 {
+    margin-bottom: 3rem;
+  }
+
   .layout1 img {
     min-height: 25rem;
   }
@@ -1112,6 +1116,10 @@ If you want to make text right aligned
     margin-right: 5rem;
     margin-bottom: 0;
     padding-top: 6rem;
+  }
+
+  .layout2 {
+    padding-bottom: 2.5rem;
   }
 
   .layout1 img {
@@ -1231,6 +1239,10 @@ If you want to make text right aligned
     margin-right: 2rem;
     padding-top: 5rem;
     margin-bottom: 0;
+    padding-bottom: 8rem;
+  }
+
+  .layout2 {
     padding-bottom: 8rem;
   }
 
