@@ -7,6 +7,8 @@ import Nav from './Nav'
 import VisualSortingAlgorithms from './projects/VisualSortingAlgorithms'
 import ProjectNav from './ProjectNav'
 import PassionFruitYouth from './projects/PassionFruitYouth'
+import { useEffect, useState } from 'react'
+import MobileProjects from './MobileProjects'
 
 interface Props {
   curProject: number
@@ -34,6 +36,20 @@ interface Props {
 const AnimatedRoutes: React.FC<Props> = (props: Props) => {
   const location = useLocation()
 
+  // Screen size
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [])
+
   return (
     <>
       <Nav
@@ -57,37 +73,48 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
           location={location}
           key={location.pathname}
         >
-          <Route
-            path='/'
-            element={<Projects
-              curProject={props.curProject}
-              setCurProject={props.setCurProject}
+          {screenWidth > 767 ?
+            <Route
+              path='/'
+              element={<Projects
+                curProject={props.curProject}
+                setCurProject={props.setCurProject}
 
-              onMenu={props.onMenu}
-              setOnMenu={props.setOnMenu}
+                onMenu={props.onMenu}
+                setOnMenu={props.setOnMenu}
 
-              percentage={props.percentage}
-              setPercentage={props.setPercentage}
+                percentage={props.percentage}
+                setPercentage={props.setPercentage}
 
-              mouseDown={props.mouseDown}
-              setMouseDown={props.setMouseDown}
-              prevPercentage={props.prevPercentage}
-              setPrevPercentage={props.setPrevPercentage}
+                mouseDown={props.mouseDown}
+                setMouseDown={props.setMouseDown}
+                prevPercentage={props.prevPercentage}
+                setPrevPercentage={props.setPrevPercentage}
 
-              switchPage={props.switchPage}
-              setSwitchPage={props.setSwitchPage}
+                switchPage={props.switchPage}
+                setSwitchPage={props.setSwitchPage}
 
-              page={props.page}
-              setPage={props.setPage}
+                page={props.page}
+                setPage={props.setPage}
 
-              initialLoad={props.initialLoad}
-            />}
-          />
+                initialLoad={props.initialLoad}
+              />}
+            /> :
+            <Route
+              path='/'
+              element={<MobileProjects
+                switchPage={props.switchPage}
+                setSwitchPage={props.setSwitchPage}
+                initialLoad={props.initialLoad}
+                page={props.page}
+                setPage={props.setPage}
+              />}
+            />
+          }
           <Route
             path='/about'
             element={<About
               switchPage={props.switchPage}
-              setSwitchPage={props.setSwitchPage}
               initialLoad={props.initialLoad}
               page={props.page}
             />}

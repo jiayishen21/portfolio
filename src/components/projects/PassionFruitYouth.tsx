@@ -327,9 +327,6 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 					className="content"
 					style={{ transform: `translateY(-${scrollY}px)` }}
 				>
-					{
-						// @media only screen and (min-width: 481px) and (max-width: 767px) {
-					}
 					<div
 						className={screenWidth > 767 ? 'layout2' : 'layout1'}
 						style={

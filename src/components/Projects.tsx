@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Project from "./Project";
 import { motion } from "framer-motion";
 import MenuProject from "./MenuProject";
+import projects from '../projects'
 
 interface Props {
   curProject: number
@@ -28,21 +29,6 @@ interface Props {
 }
 
 const Projects: React.FC<Props> = (props) => {
-  const projects = [
-    {
-      name: 'Visual Sorting Algorithms',
-      link: '/visual-sorting-algorithms',
-      imgPath: '/imgs/visual-sorting-algorithms.png',
-      menuImgPath: '/imgs/menu/visual-sorting-algorithms.png',
-    },
-    {
-      name: 'PassionFruit Youth',
-      link: '/passionfruit-youth',
-      imgPath: '/imgs/passionfruit-youth.png',
-      menuImgPath: '/imgs/menu/passionfruit-youth.png',
-    },
-  ]
-
   const slide = (direction: number) => {
     if (delay > 0) {
       return

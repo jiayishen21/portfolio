@@ -6,10 +6,7 @@ import ImgReveal from "./ImgReveal"
 
 interface Props {
   switchPage: number
-  setSwitchPage: React.Dispatch<React.SetStateAction<number>>
-
   initialLoad: boolean
-
   page: string
 }
 

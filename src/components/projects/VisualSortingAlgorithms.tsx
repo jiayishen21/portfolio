@@ -181,10 +181,16 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 	}
 
 	const redirect = () => {
-		props.setOnMenu(false)
-		props.setCurProject(1)
-		props.setSwitchPage(700)
-		props.setPage('/')
+		if (screenWidth > 767) {
+			props.setOnMenu(false)
+			props.setCurProject(1)
+			props.setSwitchPage(700)
+			props.setPage('/')
+		}
+		else {
+			props.setSwitchPage(700)
+			props.setPage('/passionfruit-youth')
+		}
 		// TODO: Double check if PassionFruitYouth at index 1
 	}
 
