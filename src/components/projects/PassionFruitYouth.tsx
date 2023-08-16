@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from "react"
 import { motion } from 'framer-motion'
 import { Link } from "react-router-dom"
@@ -34,6 +33,20 @@ interface heights {
 }
 
 const PassionFruitYouth: React.FC<Props> = (props: Props) => {
+	// Screen size
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+	useEffect(() => {
+		const handleResize = () => {
+			setScreenWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, [])
+
 	/*
 	Momentum scrolling
 	*/
@@ -49,12 +62,18 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		if (props.initialLoad || props.switchPage > 0) {
 			return
 		}
+		if (screenWidth <= 767) {
+			return
+		}
 		setScrolling(true);
 		setStartY(e.clientY);
 	};
 
 	const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
 		if (props.initialLoad || props.switchPage > 0) {
+			return
+		}
+		if (screenWidth <= 767) {
 			return
 		}
 		setScrolling(true);
@@ -64,6 +83,9 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 	const handleMove = (clientY: number) => {
 		if (!scrolling) return;
 		if (!contentRef.current || !containerRef.current) {
+			return
+		}
+		if (screenWidth <= 767) {
 			return
 		}
 
@@ -95,6 +117,9 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 	};
 
 	useEffect(() => {
+		if (screenWidth <= 767) {
+			return
+		}
 		if (scrolling) {
 			window.addEventListener('mousemove', handleMoveMouse);
 			window.addEventListener('touchmove', handleMoveTouch);
@@ -122,6 +147,9 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		if (props.initialLoad || props.switchPage > 0) {
 			return
 		}
+		if (screenWidth <= 767) {
+			return
+		}
 
 		const maxScroll = contentRef.current.scrollHeight - containerRef.current.clientHeight || 0;
 		let newScrollY = scrollY + event.deltaY;
@@ -140,6 +168,15 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		if (!contentRef.current) {
 			return
 		}
+		if (screenWidth <= 767) {
+			contentRef.current.animate(
+				[{ transform: `translateY(0px)` }],
+				{
+					duration: 0,
+				}
+			);
+			return
+		}
 		contentRef.current.animate(
 			[{ transform: `translateY(-${scrollY}px)` }],
 			{
@@ -148,10 +185,13 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 				easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
 			}
 		);
-	}, [scrollY])
+	}, [scrollY, screenWidth])
 
 	useEffect(() => {
 		if (!scrollRef.current) {
+			return
+		}
+		if (screenWidth <= 767) {
 			return
 		}
 		scrollRef.current.animate(
@@ -169,6 +209,9 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		if (!containerRef.current || !contentRef.current) {
 			return
 		}
+		if (screenWidth <= 767) {
+			return
+		}
 		const maxScroll = contentRef.current.scrollHeight - containerRef.current.clientHeight || 0;
 		let newScrollY = containerRef.current.clientHeight || 0
 
@@ -182,25 +225,18 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 	}
 
 	const redirect = () => {
-		props.setOnMenu(false)
-		props.setCurProject(0)
-		props.setSwitchPage(700)
-		props.setPage('/')
+		if (screenWidth > 767) {
+			props.setOnMenu(false)
+			props.setCurProject(0)
+			props.setSwitchPage(700)
+			props.setPage('/')
+		}
+		else {
+			props.setSwitchPage(700)
+			props.setPage('/visual-sorting-algorithms')
+		}
+		//TODO: Check if index 0 is visual sorting algorithms
 	}
-
-	// Screen size
-	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-	useEffect(() => {
-		const handleResize = () => {
-			setScreenWidth(window.innerWidth);
-		};
-
-		window.addEventListener('resize', handleResize);
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, [])
 
 	const defaultHeights: heights = {
 		projectName: '4rem',
@@ -294,10 +330,10 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		<>
 			<motion.div
 				ref={containerRef}
-				onMouseDown={handleMouseDown}
-				onTouchStart={handleTouchStart}
-				onWheel={handleMouseWheel}
-				className={`project-page no-scroll ${props.initialLoad ? 'transparent' : ''}`}
+				onMouseDown={screenWidth > 767 ? handleMouseDown : () => null}
+				onTouchStart={screenWidth > 767 ? handleTouchStart : () => null}
+				onWheel={screenWidth > 767 ? handleMouseWheel : () => null}
+				className={`project-page ${screenWidth > 767 ? 'no-scroll' : ''} ${props.initialLoad ? 'transparent' : ''}`}
 
 				initial={{
 					opacity: 1,
@@ -318,14 +354,17 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 					}
 				}}
 			>
-				<div
-					ref={scrollRef}
-					className="scrollbar"
-				/>
+				{
+					screenWidth > 767 &&
+					<div
+						ref={scrollRef}
+						className="scrollbar"
+					/>
+				}
 				<div
 					ref={contentRef}
 					className="content"
-					style={{ transform: `translateY(-${scrollY}px)` }}
+					style={{ transform: `translateY(-${screenWidth > 767 ? scrollY : 0}px)` }}
 				>
 					<div
 						className={screenWidth > 767 ? 'layout2' : 'layout1'}
