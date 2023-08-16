@@ -1149,6 +1149,14 @@ const About: React.FC<Props> = (props: Props) => {
                   >
                     <>
                       {'Inspired by '}
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.5rem'}
+                  >
+                    <>
                       <Link
                         to='https://camillemormal.com/'
                         target="_blank"
@@ -1193,6 +1201,14 @@ const About: React.FC<Props> = (props: Props) => {
                   >
                     <>
                       {'Inspired by '}
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.2rem'}
+                  >
+                    <>
                       <Link
                         to='https://camillemormal.com/'
                         target="_blank"
@@ -1210,7 +1226,16 @@ const About: React.FC<Props> = (props: Props) => {
                     height={'1.2rem'}
                   >
                     <>
-                      Built by Lucas Shen using React
+                      Built by Lucas Shen using
+                    </>
+                  </Reveal>
+                  <Reveal
+                    initialLoad={props.initialLoad}
+                    switchPage={props.switchPage}
+                    height={'1.2rem'}
+                  >
+                    <>
+                      React
                     </>
                   </Reveal>
                 </li>

@@ -609,15 +609,16 @@ nav button {
   }
 
   .about ul {
-    margin-left: 3.5rem;
+    margin-left: 3rem;
+  }
+
+  .contact ul li,
+  .acknowledgements ul li {
+    font-size: 1.2rem;
   }
 
   .about ul li a span {
     display: none;
-  }
-
-  .acknowledgements ul li {
-    font-size: 0.9rem;
   }
 
   .full-contact {
@@ -713,8 +714,7 @@ nav button {
 
   .contact ul li,
   .acknowledgements ul li {
-    font-size: 0.65rem;
-    margin-bottom: 0;
+    font-size: 1rem;
   }
 
   .full-contact {
