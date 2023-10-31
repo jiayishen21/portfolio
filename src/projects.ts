@@ -7,6 +7,12 @@ interface project {
 
 const projects: project[] = [
 	{
+		name: 'Slime Scholars',
+		link: '/slime-scholars',
+		imgPath: '/imgs/slime-scholars.png',
+		menuImgPath: '/imgs/menu/slime-scholars.png',
+	},
+	{
 		name: 'Visual Sorting Algorithms',
 		link: '/visual-sorting-algorithms',
 		imgPath: '/imgs/visual-sorting-algorithms.png',

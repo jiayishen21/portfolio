@@ -233,7 +233,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 		}
 		else {
 			props.setSwitchPage(700)
-			props.setPage('/visual-sorting-algorithms')
+			props.setPage('/slime-scholars')
 		}
 		//TODO: Check if index 0 is visual sorting algorithms
 	}
@@ -735,7 +735,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 							>
 								<img
 									src={`${process.env.PUBLIC_URL}imgs/passionfruit-youth/next-project.png`}
-									alt='visual sorting algorithms'
+									alt='slime scholars'
 									draggable='false'
 								/>
 							</ImgReveal>
@@ -747,7 +747,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									height={heights.nextProjectTitle}
 								>
 									<h2>
-										Visual Sorting Algorithms
+										Slime Scholars
 									</h2>
 								</Reveal>
 								<div

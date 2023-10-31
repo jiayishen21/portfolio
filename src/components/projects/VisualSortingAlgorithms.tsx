@@ -210,7 +210,7 @@ const VisualSortingAlgorithms: React.FC<Props> = (props: Props) => {
 	const redirect = () => {
 		if (screenWidth > 767) {
 			props.setOnMenu(false)
-			props.setCurProject(1)
+			props.setCurProject(2)
 			props.setSwitchPage(700)
 			props.setPage('/')
 		}

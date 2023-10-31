@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 import Projects from "./Projects"
 import Nav from './Nav'
 import VisualSortingAlgorithms from './projects/VisualSortingAlgorithms'
+import SlimeScholars from './projects/SlimeScholars'
 import ProjectNav from './ProjectNav'
 import PassionFruitYouth from './projects/PassionFruitYouth'
 import { useEffect, useState } from 'react'
@@ -117,6 +118,18 @@ const AnimatedRoutes: React.FC<Props> = (props: Props) => {
               switchPage={props.switchPage}
               initialLoad={props.initialLoad}
               page={props.page}
+            />}
+          />
+          <Route
+            path='/slime-scholars'
+            element={<SlimeScholars
+              switchPage={props.switchPage}
+              setSwitchPage={props.setSwitchPage}
+              initialLoad={props.initialLoad}
+              page={props.page}
+              setPage={props.setPage}
+              setOnMenu={props.setOnMenu}
+              setCurProject={props.setCurProject}
             />}
           />
           <Route
