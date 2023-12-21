@@ -13,6 +13,28 @@ const Loading: React.FC = () => {
     }
   }, [loading])
 
+  useEffect(() => {
+    const imgPaths = [
+      'me-landscape.png',
+      'me.png',
+      'me2.png',
+      'passionfruit-youth.png',
+      'slime-scholars.png',
+      'visual-sorting-algorithm.png',
+    ]
+
+    const preloadImgs = (paths: string[]) => {
+      paths.forEach((path: string) => {
+        const img = new Image()
+        img.src = process.env.PUBLIC_URL + '/imgs/' + path
+        console.log(img)
+      })
+    }
+
+    preloadImgs(imgPaths)
+
+  }, [])
+
   return (
     <>
       {loading ?

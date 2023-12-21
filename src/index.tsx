@@ -10,11 +10,5 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Loading />
-    <div style={{
-      opacity: 0,
-      zIndex: -100,
-    }}>
-      <App />
-    </div>
   </React.StrictMode>
 );
