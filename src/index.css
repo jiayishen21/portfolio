@@ -1343,3 +1343,35 @@ If you want to make text right aligned
   font-variation-settings: 'wght' 500 !important;
   color: var(--subtitle);
 }
+
+.loading-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  transition: opacity 0.5s;
+}
+
+.loading-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.loading-bar {
+  height: 0.7rem;
+  width: min(25rem, 40%);
+  padding: 0.2rem;
+  border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background: var(--inactive);
+}
+
+.loading-bar-inner {
+  height: 100%;
+  border-radius: 1000px;
+  background: var(--highlight);
+}
