@@ -16,11 +16,11 @@ const Loading: React.FC = () => {
   useEffect(() => {
     const imgPaths = [
       'me-landscape.png',
-      'me.png',
-      'me2.png',
-      'passionfruit-youth.png',
-      'slime-scholars.png',
-      'visual-sorting-algorithm.png',
+      // 'me.png',
+      // 'me2.png',
+      // 'passionfruit-youth.png',
+      // 'slime-scholars.png',
+      // 'visual-sorting-algorithm.png',
 
       // '/white-logos/express.png',
       // '/white-logos/javascript.png',
