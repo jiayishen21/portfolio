@@ -58,7 +58,6 @@ const Loading: React.FC = () => {
       paths.forEach((path: string) => {
         const img = new Image()
         img.src = process.env.PUBLIC_URL + '/imgs/' + path
-        console.log(img)
       })
     }
 
