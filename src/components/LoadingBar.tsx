@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 const LoadingBar: React.FC = () => {
   const [progress, setProgress] = useState<number>(0)
   const progressInterval = ['0%', '10%', '70%', '70%', '95%', '100%']
-  const progressTime = [0, 800, 1200, 200, 800, 400]
+  const progressTime = [0, 1400, 2000, 200, 1200, 400]
 
   const [fadeOut, setFadeOut] = useState<boolean>(false)
 
