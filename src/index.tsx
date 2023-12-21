@@ -11,7 +11,8 @@ root.render(
   <React.StrictMode>
     <Loading />
     <div style={{
-      display: 'none'
+      opacity: 0,
+      zIndex: -100,
     }}>
       <App />
     </div>
