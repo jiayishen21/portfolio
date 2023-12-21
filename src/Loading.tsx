@@ -7,7 +7,7 @@ const Loading: React.FC = () => {
 
   useEffect(() => {
     if (loading) {
-      const timeoutId = setTimeout(() => setLoading(false), 4000)
+      const timeoutId = setTimeout(() => setLoading(false), 10000)
 
       return () => clearTimeout(timeoutId)
     }
