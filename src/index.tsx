@@ -10,5 +10,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Loading />
+    <div style={{
+      display: 'none'
+    }}>
+      <App />
+    </div>
   </React.StrictMode>
 );
