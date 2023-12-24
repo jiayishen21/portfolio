@@ -427,6 +427,24 @@ const Projects: React.FC<Props> = (props) => {
               </motion.h1>
             </div>
           </button>
+
+          <div className="text-animation-container subtitle">
+            <motion.p
+              className={`${delayedTitle !== undefined ? 'up300' :
+                (!props.onMenu && switchMenu === 0) ? 'slideUpSm' :
+                  (props.onMenu && switchMenu > 0) ? 'slideAwaySm' : 'up300'
+                }
+                `}
+              exit={{
+                y: '-300%',
+                transition: {
+                  duration: 0.25, ease: 'easeInOut'
+                }
+              }}
+            >
+              Scroll for more
+            </motion.p>
+          </div>
         </div>
 
       </div>

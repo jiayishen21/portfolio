@@ -163,6 +163,15 @@ nav button {
   align-items: center;
 }
 
+.full-screen .subtitle {
+  position: absolute;
+  bottom: 4rem;
+}
+
+.full-screen .subtitle p {
+  transition: transform 0.25s ease-in-out;
+}
+
 .full-screen .title-link {
   color: var(--highlight);
   text-decoration: none;
@@ -233,6 +242,42 @@ nav button {
 
   100% {
     transform: translateY(-500%);
+  }
+}
+
+.up300 {
+  transform: translateY(-500%);
+}
+
+.slideUpSm {
+  animation: slideUpAnimationSm 0.8s ease-in-out;
+}
+
+@keyframes slideUpAnimationSm {
+  0% {
+    transform: translateY(-300%);
+  }
+
+  35% {
+    transform: translateY(-300%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slideAwaySm {
+  animation: slideAwayAnimationSm 0.7s ease-in-out;
+}
+
+@keyframes slideAwayAnimationSm {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-300%);
   }
 }
 
