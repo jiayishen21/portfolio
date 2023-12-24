@@ -3,6 +3,7 @@ import Project from "./Project";
 import { motion } from "framer-motion";
 import MenuProject from "./MenuProject";
 import projects from '../projects'
+import { TbChevronCompactLeft, TbChevronCompactRight } from "react-icons/tb";
 
 interface Props {
   curProject: number
@@ -352,11 +353,58 @@ const Projects: React.FC<Props> = (props) => {
           <div
             className="left-half"
             onClick={() => slide(-1)}
-          />
+          >
+            <motion.div
+              className={props.onMenu && switchMenu > 0 ? 'project-exit' :
+                props.onMenu ? 'transparent' : 'project-return'}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: {
+                  delay: 0.5,
+                  duration: 0.75,
+                  ease: 'easeOut',
+                }
+              }}
+              exit={{
+                opacity: 0,
+                transition: {
+                  duration: 0.25,
+                  ease: 'easeOut',
+                }
+              }}
+            >
+              <TbChevronCompactLeft />
+            </motion.div>
+          </div>
           <div
             className="right-half"
             onClick={() => slide(1)}
-          />
+          >
+            <motion.div
+              className={props.onMenu && switchMenu > 0 ? 'project-exit' :
+                props.onMenu ? 'transparent' : 'project-return'}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              animate={{
+                opacity: 1,
+                transition: {
+                  delay: 0.5,
+                  duration: 0.75,
+                  ease: 'easeOut',
+                }
+              }}
+              exit={{
+                opacity: 0,
+                transition: {
+                  duration: 0.25,
+                }
+              }}
+            >
+              <TbChevronCompactRight />
+            </motion.div>
+
+          </div>
           <button
             className={`title-link ${switchMenu === 0 && delayedTitle === undefined ? 'interact' : ''}`}
             onClick={() => redirect(projects[props.curProject].link)}
