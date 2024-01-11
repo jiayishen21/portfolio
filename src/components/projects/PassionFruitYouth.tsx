@@ -408,7 +408,7 @@ const PassionFruitYouth: React.FC<Props> = (props: Props) => {
 									</Link>
 								</> : <>
 									<Link
-										to='https://jiayishen21.github.io/sorting-algorithms/'
+										to='https://www.pfyouth.ca/'
 										target="_blank"
 										draggable="false"
 									>
